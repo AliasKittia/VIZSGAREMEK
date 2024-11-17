@@ -13,18 +13,105 @@
         <button class="hamburger" id="hamburger">☰</button>
         <ul class="nav-links" id="nav-links">
             <li><a href="FoOldal.html">Főoldal</a></li>
-            <li><a href="Portals.html">Portál</a></li>
+            <li><a href="Characters.html">Karakterek/Championok</a></li>
             <li><a href="Class.html">Class</a></li>
             <li><a href="Items.html">Item</a></li>
-            <li><a href="Characters.html">Karakterek/Championok</a></li>
+            <li><a href="Portals.html">Portál</a></li>
             <li><a href="Augments.html">Augment</a></li>
+            
         </ul>
     </nav>
 
     <div class="container">
-        <h1>Üdvözöllek!</h1>
-        <p>Ez egy tartalom egy conténerben.</p>
+        <h1>A SET 12-ben lévő Augmentek:</h1>
+        <div class="buttons">
+            <button onclick="showTable(1)">Gold</button>
+            <button onclick="showTable(2)">Prismatic</button>
+            <button onclick="showTable(3)">Silver</button>
+        </div>
+    
+        <div id="tier-1" class="table-container active">
+            <table border="1">
+                 <thead>
+            <tr>
+                <th>Augment</th>
+                <th>Tier</th>
+                <th>Augment Bonus</th>
+            </tr>
+        </thead>
+        <tr>
+            <td>A Golden Find</td>
+            <td>Gold</td>
+            <td>Champions evolved by the Anomaly drop 2 gold every 2 kills. Gain 10 free rerolls.</td>
+        </tr>
+        <tr>
+            <td>A Magic Roll</td>
+            <td>Gold</td>
+            <td>Roll 3 dice. Gain rewards based on their total.</td>
+        </tr>
+        <tr>
+            <td>Academic Research
+            </td>
+            <td>Gold</td>
+            <td>Whenever you build an item, gain a completed item anvil instead. That anvil always offers an Academy item and the item built. Gain 2 random components. Gain a Lux and an Ezreal.</td>
+        </tr>
+        
+            </table>
+        </div>
+    
+        <div id="tier-2" class="table-container">
+            <table border="1">
+                <tr>
+                    <th>Augment</th>
+                    <th>Tier</th>
+                    <th>Augment Bonus</th>
+                </tr>
+                <tr>
+                    <td>Academy Crown</td>
+                    <td>Prismatic</td>
+                    <td>Gain an Academy Emblem and a random sponsored item.</td>
+                </tr>
+                <tr>
+                    <td>Ambusher Crown</td>
+                    <td>Prismatic</td>
+                    <td>Gain an Ambusher Emblem, a Hand of Justice, and a Camille.</td>
+                </tr>
+                <tr>
+                    <td>An Exalted Adventure</td>
+                    <td>Prismatic</td>
+                    <td>Gain three 2-cost champions. If you 3-star two of them, gain an orb filled with loot. Gain 6 rerolls.</td>
+                </tr>
+                
+               
+            </table>
+        </div>
+
+        <div id="tier-3" class="table-container">
+            <table border="1">
+                <tr>
+                    <th>Augment</th>
+                    <th>Tier</th>
+                    <th>Augment Bonus</th>
+                </tr>
+                    <td>Backup</td>
+                    <td>Silver</td>
+                    <td>Your team gains 10% Attack Speed if at least 4 allies start combat in the back two rows.</td>
+                </tr>
+                <tr>
+                    <td>Band of Thieves I</td>
+                    <td>Silver</td>
+                    <td>Gain 1 Thief's Gloves.</td>
+                </tr>
+                <tr>
+                    <td>Beggars Can Be Choosers</td>
+                    <td>Silver</td>
+                    <td>You get +3 Augment rerolls for all other augment choices. Gain 7 gold.</td>
+                </tr>
+            </table>
+        </div>
     </div>
+
+    
 
     <script src="javascrip.js"></script>
 </body>

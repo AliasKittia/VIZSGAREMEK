@@ -93,13 +93,80 @@ body {
     font-size: larger;
 }
 
-/*Font*/
-@import url(https://db.onlinewebfonts.com/c/12420e8c141ca7c3dff41de2d59df13e?family=Beaufort+for+LOL+Bold);
+
 
 /*table beállítások*/
 table {
-    margin: auto;
-    background-color: rgb(38, 78, 91);
-    color: white;
-    text-align: center;
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #264e5b;
+    border-radius: 8px;
+    overflow: hidden;
 }
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+th {
+    background-color: #264e5b;
+    color: #000000;
+    font-size: 18px;
+}
+tr:nth-child(even) {
+    background-color: #1A2F36;
+    color: rgb(255, 248, 248);
+}
+img {
+    width: 50px;
+    height: 50px;
+}
+.table-container {
+    display: none; /* Alapból rejtett */
+}
+.table-container.active {
+    display: block; /* Csak az aktív táblázat látszik */
+}
+.buttons {
+    margin-bottom: 10px;
+}
+.buttons button {
+    margin-right: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+.card {
+    flex: 1 1 calc(33.333% - 20px); /* Három kártya egy sorban */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    
+}
+.card h5 {
+    margin: 0 0 10px;
+    color: #333;
+    font-family: "Beaufort for LOL Bold";
+}
+.gold-badge {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: gold;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 3px;
+    font-family: "Beaufort for LOL Bold";
+}
+h2,p{
+    font-family: "Beaufort for LOL Bold";
+}
+/*Font*/
+@import url(https://db.onlinewebfonts.com/c/12420e8c141ca7c3dff41de2d59df13e?family=Beaufort+for+LOL+Bold);
