@@ -1,0 +1,48 @@
+Üdvözlünk a TFT Stratégiai Útmutatón!
+
+Itt mindent megtalálsz, amire szükséged van ahhoz, hogy a legjobb legyél a Teamfight Tactics világában! Akár kezdő vagy, akár már tapasztalt játékos, az oldalunk segítségével elsajátíthatod a legjobb taktikai fogásokat, megismerheted a hősök képességeit, és megtanulhatod, hogyan építs tökéletes csapatot.
+
+Tudd meg, hogyan használhatod ki a játékmenet rejtett lehetőségeit, hogyan hozhatod ki a legtöbbet minden egyes fordulóból, és hogyan válhatsz igazi stratégiai mesterré.
+
+Fedezd fel a legújabb tippeket, trükköket, és kezdj el gyakorolni a győzelemhez vezető úton!
+
+---------------------------------------------------------------------------------------------------
+Az aloldalaink leírása a könnyebb tájékozódás érdekében: 
+- Team Comps -- csapatösszeállítás
+			Ezen az oldalon a csapatösszeállításhoz kaphatsz egy kis segítséget. 
+			Az oldalon különböző szinergiák és stratégiák alapján rangsorolt csapatok 				találhatók, amelyek a legújabb meta és frissítések szerint vannak kialakítva. 
+			Itt megtalálhatod a számodra legjobban teljesítő kompozíciókat, ami segíthet 				számodra a győzelemhez vezető úton. 
+			Legjobb forrás a naprakészen létben és a fejlődésben a karakterekkel kapcsolatban. 
+
+- Meta Report -- játék aktuális állapota
+			Ez az oldal egy átfogó és részletes elemzést nyújt a legújabb meta trendekről. Itt 			megtalálhatók a legnépszerűbb hősök, csapatösszeállítások és stratégiák 				teljesítménye, amelyeket a legfrissebb játékmenet és frissítések alapján 				rangsorolnak. 
+			Naprakész információk a jelenleg legerősebb karakterekről és szinenergiákról. 
+
+- Champions -- karakterek
+			Részletes információk és statisztikák a játék összes hőséről. 
+
+- Tier List --  rangsorolt hősök/tárgyak
+			A legújabb Teamfight Tactics meta alapján rangsoroltuk a játék hőseit,tárgyait, 			hogy a lehető legjobb döntéseket hozhasd a csapatod összeállításakor. Az oldal 				célja, hogy segítse a játékosokat abban, hogy a legjobban teljesítő karakterek 				közül választhassanak, figyelembe véve azok jelenlegi erősségét és szinergiáit. 
+
+- Item Builder -- tárgyak tervezése
+			Könnyedén megtervezheted a legjobb tárgyakat a Teamfight Tactics hőseid számára. A 			tool lehetővé teszi, hogy gyorsan és egyszerűen összeállítsd a különböző tárgyakat, 			figyelembe véve azok szinergiáit és hatékonyságát a játékban. Az oldalunkon 				található részletes információk és ajánlások alapján könnyedén kiválaszthatod a 			legmegfelelőbb tárgyakat a csapatod számára, így maximalizálhatod a győzelemhez 			vezető esélyeket. Legyen szó a legújabb meta által ajánlott tárgyakról vagy egyéni 			stratégiádhoz illő kombinációkról, a Item Builder eszközünk folyamatos 					frissítésekkel biztosítja, hogy a legjobb döntéseket hozhass.
+
+- Team Builder -- csapat tervezése
+			Megtervezheted és optimalizálhatod a Teamfight Tactics csapatodat. Az eszközzel 			gyorsan összeállíthatod a legjobb hősöket és szinergiákat, hogy egy erős és 				hatékony csapatot alkothass. Az oldal lehetővé teszi, hogy a különböző karakterek 			és tárgyak kombinációját kipróbáld, figyelembe véve az aktuális meta és stratégiák 			ajánlásait. A Team Builder folyamatosan frissülő adatbázisa segít a játékosoknak 			abban, hogy a lehető legjobb döntéseket hozzák meg a csapatösszeállítás során, így 			biztosítva a győzelemhez vezető taktikai előnyt. Tudd meg, hogyan hozhatod ki a 			legtöbbet a hőseidből, és építsd meg a legerősebb csapatot a következő meccsedhez!
+
+- Database -- Több aloldalt tartalmaz 
+~ Champion Stats -- részletes statisztikai leírás a hősökről.
+~ Origins -- Teamfight Tactics eredetek, azok bónuszai és a hozzájuk tartozó hősök. 
+~ Classes -- Teamfight Tactics osztályai, azok egyedi bónuszai és a hozzájuk tartozó hősök.
+~ Rolling -- Esélyek az egyes hősök megszerzésére.
+~ Augments -- Választható bónusz vagy képesség, amely egyedi előnyöket nyújt a játékosnak, játék közben jelenik meg.
+~ Anomalies -- TFT különleges szabályai,  segítve a játékosokat az anomáliákhoz való gyors alkalmazkodásban.
+---------------------------------------------------------------------------------------------------
+Az oldal jelenleg még fejlesztési fázisban áll! 
+
+
+---------------------------------------------------------------------------------------------------
+Fejlesztők: - MimitheEmili (Mózsik Emma Lili)
+	    - AliasKittia (Üveges Cintia)
+			2/14.D 1.cs
+
