@@ -37,6 +37,8 @@ Az aloldalaink leírása a könnyebb tájékozódás érdekében:
 ~ Rolling -- Esélyek az egyes hősök megszerzésére.
 ~ Augments -- Választható bónusz vagy képesség, amely egyedi előnyöket nyújt a játékosnak, játék közben jelenik meg.
 ~ Anomalies -- TFT különleges szabályai,  segítve a játékosokat az anomáliákhoz való gyors alkalmazkodásban.
+
+- Játéktörténet -- segítség a játék megértéséhez, és a weboldalunk témájához.
 ---------------------------------------------------------------------------------------------------
 Az oldal jelenleg még fejlesztési fázisban áll! 
 
