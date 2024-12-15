@@ -33,3 +33,4 @@ C:\Users\Uvege\Desktop\Vizsga\VIZSGAREMEK\sprint_2\code\tftwebapi\obj\Debug\net8
 C:\Users\Uvege\Desktop\Vizsga\VIZSGAREMEK\sprint_2\code\tftwebapi\obj\Debug\net8.0\tftwebapi.genruntimeconfig.cache
 C:\Users\Uvege\Desktop\Vizsga\VIZSGAREMEK\sprint_2\code\tftwebapi\obj\Debug\net8.0\ref\tftwebapi.dll
 C:\Users\Uvege\Desktop\Vizsga\VIZSGAREMEK\sprint_2\code\tftwebapi\bin\Debug\net8.0\tftfrontend\package.json
+C:\Users\Uvege\Desktop\Vizsga\VIZSGAREMEK\sprint_2\code\tftwebapi\bin\Debug\net8.0\tftwebapi.staticwebassets.runtime.json

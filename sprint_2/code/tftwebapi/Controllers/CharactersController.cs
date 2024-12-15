@@ -9,35 +9,35 @@ public class CharactersController : ControllerBase
     {
         new PostCharacter {
             Id = 1,
-            Name = "Aatrox",
-            Picture = "aatrox.png",
-            Cost = 3,
-            Items = new List<string> { "Infinity Edge", "Bloodthirster" },
-            Health = new List<int> { 750, 1350, 2025 },
-            Mana = 100,
-            Armor = 40,
-            MR = 40,
-            DPS = new List<int> { 55, 99, 148 },
-            Damage = new List<int> { 65, 117, 176 },
-            AtkSpd = 0.85f,
+            Name = "Amumu",
+            Picture = "/images/Amumu.png", // Relative to wwwroot
+            Cost = 1,
+            Items = new List<string> { "Dragons's Claw", "Gargoyle Stoneplate", "Warmog's Armor" },
+            Health = new List<int> { 600, 1080, 1944 },
+            Mana = 0,
+            Armor = 35,
+            MR = 35,
+            DPS = new List<int> { 27, 49, 87 },
+            Damage = new List<int> { 45, 81, 146 },
+            AtkSpd = 0.6f,
             CritRate = 0.25f,
             Range = 1
         },
         new PostCharacter {
             Id = 2,
-            Name = "Ahri",
-            Picture = "ahri.png",
-            Cost = 4,
-            Items = new List<string> { "Blue Buff", "Jeweled Gauntlet" },
-            Health = new List<int> { 650, 1170, 1755 },
+            Name = "Akali",
+            Picture = "/images/Akali.png", // Relative to wwwroot
+            Cost = 2,
+            Items = new List<string> { "Hand of Justice", "Ionic Spark","Jeweled Gauntlet" },
+            Health = new List<int> { 700, 1260, 2268 },
             Mana = 60,
-            Armor = 20,
-            MR = 20,
-            DPS = new List<int> { 50, 90, 135 },
-            Damage = new List<int> { 50, 90, 135 },
-            AtkSpd = 1.0f,
-            CritRate = 0.20f,
-            Range = 4
+            Armor = 45,
+            MR = 45,
+            DPS = new List<int> { 34, 61, 109 },
+            Damage = new List<int> { 45, 81, 146 },
+            AtkSpd = 0.75f,
+            CritRate = 0.25f,
+            Range = 1
         }
     };
 

@@ -7,9 +7,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add CORS policy
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAllOrigins", policy =>
+    options.AddPolicy("ReactPolicy", policy =>
     {
-        policy.AllowAnyOrigin()
+        policy.WithOrigins("http://localhost:3000") // React fejlesztői szerver
               .AllowAnyMethod()
               .AllowAnyHeader();
     });
@@ -29,8 +29,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+// Enable serving static files (e.g., images)
+app.UseStaticFiles();
+
 // Apply the CORS policy globally
-app.UseCors("AllowAllOrigins");
+app.UseCors("ReactPolicy");
 
 app.UseHttpsRedirection();
 app.MapControllers(); // Map controller routes

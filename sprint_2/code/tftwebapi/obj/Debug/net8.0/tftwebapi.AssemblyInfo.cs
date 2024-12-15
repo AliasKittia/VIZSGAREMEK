@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("tftwebapi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d789d631b48c933c31d26c2d9a138af789c3293d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+86d1de49e2ed6d2cf2d85ecb22ba156500c98dfc")]
 [assembly: System.Reflection.AssemblyProductAttribute("tftwebapi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("tftwebapi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
