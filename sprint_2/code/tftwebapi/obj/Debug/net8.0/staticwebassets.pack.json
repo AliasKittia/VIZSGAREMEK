@@ -1,19 +1,23 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\Uvege\\Desktop\\Vizsga\\VIZSGAREMEK\\sprint_2\\code\\tftwebapi\\wwwroot\\images\\Akali.png",
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_2\\code\\tftwebapi\\wwwroot\\images\\Akali.png",
       "PackagePath": "staticwebassets\\images\\Akali.png"
     },
     {
-      "Id": "C:\\Users\\Uvege\\Desktop\\Vizsga\\VIZSGAREMEK\\sprint_2\\code\\tftwebapi\\wwwroot\\images\\Amumu.png",
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_2\\code\\tftwebapi\\wwwroot\\images\\Amumu.png",
       "PackagePath": "staticwebassets\\images\\Amumu.png"
     },
     {
-      "Id": "C:\\Users\\Uvege\\Desktop\\Vizsga\\VIZSGAREMEK\\sprint_2\\code\\tftwebapi\\wwwroot\\images\\BFSword.png",
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_2\\code\\tftwebapi\\wwwroot\\images\\BFSword.png",
       "PackagePath": "staticwebassets\\images\\BFSword.png"
     },
     {
-      "Id": "C:\\Users\\Uvege\\Desktop\\Vizsga\\VIZSGAREMEK\\sprint_2\\code\\tftwebapi\\wwwroot\\images\\ChainVest.png",
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_2\\code\\tftwebapi\\wwwroot\\images\\Blitzcrank.png",
+      "PackagePath": "staticwebassets\\images\\Blitzcrank.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_2\\code\\tftwebapi\\wwwroot\\images\\ChainVest.png",
       "PackagePath": "staticwebassets\\images\\ChainVest.png"
     },
     {
