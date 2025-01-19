@@ -1,5 +1,5 @@
-using System.Collections.Generic;
-namespace tdftwebapi.Models
+namespace tftwebapi.Models
+
 {
     public class PostFullItems
     {

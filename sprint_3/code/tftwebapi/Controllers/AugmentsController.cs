@@ -1,14 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
+using tftwebapi.Data;
 using tftwebapi.Models;
-using System.Collections.Generic;
-using System.Linq;
-using tdftwebapi.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace tftwebapi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PostAugmentsController : ControllerBase
+    public class AugmentsController : ControllerBase
     {
         private static List<PostAugments> _augments = new List<PostAugments>();
 

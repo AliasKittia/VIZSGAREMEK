@@ -1,14 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using tftwebapi.Data;
 using tftwebapi.Models;
-using System.Collections.Generic;
-using System.Linq;
-using tdftwebapi.Models;
 
 namespace tftwebapi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PostPartialItemsController : ControllerBase
+    public class PartialItemsController : ControllerBase
     {
         private static List<PostPartialItems> _items = new List<PostPartialItems>();
 

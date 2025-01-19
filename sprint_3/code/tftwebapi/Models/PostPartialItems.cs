@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 namespace tftwebapi.Models
+
 {
     public class PostPartialItems
     {

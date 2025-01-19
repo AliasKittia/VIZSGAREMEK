@@ -1,14 +1,14 @@
 using Microsoft.AspNetCore.Mvc;
+using tftwebapi.Data;
+using Microsoft.EntityFrameworkCore;
 using tftwebapi.Models;
-using System.Collections.Generic;
-using System.Linq;
-using tdftwebapi.Models;
+
 
 namespace tftwebapi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PostAnomaliesController : ControllerBase
+    public class AnomaliesController : ControllerBase
     {
         private static List<PostAnomalies> _anomalies = new List<PostAnomalies>();
 

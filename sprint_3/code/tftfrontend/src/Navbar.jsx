@@ -24,6 +24,7 @@ function Navbar() {
             Tárgyak
           </NavLink>
         </li>
+        
       </ul>
     </nav>
   );

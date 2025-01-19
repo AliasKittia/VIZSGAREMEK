@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using tdftwebapi.Models;
 using tftwebapi.Models;
 
 namespace tftwebapi.Data
