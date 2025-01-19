@@ -17,6 +17,10 @@
       "PackagePath": "staticwebassets\\images\\ChainVest.png"
     },
     {
+      "Id": "C:\\Users\\Uvege\\Desktop\\Vizsga\\VIZSGAREMEK\\sprint_2\\code\\tftwebapi\\wwwroot\\images\\[nCore][xvidser_hun]Pawn.Stars.S01.COMPLETE.READ.NFO.HDTV.x264.Hungarian-NFC.torrent",
+      "PackagePath": "staticwebassets\\images\\[nCore][xvidser_hun]Pawn.Stars.S01.COMPLETE.READ.NFO.HDTV.x264.Hungarian-NFC.torrent"
+    },
+    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.tftwebapi.props",
       "PackagePath": "build\\tftwebapi.props"
     },

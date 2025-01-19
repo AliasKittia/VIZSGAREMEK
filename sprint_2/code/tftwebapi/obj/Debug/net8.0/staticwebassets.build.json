@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2lmI8fKMu5z08/pSmmQmwHE3nygZT2yadY3Leu/qrJs=",
+  "Hash": "ebJM9ES68iHyni53tDoLARkgC5ziIR2IcCl0POCfNvY=",
   "Source": "tftwebapi",
   "BasePath": "_content/tftwebapi",
   "Mode": "Default",
@@ -16,6 +16,25 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "C:\\Users\\Uvege\\Desktop\\Vizsga\\VIZSGAREMEK\\sprint_2\\code\\tftwebapi\\wwwroot\\images\\[nCore][xvidser_hun]Pawn.Stars.S01.COMPLETE.READ.NFO.HDTV.x264.Hungarian-NFC.torrent",
+      "SourceId": "tftwebapi",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Uvege\\Desktop\\Vizsga\\VIZSGAREMEK\\sprint_2\\code\\tftwebapi\\wwwroot\\",
+      "BasePath": "_content/tftwebapi",
+      "RelativePath": "images/[nCore][xvidser_hun]Pawn.Stars.S01.COMPLETE.READ.NFO.HDTV.x264.Hungarian-NFC.torrent",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\[nCore][xvidser_hun]Pawn.Stars.S01.COMPLETE.READ.NFO.HDTV.x264.Hungarian-NFC.torrent"
+    },
     {
       "Identity": "C:\\Users\\Uvege\\Desktop\\Vizsga\\VIZSGAREMEK\\sprint_2\\code\\tftwebapi\\wwwroot\\images\\Akali.png",
       "SourceId": "tftwebapi",
