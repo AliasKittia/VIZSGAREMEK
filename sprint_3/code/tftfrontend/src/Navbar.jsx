@@ -10,21 +10,35 @@ function Navbar() {
       </a>
       <ul className="navbar-links">
         <li>
-          <NavLink to="/" activeClassName="active" exact>
+          <NavLink to="/" className={({ isActive }) => (isActive ? "active" : "")} end>
             Főoldal
           </NavLink>
         </li>
         <li>
-          <NavLink to="/characters" activeClassName="active">
+          <NavLink to="/characters" className={({ isActive }) => (isActive ? "active" : "")}>
             Karakterek
           </NavLink>
         </li>
         <li>
-          <NavLink to="/items" activeClassName="active">
+          <NavLink to="/items" className={({ isActive }) => (isActive ? "active" : "")}>
             Tárgyak
           </NavLink>
         </li>
-        
+        <li>
+          <NavLink to="/classes" className={({ isActive }) => (isActive ? "active" : "")}>
+            Osztályok
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/anomalies" className={({ isActive }) => (isActive ? "active" : "")}>
+            Anomáliák
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/augments" className={({ isActive }) => (isActive ? "active" : "")}>
+            Augmentek
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );
