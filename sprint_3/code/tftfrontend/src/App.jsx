@@ -21,7 +21,6 @@ function App() {
           <Route path="/augments" element={<Augments />} />
           <Route path="/class" element={<Class />} />
           <Route path="/anomalies" element={<Anomalies />} />
-          
         </Routes>
       </div>
     </Router>

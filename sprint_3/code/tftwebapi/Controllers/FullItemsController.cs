@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using tftwebapi.Data;
 using tftwebapi.Models;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace tftwebapi.Controllers
 {

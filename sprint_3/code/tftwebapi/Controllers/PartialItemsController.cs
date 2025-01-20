@@ -22,7 +22,7 @@ namespace tftwebapi.Controllers
         [HttpGet("{id}")]
         public ActionResult<PostPartialItems> GetItem(int id)
         {
-            var item = _items.FirstOrDefault(i => i.PartialItemId == id);
+            var item = _items.FirstOrDefault(i => i.partial_item_id == id);
             if (item == null)
             {
                 return NotFound();
@@ -35,21 +35,21 @@ namespace tftwebapi.Controllers
         public ActionResult<PostPartialItems> PostItem(PostPartialItems item)
         {
             _items.Add(item);
-            return CreatedAtAction(nameof(GetItem), new { id = item.PartialItemId }, item);
+            return CreatedAtAction(nameof(GetItem), new { id = item.partial_item_id }, item);
         }
 
         // PUT: api/PostPartialItems/5
         [HttpPut("{id}")]
         public IActionResult PutItem(int id, PostPartialItems item)
         {
-            var existingItem = _items.FirstOrDefault(i => i.PartialItemId == id);
+            var existingItem = _items.FirstOrDefault(i => i.partial_item_id == id);
             if (existingItem == null)
             {
                 return NotFound();
             }
 
-            existingItem.Name = item.Name;
-            existingItem.Effect = item.Effect;
+            existingItem.name = item.name;
+            existingItem.effect = item.effect;
 
             return NoContent();
         }
@@ -58,7 +58,7 @@ namespace tftwebapi.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeleteItem(int id)
         {
-            var item = _items.FirstOrDefault(i => i.PartialItemId == id);
+            var item = _items.FirstOrDefault(i => i.partial_item_id == id);
             if (item == null)
             {
                 return NotFound();

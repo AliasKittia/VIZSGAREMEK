@@ -5,8 +5,11 @@ namespace tftwebapi.Models
     {
         public required int Id { get; set; }
         public required string Name { get; set; }
-        public required List<String> Halfitemeffect { get; set; } = new List<String>();
-        public List<String> Bonuseffect { get; set; } = new List<String>();
+        public required string Halfitemeffect1 { get; set; } 
+        public required string Halfitemeffect2 { get; set; }
+        public required string Bonuseffect { get; set; }
+        public required string Bonuseffect1 { get; set; }
+         public required string Bonuseffect2 { get; set; }
         public required string ActiveEffect { get; set; }
     }
 }

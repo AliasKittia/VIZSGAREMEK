@@ -56,7 +56,8 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
             // PostPartialItems konfiguráció
             modelBuilder.Entity<PostPartialItems>()
-                .HasKey(pi => pi.PartialItemId); // PartialItemId mint elsődleges kulcs
+                .HasKey(pi => pi.partial_item_id); // PartialItemId mint elsődleges kulcs
         }
     }
 }
+

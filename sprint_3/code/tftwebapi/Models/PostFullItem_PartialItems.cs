@@ -4,6 +4,7 @@ namespace tftwebapi.Models
     {
         public required int Id { get; set; }
         public required int FullItemId { get; set; }
-        public required List<int> PartialItemId { get; set; } = new List<int>();
+        public required int PartialItemId1 { get; set; } 
+        public required int PartialItemId2 { get; set; }
     }
 }

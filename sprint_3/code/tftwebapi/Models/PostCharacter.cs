@@ -7,11 +7,16 @@ public class PostCharacter
     public required string AbilityName { get; set; }
     public required string Ability { get; set; }
     public required int Cost { get; set; }
-    public required List<int> Health { get; set; } = new List<int>();
+    public required int Health { get; set; } 
+    public required int Health1 { get; set; } 
+    public required int Health2 { get; set; } 
     public required int AttackSpeed { get; set; }
-    public required List<int> Damage { get; set; } = new List<int>();
+    public required int Damage { get; set; } 
+    public required int Damage1{ get; set; }
+    public required int Damage2 { get; set; }
     public required int AbilityPower { get; set; }
-    public required List<int> Mana { get; set; } = new List<int>();
+    public required int ManaStart { get; set; }
+    public required int ManaMax { get; set; } 
     public required int Armor { get; set; }
     public required int MagicResist { get; set; }
     public required int Range { get; set; }

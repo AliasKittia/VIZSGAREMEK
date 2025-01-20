@@ -4,7 +4,7 @@ namespace tftwebapi.Models
     {
         public required int AnomalyId { get; set; }
         public required string AnomalyName { get; set; }
-        public required string Effect { get; set; }
+        public required string AnomalyEffect { get; set; }
         
     }
 }

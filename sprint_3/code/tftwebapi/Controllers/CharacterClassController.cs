@@ -53,10 +53,15 @@ namespace tftwebapi.Controllers
             existingCharacter.Ability = character.Ability;
             existingCharacter.Cost = character.Cost;
             existingCharacter.Health = character.Health;
+            existingCharacter.Health1 = character.Health1;
+            existingCharacter.Health2 = character.Health2;
             existingCharacter.AttackSpeed = character.AttackSpeed;
             existingCharacter.Damage = character.Damage;
+            existingCharacter.Damage1 = character.Damage1;
+            existingCharacter.Damage2 = character.Damage2;
             existingCharacter.AbilityPower = character.AbilityPower;
-            existingCharacter.Mana = character.Mana;
+            existingCharacter.ManaStart = character.ManaStart;
+            existingCharacter.ManaMax = character.ManaMax;
             existingCharacter.Armor = character.Armor;
             existingCharacter.MagicResist = character.MagicResist;
             existingCharacter.Range = character.Range;
