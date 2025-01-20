@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using tftwebapi.Data;
 using tftwebapi.Models;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace tftwebapi.Controllers
 {
@@ -9,63 +11,93 @@ namespace tftwebapi.Controllers
     [ApiController]
     public class PartialItemsController : ControllerBase
     {
-        private static List<PostPartialItems> _items = new List<PostPartialItems>();
+        private readonly ApplicationDbContext _context;
+
+        public PartialItemsController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
 
         // GET: api/PostPartialItems
         [HttpGet]
-        public ActionResult<IEnumerable<PostPartialItems>> GetItems()
+        public async Task<ActionResult<IEnumerable<PostPartialItems>>> GetItems()
         {
-            return Ok(_items);
+            return await _context.PartialItems.ToListAsync();
         }
 
         // GET: api/PostPartialItems/5
         [HttpGet("{id}")]
-        public ActionResult<PostPartialItems> GetItem(int id)
+        public async Task<ActionResult<PostPartialItems>> GetItem(int id)
         {
-            var item = _items.FirstOrDefault(i => i.partial_item_id == id);
+            var item = await _context.PartialItems.FindAsync(id);
+
             if (item == null)
             {
                 return NotFound();
             }
-            return Ok(item);
+
+            return item;
         }
 
         // POST: api/PostPartialItems
         [HttpPost]
-        public ActionResult<PostPartialItems> PostItem(PostPartialItems item)
+        public async Task<ActionResult<PostPartialItems>> PostItem(PostPartialItems item)
         {
-            _items.Add(item);
+            _context.PartialItems.Add(item);
+            await _context.SaveChangesAsync();
+
             return CreatedAtAction(nameof(GetItem), new { id = item.partial_item_id }, item);
         }
 
         // PUT: api/PostPartialItems/5
         [HttpPut("{id}")]
-        public IActionResult PutItem(int id, PostPartialItems item)
+        public async Task<IActionResult> PutItem(int id, PostPartialItems item)
         {
-            var existingItem = _items.FirstOrDefault(i => i.partial_item_id == id);
-            if (existingItem == null)
+            if (id != item.partial_item_id)
             {
-                return NotFound();
+                return BadRequest();
             }
 
-            existingItem.name = item.name;
-            existingItem.effect = item.effect;
+            _context.Entry(item).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ItemExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
 
             return NoContent();
         }
 
         // DELETE: api/PostPartialItems/5
         [HttpDelete("{id}")]
-        public IActionResult DeleteItem(int id)
+        public async Task<IActionResult> DeleteItem(int id)
         {
-            var item = _items.FirstOrDefault(i => i.partial_item_id == id);
+            var item = await _context.PartialItems.FindAsync(id);
             if (item == null)
             {
                 return NotFound();
             }
 
-            _items.Remove(item);
+            _context.PartialItems.Remove(item);
+            await _context.SaveChangesAsync();
+
             return NoContent();
+        }
+
+        private bool ItemExists(int id)
+        {
+            return _context.PartialItems.Any(e => e.partial_item_id == id);
         }
     }
 }

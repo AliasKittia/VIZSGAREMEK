@@ -10,7 +10,7 @@ using tftwebapi.Data;
 namespace tftwebapi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250120204656_InitialCreate")]
+    [Migration("20250120221851_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,11 +26,11 @@ namespace tftwebapi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("AnomalyName")
+                    b.Property<string>("AnomalyEffect")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Effect")
+                    b.Property<string>("AnomalyName")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -209,18 +209,6 @@ namespace tftwebapi.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Bonuseffect")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Bonuseffect1")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Bonuseffect2")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<string>("Halfitemeffect1")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -233,6 +221,18 @@ namespace tftwebapi.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<string>("bonuseffect")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("bonuseffect1")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("bonuseffect2")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.HasKey("Id");
 
                     b.ToTable("FullItems");
@@ -240,19 +240,19 @@ namespace tftwebapi.Migrations
 
             modelBuilder.Entity("tftwebapi.Models.PostPartialItems", b =>
                 {
-                    b.Property<int>("PartialItemId")
+                    b.Property<int>("partial_item_id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("Effect")
+                    b.Property<string>("effect")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("name")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.HasKey("PartialItemId");
+                    b.HasKey("partial_item_id");
 
                     b.ToTable("PartialItems");
                 });

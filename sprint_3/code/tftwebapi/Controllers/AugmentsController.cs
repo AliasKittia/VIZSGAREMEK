@@ -9,64 +9,93 @@ namespace tftwebapi.Controllers
     [ApiController]
     public class AugmentsController : ControllerBase
     {
-        private static List<PostAugments> _augments = new List<PostAugments>();
+        private readonly ApplicationDbContext _context;
+
+        public AugmentsController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
 
         // GET: api/PostAugments
         [HttpGet]
-        public ActionResult<IEnumerable<PostAugments>> GetAugments()
+        public async Task<ActionResult<IEnumerable<PostAugments>>> GetAugments()
         {
-            return Ok(_augments);
+            return await _context.Augments.ToListAsync();
         }
 
         // GET: api/PostAugments/5
         [HttpGet("{id}")]
-        public ActionResult<PostAugments> GetAugment(int id)
+        public async Task<ActionResult<PostAugments>> GetAugment(int id)
         {
-            var augment = _augments.FirstOrDefault(a => a.AugmentId == id);
+            var augment = await _context.Augments.FindAsync(id);
+
             if (augment == null)
             {
                 return NotFound();
             }
-            return Ok(augment);
+
+            return augment;
         }
 
         // POST: api/PostAugments
         [HttpPost]
-        public ActionResult<PostAugments> PostAugment(PostAugments augment)
+        public async Task<ActionResult<PostAugments>> PostAugment(PostAugments augment)
         {
-            _augments.Add(augment);
+            _context.Augments.Add(augment);
+            await _context.SaveChangesAsync();
+
             return CreatedAtAction(nameof(GetAugment), new { id = augment.AugmentId }, augment);
         }
 
         // PUT: api/PostAugments/5
         [HttpPut("{id}")]
-        public IActionResult PutAugment(int id, PostAugments augment)
+        public async Task<IActionResult> PutAugment(int id, PostAugments augment)
         {
-            var existingAugment = _augments.FirstOrDefault(a => a.AugmentId == id);
-            if (existingAugment == null)
+            if (id != augment.AugmentId)
             {
-                return NotFound();
+                return BadRequest();
             }
 
-            existingAugment.AugmentName = augment.AugmentName;
-            existingAugment.AugmentRarity = augment.AugmentRarity;
-            existingAugment.AugmentEffect = augment.AugmentEffect;
+            _context.Entry(augment).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!AugmentExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
 
             return NoContent();
         }
 
         // DELETE: api/PostAugments/5
         [HttpDelete("{id}")]
-        public IActionResult DeleteAugment(int id)
+        public async Task<IActionResult> DeleteAugment(int id)
         {
-            var augment = _augments.FirstOrDefault(a => a.AugmentId == id);
+            var augment = await _context.Augments.FindAsync(id);
             if (augment == null)
             {
                 return NotFound();
             }
 
-            _augments.Remove(augment);
+            _context.Augments.Remove(augment);
+            await _context.SaveChangesAsync();
+
             return NoContent();
+        }
+
+        private bool AugmentExists(int id)
+        {
+            return _context.Augments.Any(e => e.AugmentId == id);
         }
     }
 }

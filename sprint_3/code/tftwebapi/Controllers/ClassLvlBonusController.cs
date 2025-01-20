@@ -20,14 +20,14 @@ namespace tftwebapi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PostClassLvlBonus>>> GetClassLvlBonuses()
         {
-            return await _context.ClassLvlBonuses.ToListAsync();
+            return await _context.ClassLevelBonus.ToListAsync();
         }
 
         // GET: api/ClassLvlBonus/5
         [HttpGet("{id}")]
         public async Task<ActionResult<PostClassLvlBonus>> GetClassLvlBonus(int id)
         {
-            var classLvlBonus = await _context.ClassLvlBonuses.FindAsync(id);
+            var classLvlBonus = await _context.ClassLevelBonus.FindAsync(id);
 
             if (classLvlBonus == null)
             {
@@ -41,7 +41,7 @@ namespace tftwebapi.Controllers
         [HttpPost]
         public async Task<ActionResult<PostClassLvlBonus>> PostClassLvlBonus(PostClassLvlBonus classLvlBonus)
         {
-            _context.ClassLvlBonuses.Add(classLvlBonus);
+            _context.ClassLevelBonus.Add(classLvlBonus);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetClassLvlBonus), new { id = classLvlBonus.ClassId }, classLvlBonus);
@@ -81,13 +81,13 @@ namespace tftwebapi.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteClassLvlBonus(int id)
         {
-            var classLvlBonus = await _context.ClassLvlBonuses.FindAsync(id);
+            var classLvlBonus = await _context.ClassLevelBonus.FindAsync(id);
             if (classLvlBonus == null)
             {
                 return NotFound();
             }
 
-            _context.ClassLvlBonuses.Remove(classLvlBonus);
+            _context.ClassLevelBonus.Remove(classLvlBonus);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -95,7 +95,7 @@ namespace tftwebapi.Controllers
 
         private bool ClassLvlBonusExists(int id)
         {
-            return _context.ClassLvlBonuses.Any(e => e.ClassId == id);
+            return _context.ClassLevelBonus.Any(e => e.ClassId == id);
         }
     }
 }

@@ -10,7 +10,7 @@ public class PostCharacter
     public required int Health { get; set; } 
     public required int Health1 { get; set; } 
     public required int Health2 { get; set; } 
-    public required int AttackSpeed { get; set; }
+    public required double AttackSpeed { get; set; }
     public required int Damage { get; set; } 
     public required int Damage1{ get; set; }
     public required int Damage2 { get; set; }

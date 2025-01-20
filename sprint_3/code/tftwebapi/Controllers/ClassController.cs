@@ -21,14 +21,14 @@ namespace tftwebapi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PostClass>>> GetClasses()
         {
-            return await _context.Classes.ToListAsync();
+            return await _context.Class.ToListAsync();
         }
 
         // GET: api/Class/5
         [HttpGet("{id}")]
         public async Task<ActionResult<PostClass>> GetClass(int id)
         {
-            var postClass = await _context.Classes.FindAsync(id);
+            var postClass = await _context.Class.FindAsync(id);
 
             if (postClass == null)
             {
@@ -42,7 +42,7 @@ namespace tftwebapi.Controllers
         [HttpPost]
         public async Task<ActionResult<PostClass>> PostClass(PostClass postClass)
         {
-            _context.Classes.Add(postClass);
+            _context.Class.Add(postClass);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetClass), new { id = postClass.ClassId }, postClass);
@@ -82,13 +82,13 @@ namespace tftwebapi.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteClass(int id)
         {
-            var postClass = await _context.Classes.FindAsync(id);
+            var postClass = await _context.Class.FindAsync(id);
             if (postClass == null)
             {
                 return NotFound();
             }
 
-            _context.Classes.Remove(postClass);
+            _context.Class.Remove(postClass);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -96,7 +96,7 @@ namespace tftwebapi.Controllers
 
         private bool ClassExists(int id)
         {
-            return _context.Classes.Any(e => e.ClassId == id);
+            return _context.Class.Any(e => e.ClassId == id);
         }
     }
 }

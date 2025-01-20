@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using tftwebapi.Data;
 using tftwebapi.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace tftwebapi.Controllers
 {
@@ -9,78 +11,93 @@ namespace tftwebapi.Controllers
     [ApiController]
     public class CharacterClassController : ControllerBase
     {
-        private static List<PostCharacter> _characters = new List<PostCharacter>();
+        private readonly ApplicationDbContext _context;
+
+        public CharacterClassController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
 
         // GET: api/PostCharacter
         [HttpGet]
-        public ActionResult<IEnumerable<PostCharacter>> GetCharacters()
+        public async Task<ActionResult<IEnumerable<PostCharacter>>> GetCharacters()
         {
-            return Ok(_characters);
+            return await _context.Character.ToListAsync();
         }
 
         // GET: api/PostCharacter/5
         [HttpGet("{id}")]
-        public ActionResult<PostCharacter> GetCharacter(int id)
+        public async Task<ActionResult<PostCharacter>> GetCharacter(int id)
         {
-            var character = _characters.FirstOrDefault(c => c.CharacterId == id);
+            var character = await _context.Character.FindAsync(id);
+
             if (character == null)
             {
                 return NotFound();
             }
-            return Ok(character);
+
+            return character;
         }
 
         // POST: api/PostCharacter
         [HttpPost]
-        public ActionResult<PostCharacter> PostCharacter(PostCharacter character)
+        public async Task<ActionResult<PostCharacter>> PostCharacter(PostCharacter character)
         {
-            _characters.Add(character);
+            _context.Character.Add(character);
+            await _context.SaveChangesAsync();
+
             return CreatedAtAction(nameof(GetCharacter), new { id = character.CharacterId }, character);
         }
 
         // PUT: api/PostCharacter/5
         [HttpPut("{id}")]
-        public IActionResult PutCharacter(int id, PostCharacter character)
+        public async Task<IActionResult> PutCharacter(int id, PostCharacter character)
         {
-            var existingCharacter = _characters.FirstOrDefault(c => c.CharacterId == id);
-            if (existingCharacter == null)
+            if (id != character.CharacterId)
             {
-                return NotFound();
+                return BadRequest();
             }
 
-            existingCharacter.CharacterName = character.CharacterName;
-            existingCharacter.AbilityName = character.AbilityName;
-            existingCharacter.Ability = character.Ability;
-            existingCharacter.Cost = character.Cost;
-            existingCharacter.Health = character.Health;
-            existingCharacter.Health1 = character.Health1;
-            existingCharacter.Health2 = character.Health2;
-            existingCharacter.AttackSpeed = character.AttackSpeed;
-            existingCharacter.Damage = character.Damage;
-            existingCharacter.Damage1 = character.Damage1;
-            existingCharacter.Damage2 = character.Damage2;
-            existingCharacter.AbilityPower = character.AbilityPower;
-            existingCharacter.ManaStart = character.ManaStart;
-            existingCharacter.ManaMax = character.ManaMax;
-            existingCharacter.Armor = character.Armor;
-            existingCharacter.MagicResist = character.MagicResist;
-            existingCharacter.Range = character.Range;
+            _context.Entry(character).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!CharacterExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
 
             return NoContent();
         }
 
         // DELETE: api/PostCharacter/5
         [HttpDelete("{id}")]
-        public IActionResult DeleteCharacter(int id)
+        public async Task<IActionResult> DeleteCharacter(int id)
         {
-            var character = _characters.FirstOrDefault(c => c.CharacterId == id);
+            var character = await _context.Character.FindAsync(id);
             if (character == null)
             {
                 return NotFound();
             }
 
-            _characters.Remove(character);
+            _context.Character.Remove(character);
+            await _context.SaveChangesAsync();
+
             return NoContent();
+        }
+
+        private bool CharacterExists(int id)
+        {
+            return _context.Character.Any(e => e.CharacterId == id);
         }
     }
 }

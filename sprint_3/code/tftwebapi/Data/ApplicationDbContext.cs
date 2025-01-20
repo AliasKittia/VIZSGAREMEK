@@ -9,10 +9,10 @@ namespace tftwebapi.Data
 
         public required DbSet<PostAnomalies> Anomalies { get; set; }
         public required DbSet<PostAugments> Augments { get; set; }
-        public required DbSet<PostCharacter> Characters { get; set; }
-        public required DbSet<PostCharacterClass> CharacterClasses { get; set; } 
-        public required DbSet<PostClass> Classes { get; set; }
-        public required DbSet<PostClassLvlBonus> ClassLvlBonuses { get; set; }
+        public required DbSet<PostCharacter> Character { get; set; }
+        public required DbSet<PostCharacterClass> CharacterClass { get; set; } 
+        public required DbSet<PostClass> Class { get; set; }
+        public required DbSet<PostClassLvlBonus> ClassLevelBonus { get; set; }
         public required DbSet<PostFullItem_PartialItems> FullItems_PartialItems { get; set; }
         public required DbSet<PostFullItems> FullItems { get; set; }
         public required DbSet<PostPartialItems> PartialItems { get; set; }

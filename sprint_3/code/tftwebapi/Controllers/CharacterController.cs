@@ -21,14 +21,14 @@ namespace tftwebapi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PostCharacter>>> GetCharacters()
         {
-            return await _context.Characters.ToListAsync();
+            return await _context.Character.ToListAsync();
         }
 
         // GET: api/Character/5
         [HttpGet("{id}")]
         public async Task<ActionResult<PostCharacter>> GetCharacter(int id)
         {
-            var character = await _context.Characters.FindAsync(id);
+            var character = await _context.Character.FindAsync(id);
 
             if (character == null)
             {
@@ -42,7 +42,7 @@ namespace tftwebapi.Controllers
         [HttpPost]
         public async Task<ActionResult<PostCharacter>> PostCharacter(PostCharacter character)
         {
-            _context.Characters.Add(character);
+            _context.Character.Add(character);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetCharacter), new { id = character.CharacterId }, character);
@@ -82,13 +82,13 @@ namespace tftwebapi.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCharacter(int id)
         {
-            var character = await _context.Characters.FindAsync(id);
+            var character = await _context.Character.FindAsync(id);
             if (character == null)
             {
                 return NotFound();
             }
 
-            _context.Characters.Remove(character);
+            _context.Character.Remove(character);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -96,7 +96,7 @@ namespace tftwebapi.Controllers
 
         private bool CharacterExists(int id)
         {
-            return _context.Characters.Any(e => e.CharacterId == id);
+            return _context.Character.Any(e => e.CharacterId == id);
         }
     }
 }

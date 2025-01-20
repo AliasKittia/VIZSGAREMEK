@@ -20,7 +20,7 @@ namespace tftwebapi.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     AnomalyName = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Effect = table.Column<string>(type: "longtext", nullable: false)
+                    AnomalyEffect = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
@@ -139,11 +139,11 @@ namespace tftwebapi.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Halfitemeffect2 = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Bonuseffect = table.Column<string>(type: "longtext", nullable: false)
+                    bonuseffect = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Bonuseffect1 = table.Column<string>(type: "longtext", nullable: false)
+                    bonuseffect1 = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Bonuseffect2 = table.Column<string>(type: "longtext", nullable: false)
+                    bonuseffect2 = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     ActiveEffect = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
@@ -174,16 +174,16 @@ namespace tftwebapi.Migrations
                 name: "PartialItems",
                 columns: table => new
                 {
-                    PartialItemId = table.Column<int>(type: "int", nullable: false)
+                    partial_item_id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(type: "longtext", nullable: false)
+                    name = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Effect = table.Column<string>(type: "longtext", nullable: false)
+                    effect = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PartialItems", x => x.PartialItemId);
+                    table.PrimaryKey("PK_PartialItems", x => x.partial_item_id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
         }
