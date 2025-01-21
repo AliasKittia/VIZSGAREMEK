@@ -20,9 +20,11 @@ const Augments = () => {
       </p>
       <div className="card-container">
         {augments.map((augment) => (
-          <div className="card" key={augment.id}>
-            <h2>{augment.name}</h2>
-            <p>{augment.description}</p>
+          <div className="card" key={augment.augmentId}>
+            <h2>{augment.augmentName}</h2>
+            <p>{augment.augmentRarity}</p>
+            <p>{augment.augmentEffect}</p>
+
           </div>
         ))}
       </div>

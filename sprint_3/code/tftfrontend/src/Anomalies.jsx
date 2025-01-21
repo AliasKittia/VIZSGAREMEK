@@ -19,10 +19,10 @@ const Anomalies = () => {
         Az alábbiakban találhatóak a játékban előforduló anomáliák, amelyek különleges hatásokkal bírnak.
       </p>
       <div className="card-container">
-        {anomalies.map((anomaly) => (
-          <div className="card" key={anomaly.id}>
-            <h2>{anomaly.name}</h2>
-            <p>{anomaly.description}</p>
+        {anomalies.map((anomaly,index) => (
+          <div className="card" key={index}>
+            <h2>{anomaly.anomalyName}</h2>
+            <p>{anomaly.anomalyEffect}</p>
           </div>
         ))}
       </div>

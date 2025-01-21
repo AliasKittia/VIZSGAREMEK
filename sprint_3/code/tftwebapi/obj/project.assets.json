@@ -1294,23 +1294,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Uvege\\.nuget\\packages\\": {},
+    "C:\\Users\\Aliaskitti\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Uvege\\Desktop\\Vizsga\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\tftwebapi.csproj",
+      "projectUniqueName": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\tftwebapi.csproj",
       "projectName": "tftwebapi",
-      "projectPath": "C:\\Users\\Uvege\\Desktop\\Vizsga\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\tftwebapi.csproj",
-      "packagesPath": "C:\\Users\\Uvege\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Uvege\\Desktop\\Vizsga\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\obj\\",
+      "projectPath": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\tftwebapi.csproj",
+      "packagesPath": "C:\\Users\\Aliaskitti\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Uvege\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Aliaskitti\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -1319,6 +1319,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -1388,7 +1389,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
