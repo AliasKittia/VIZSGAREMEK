@@ -25,6 +25,7 @@ const Augments = () => {
             <p>{augment.augmentRarity}</p>
             <p>{augment.augmentEffect}</p>
 
+
           </div>
         ))}
       </div>

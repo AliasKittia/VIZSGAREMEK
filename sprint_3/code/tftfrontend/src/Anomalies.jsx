@@ -22,6 +22,7 @@ const Anomalies = () => {
         {anomalies.map((anomaly,index) => (
           <div className="card" key={index}>
             <h2>{anomaly.anomalyName}</h2>
+            
             <p>{anomaly.anomalyEffect}</p>
           </div>
         ))}
