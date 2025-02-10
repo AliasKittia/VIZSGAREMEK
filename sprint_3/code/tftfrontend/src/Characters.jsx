@@ -19,7 +19,7 @@ const Characters = () => {
         {characters.map((char) => (
           <div className="card" key={char.characterId}>
             <h2>{char.characterName}</h2>
-            <img src={`http://localhost:5287${char.picture}`} alt={char.characterName} />
+            <img src={`http://localhost:5287/wwwroot/images/characters/${char.picture}`} alt={char.characterName} />
             <p>Cost: {char.cost}</p>
             <p>Health: {char.health} / {char.health1} / {char.health2}</p>
             <p>Mana: {char.manaStart} / {char.manaMax}</p>

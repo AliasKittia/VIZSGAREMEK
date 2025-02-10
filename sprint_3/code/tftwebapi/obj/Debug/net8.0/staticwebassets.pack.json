@@ -1,20 +1,560 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\Uvege\\Desktop\\Vizsga\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\Akali.png",
-      "PackagePath": "staticwebassets\\images\\Akali.png"
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\AdaptiveHelm.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\AdaptiveHelm.png"
     },
     {
-      "Id": "C:\\Users\\Uvege\\Desktop\\Vizsga\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\Amumu.png",
-      "PackagePath": "staticwebassets\\images\\Amumu.png"
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\ArchangelsStaff.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\ArchangelsStaff.png"
     },
     {
-      "Id": "C:\\Users\\Uvege\\Desktop\\Vizsga\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\BFSword.png",
-      "PackagePath": "staticwebassets\\images\\BFSword.png"
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\BFSword.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\BFSword.png"
     },
     {
-      "Id": "C:\\Users\\Uvege\\Desktop\\Vizsga\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\ChainVest.png",
-      "PackagePath": "staticwebassets\\images\\ChainVest.png"
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\Bloodthirster.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\Bloodthirster.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\BlueBuff.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\BlueBuff.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\BrambleVest.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\BrambleVest.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\ChainVest.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\ChainVest.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\Crownguard.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\Crownguard.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\Deathblade.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\Deathblade.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\DragonsClaw.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\DragonsClaw.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\EdgeofNight.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\EdgeofNight.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\Evenshroud.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\Evenshroud.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\FryingPan.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\FryingPan.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\GargoyleStoneplate.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\GargoyleStoneplate.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\GiantSlayer.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\GiantSlayer.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\GiantsBelt.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\GiantsBelt.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\Guardbreaker.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\Guardbreaker.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\GuinsoosRageblade.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\GuinsoosRageblade.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\HextechGunblade.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\HextechGunblade.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\InfinityEdge.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\InfinityEdge.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\IonicSpark.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\IonicSpark.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\JeweledGauntlet.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\JeweledGauntlet.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\LastWhisper.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\LastWhisper.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\Morellonomicon.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\Morellonomicon.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\NashorsTooth.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\NashorsTooth.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\NeedlesslyLargeRod.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\NeedlesslyLargeRod.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\NegatronCloak.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\NegatronCloak.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\ProtectorsVow.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\ProtectorsVow.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\Quicksilver.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\Quicksilver.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\RabadonsDeathcap.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\RabadonsDeathcap.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\RecurveBow.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\RecurveBow.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\RedBuff.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\RedBuff.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\Redemption.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\Redemption.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\RunaansHurricane.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\RunaansHurricane.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\SparringGloves.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\SparringGloves.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\Spatula.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\Spatula.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\SpearofShojin.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\SpearofShojin.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\StatikkShiv.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\StatikkShiv.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\SteadfastHeart.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\SteadfastHeart.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\SteraksGage.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\SteraksGage.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\SunfireCape.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\SunfireCape.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\TacticiansCape.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\TacticiansCape.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\TacticiansCrown.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\TacticiansCrown.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\TacticiansShield.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\TacticiansShield.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\ThiefsGloves.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\ThiefsGloves.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\TitansResolve.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\TitansResolve.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\aitemslol\\WarmogsArmor.png",
+      "PackagePath": "staticwebassets\\images\\aitemslol\\WarmogsArmor.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Ambessa.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Ambessa.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Amumu.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Amumu.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Blitzcrank.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Blitzcrank.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Caitlyn.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Caitlyn.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Camille.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Camille.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Cassiopeia.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Cassiopeia.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Corki.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Corki.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Darius.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Darius.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\DrMundo.png",
+      "PackagePath": "staticwebassets\\images\\characters\\DrMundo.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Draven.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Draven.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Ekko.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Ekko.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Elise.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Elise.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Ezreal.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Ezreal.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Gangplank.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Gangplank.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Garen.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Garen.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Heimerdinger.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Heimerdinger.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Illaoi.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Illaoi.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Irelia.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Irelia.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Jayce.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Jayce.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Jinx.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Jinx.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Kogmaw.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Kogmaw.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Leblanc.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Leblanc.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Leona.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Leona.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Loris.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Loris.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Lux.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Lux.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Maddie.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Maddie.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Malzahar.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Malzahar.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Mel.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Mel.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Mordekaiser.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Mordekaiser.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Morgana.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Morgana.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Nami.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Nami.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Nocturne.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Nocturne.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Nunu.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Nunu.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Powder.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Powder.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Rell.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Rell.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Renata.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Renata.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Renni.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Renni.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Rumble.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Rumble.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Scar.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Scar.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Sett.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Sett.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Sevika.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Sevika.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Silco.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Silco.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Singed.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Singed.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Smeech.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Smeech.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Steb.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Steb.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Swain.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Swain.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Tristana.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Tristana.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Trundle.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Trundle.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\TwistedFate.png",
+      "PackagePath": "staticwebassets\\images\\characters\\TwistedFate.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Twitch.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Twitch.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Urgot.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Urgot.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Vander.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Vander.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Vex.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Vex.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Vi.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Vi.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Viktor.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Viktor.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Violet.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Violet.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Vladimir.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Vladimir.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Warwick.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Warwick.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Zeri.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Zeri.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Ziggs.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Ziggs.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Zoe.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Zoe.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\Zyra.png",
+      "PackagePath": "staticwebassets\\images\\characters\\Zyra.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\characters\\akali.png",
+      "PackagePath": "staticwebassets\\images\\characters\\akali.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\classes\\A gépek hírnöke.png",
+      "PackagePath": "staticwebassets\\images\\classes\\A gépek hírnöke.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\classes\\Akadémia.png",
+      "PackagePath": "staticwebassets\\images\\classes\\Akadémia.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\classes\\Alakváltó.png",
+      "PackagePath": "staticwebassets\\images\\classes\\Alakváltó.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\classes\\Automata.png",
+      "PackagePath": "staticwebassets\\images\\classes\\Automata.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\classes\\Barkácsoló.png",
+      "PackagePath": "staticwebassets\\images\\classes\\Barkácsoló.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\classes\\Család.png",
+      "PackagePath": "staticwebassets\\images\\classes\\Család.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\classes\\Egyeduralkodó.png",
+      "PackagePath": "staticwebassets\\images\\classes\\Egyeduralkodó.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\classes\\Fekete rózsa.png",
+      "PackagePath": "staticwebassets\\images\\classes\\Fekete rózsa.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\classes\\Gladiátor.png",
+      "PackagePath": "staticwebassets\\images\\classes\\Gladiátor.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\classes\\Gyorstámadó.png",
+      "PackagePath": "staticwebassets\\images\\classes\\Gyorstámadó.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\classes\\Hódító.png",
+      "PackagePath": "staticwebassets\\images\\classes\\Hódító.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\classes\\Kísérlet.png",
+      "PackagePath": "staticwebassets\\images\\classes\\Kísérlet.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\classes\\Követ.png",
+      "PackagePath": "staticwebassets\\images\\classes\\Követ.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\classes\\Látnok.png",
+      "PackagePath": "staticwebassets\\images\\classes\\Látnok.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\classes\\Lázadó.png",
+      "PackagePath": "staticwebassets\\images\\classes\\Lázadó.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\classes\\Mesterlövész.png",
+      "PackagePath": "staticwebassets\\images\\classes\\Mesterlövész.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\classes\\Nagy menő.png",
+      "PackagePath": "staticwebassets\\images\\classes\\Nagy menő.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\classes\\Rajtaütő.png",
+      "PackagePath": "staticwebassets\\images\\classes\\Rajtaütő.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\classes\\Roncskirály.png",
+      "PackagePath": "staticwebassets\\images\\classes\\Roncskirály.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\classes\\Szikra.png",
+      "PackagePath": "staticwebassets\\images\\classes\\Szikra.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\classes\\Száműzött varázsló.png",
+      "PackagePath": "staticwebassets\\images\\classes\\Száműzött varázsló.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\classes\\Tüzér.png",
+      "PackagePath": "staticwebassets\\images\\classes\\Tüzér.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\classes\\Varázsló.png",
+      "PackagePath": "staticwebassets\\images\\classes\\Varázsló.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\classes\\Vegybáró.png",
+      "PackagePath": "staticwebassets\\images\\classes\\Vegybáró.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\classes\\Virrasztó.png",
+      "PackagePath": "staticwebassets\\images\\classes\\Virrasztó.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\classes\\Végrehajtó.png",
+      "PackagePath": "staticwebassets\\images\\classes\\Végrehajtó.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\classes\\Vérvadász.png",
+      "PackagePath": "staticwebassets\\images\\classes\\Vérvadász.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\classes\\Zúzó.png",
+      "PackagePath": "staticwebassets\\images\\classes\\Zúzó.png"
+    },
+    {
+      "Id": "C:\\Users\\Aliaskitti\\Desktop\\VIZSGAREMEK\\sprint_3\\code\\tftwebapi\\wwwroot\\images\\classes\\Örző.png",
+      "PackagePath": "staticwebassets\\images\\classes\\Örző.png"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.tftwebapi.props",
