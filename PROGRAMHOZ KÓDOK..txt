@@ -1,0 +1,89 @@
+PROGRAMHOZ KÓDOK.
+
+public class Character
+{
+    public string Name { get; set; }
+    public string ImagePath { get; set; }
+    public string Description { get; set; }
+    public int Gold { get; set; }
+}
+
+
+
+
+
+public class DatabaseHelper
+{
+    private string connectionString = "Data Source=server_name;Initial Catalog=database_name;Integrated Security=True";
+
+    public List<Character> GetCharacters()
+    {
+        List<Character> characters = new List<Character>();
+
+        using (SqlConnection connection = new SqlConnection(connectionString))
+        {
+            string query = "SELECT Name, ImagePath, Description, Gold FROM Characters";
+            SqlCommand command = new SqlCommand(query, connection);
+            connection.Open();
+
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                Character character = new Character
+                {
+                    Name = reader["Name"].ToString(),
+                    ImagePath = reader["ImagePath"].ToString(),
+                    Description = reader["Description"].ToString(),
+                    Gold = (int)reader["Gold"]
+                };
+                characters.Add(character);
+            }
+        }
+
+        return characters;
+    }
+}
+
+
+
+
+
+
+<Window x:Class="YourNamespace.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Character Cards" Height="350" Width="525">
+    <Grid>
+        <ItemsControl Name="CharacterItemsControl">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="Black" BorderThickness="1" Width="160" Height="160" Background="#b8efff">
+                        <StackPanel>
+                            <Image Width="100" Height="100" Source="{Binding ImagePath}" Margin="0,10,0,0"/>
+                            <TextBlock HorizontalAlignment="Center" Text="{Binding Name}"/>
+                            <TextBlock HorizontalAlignment="Center" Text="{Binding Gold, StringFormat='{}{0} Gold'}"/>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </Grid>
+</Window>
+
+
+
+
+
+
+public partial class MainWindow : Window
+{
+    public MainWindow()
+    {
+        InitializeComponent();
+
+        DatabaseHelper dbHelper = new DatabaseHelper();
+        List<Character> characters = dbHelper.GetCharacters();
+
+        CharacterItemsControl.ItemsSource = characters; // Adatok bindelése az ItemsControl-hoz
+    }
+}
