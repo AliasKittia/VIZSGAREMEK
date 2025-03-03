@@ -32,7 +32,7 @@ namespace Karbantarto
 
         public static HttpClient sharedClient = new()
         {
-            BaseAddress = new Uri(" http://localhost:5000/api/"),
+            BaseAddress = new Uri(" http://localhost:5287/api/"),
         };
 
         public static LoggedUser loggedUser;
