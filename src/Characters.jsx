@@ -12,6 +12,8 @@ const Characters = () => {
   }, []); // Empty dependency array means this runs once on mount
     const imageExtension = ".png";
     const baseUrl = "http://images.tftproject.nhely.hu";
+  //  const characterImageBlobs = characters.map(character => baseUrl + character.characterImageBlob + imageExtension);
+  //console.log(characterImageBlobs);
   return (
     <div className="page-container">
       <h1 className="title">Characters</h1>
@@ -19,7 +21,7 @@ const Characters = () => {
         {characters.map((char) => (
           <div className="card" key={char.characterId}>
             <h2>{char.characterName}</h2>
-            <img src={baseUrl + char.characterimageblob + imageExtension}  alt={char.characterName} />
+            <img src={baseUrl + char.characterImageBlob + imageExtension}  alt={char.characterName} />
             <p>Cost: {char.cost}</p>
             <p>Health: {char.health} / {char.health1} / {char.health2}</p>
             <p>Mana: {char.manaStart} / {char.manaMax}</p>
