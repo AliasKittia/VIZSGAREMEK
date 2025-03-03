@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Users\MimitheEmili\Documents\GitHub\TFTProject\Alkalmazás\2.version\ProjectName_Backend\ProjectName_Backend\bin\Release\net8.0\publish\</_PublishTargetUrl>
+    <History>True|2025-02-28T08:21:28.7440937Z;True|2025-02-27T09:43:19.2242936+01:00;True|2025-02-27T09:32:02.1457378+01:00;True|2025-02-26T08:34:23.3032881+01:00;True|2025-02-25T10:10:28.5186245+01:00;True|2025-02-25T09:44:23.4376168+01:00;True|2025-02-25T08:40:02.5017271+01:00;True|2025-01-24T08:09:06.6318727+01:00;True|2025-01-24T07:54:38.0054868+01:00;False|2025-01-24T07:54:26.3656639+01:00;True|2025-01-17T10:57:33.4359119+01:00;False|2025-01-17T10:57:18.6065231+01:00;True|2025-01-17T09:52:17.4956444+01:00;True|2025-01-10T10:11:20.9695450+01:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+</Project>
