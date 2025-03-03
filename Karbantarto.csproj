@@ -9,33 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Images\exit.jpg" />
-    <None Remove="Images\fn.jpg" />
-    <None Remove="Images\LoginUsers.jpg" />
-    <None Remove="Images\lrn.jpg" />
-    <None Remove="Images\pw.jpg" />
-    <None Remove="Images\users.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Images\exit.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\fn.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\LoginUsers.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\lrn.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pw.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\users.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Compile Remove="Images\**" />
+    <EmbeddedResource Remove="Images\**" />
+    <None Remove="Images\**" />
+    <Page Remove="Images\**" />
   </ItemGroup>
 
   <ItemGroup>

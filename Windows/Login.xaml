@@ -12,16 +12,12 @@
         <!--Grid.Background>
             <ImageBrush ImageSource="../Images/lrn.jpg" Stretch="UniformToFill"></ImageBrush>
         </Grid.Background-->
-        <Image HorizontalAlignment="Center" Height="100" Margin="0,15,0,0" VerticalAlignment="Top" Width="100" Source="../Images/LoginUsers.jpg"/>
+        
         <TextBox Name="LoginNev" HorizontalAlignment="Center" Height="23" Width="300" Margin="0,140,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" TextChanged="LoginNev_TextChanged">
-            <TextBox.Background>
-                <ImageBrush ImageSource="..\Images\fn.jpg" AlignmentX="Left" AlignmentY="Center" Stretch="None"/>
-            </TextBox.Background>
+ 
         </TextBox>
         <PasswordBox Name="Jelszo" HorizontalAlignment="Center" Height="23" Margin="0,170,0,0" VerticalAlignment="Top" Width="300" PasswordChanged="Jelszo_PasswordChanged" Password="">
-            <PasswordBox.Background>
-                <ImageBrush ImageSource="..\Images\pw.jpg" AlignmentX="Left" AlignmentY="Center" Stretch="None"/>
-            </PasswordBox.Background>
+ 
         </PasswordBox>
 
 
