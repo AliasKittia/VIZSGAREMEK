@@ -1,0 +1,59 @@
+﻿<Window x:Class="Karbantarto.Windows.Osztalyok"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Karbantarto.Windows"
+        mc:Ignorable="d"
+        Title="Osztalyok" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <!-- Oldalsáv -->
+            <ColumnDefinition Width="*"/>
+            <!-- Tartalom -->
+        </Grid.ColumnDefinitions>
+
+        <!-- Oldalsáv -->
+        <StackPanel Grid.Column="0" Background="LightBlue" Width="200">
+
+            <Button Name="FoOldalBTN"  Content="Főoldal" Margin="10,20,10,10" Click="FoOldalBTN_Click"/>
+
+            <Button Name="KarakterekBTN" Content="Karakterek" Margin="10" Click="KarakterekBTN_Click"/>
+
+            <Button Name="ClassokBTN" Content="Osztályok" Margin="10" Click="ClassokBTN_Click"/>
+
+            <Button Name="ItemekBTN" Content="Tárgyak" Margin="10" Click="ItemekBTN_Click"/>
+
+            <Button Name="AnomaliakBTN" Content="Anomáliák" Margin="10" Click="AnomaliakBTN_Click"/>
+
+            <Button Name="TraitekBTN" Content="Erősítések" Margin="10" Click="TraitekBTN_Click"/>
+
+            <Button Name="CsapatTervezoBTN" Content="Csapat tervező" Margin="10" Click="CsapatTervezoBTN_Click"/>
+
+            <Button Name="KilepesBTN" Content="Kilépés" Margin="10" Click="KilepesBTN_Click"/>
+
+            <Button Name="KijelentkezesBTN" Content="Kijelentkezés" Margin="10" Click="KijelentkezesBTN_Click"/>
+
+        </StackPanel>
+        <StackPanel Grid.Column="1" Margin="20">
+
+            <TextBlock VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,20,0,0" FontSize="20" Text="Osztályok"/>
+            <ListBox Name="OsztalyListBox">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <Image>
+                                <Image.Source>
+                                    <BitmapImage UriSource="{Binding Classimageblob}" />
+                                </Image.Source>
+                            </Image>
+                            <TextBlock Text="{Binding ClassName}" FontWeight="Bold" FontSize="16"/>
+                            <TextBlock Text="{Binding BasicEffect}" FontWeight="Bold" FontSize="16"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+    </Grid>
+</Window>

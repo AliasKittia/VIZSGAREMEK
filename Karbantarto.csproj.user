@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Windows\Anomaliak.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\Csapatepito.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\Erosites.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\Felhasznalok.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\Karakterek.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\Login.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\Osztalyok.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\Registry.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\Targyak.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Menu.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\Anomaliak.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\Csapatepito.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\Erosites.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\Felhasznalok.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\Karakterek.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\Login.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\Osztalyok.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\Registry.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\Targyak.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>
