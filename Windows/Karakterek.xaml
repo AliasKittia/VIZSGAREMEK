@@ -26,27 +26,34 @@
         </StackPanel>
 
         <!-- Karakterek listája kártyákkal -->
-        <ItemsControl Grid.Column="1" Name="KarakterListBox">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Border x:Name="FrontCard" Background="White" CornerRadius="10" Padding="10" Width="150" Height="200" MouseDown="FrontCard_MouseDown">
-                            <StackPanel>
-                                <Image Source="{Binding Characterimageblob}" Height="100" Stretch="Uniform"/>
-                                <TextBlock x:Name="CharacterNameText" Text="{Binding CharacterName}" FontWeight="Bold" FontSize="16"/>
-                                <TextBlock Text="{Binding Cost}" FontSize="14"/>
-                            </StackPanel>
-                        </Border>
+        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
+            <ItemsControl Name="KarakterListBox">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="10">
+                            <Border x:Name="FrontCard" Background="LightGreen" BorderBrush="Black" BorderThickness="1" Padding="10" Width="150" Height="200" MouseDown="FrontCard_MouseDown">
+                                <StackPanel>
+                                    <Image Source="{Binding Characterimageblob}" Height="100" Stretch="Uniform"/>
+                                    <TextBlock x:Name="CharacterNameText" Text="{Binding CharacterName}" FontWeight="Bold" FontSize="16"/>
+                                    <TextBlock Text="{Binding Cost}" FontSize="14"/>
+                                </StackPanel>
+                            </Border>
 
-                        <Border x:Name="BackCard" Background="LightGray" CornerRadius="10" Padding="10" Width="150" Height="200" Visibility="Collapsed">
-                            <StackPanel>
-                                <TextBlock Text="{Binding AbilityName}" FontWeight="Bold"/>
-                                <TextBlock Text="{Binding Ability}"/>
-                            </StackPanel>
-                        </Border>
-                    </Grid>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+                            <Border x:Name="BackCard" Background="CadetBlue" BorderBrush="Black" Padding="10" Width="150" Height="200" Visibility="Collapsed" MouseDown="BackCard_MouseDown">
+                                <StackPanel>
+                                    <TextBlock Text="{Binding AbilityName}" FontWeight="Bold"/>
+                                    <TextBlock Text="{Binding Ability}"/>
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
     </Grid>
 </Window>
