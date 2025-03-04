@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Navbar from "./Navbar";
-import Characters from "./Characters";
-import Items from "./Items";
-import Class from "./Class";
-import Anomalies from "./Anomalies";
-import Homepage from "./Homepage";
-import Augments from "./Augments";
+import Navbar from "./Navbar/Navbar";
+import Characters from "./Characters/Characters";
+import Items from "./Items/Items";
+import Class from "./Class/Class";
+import Anomalies from "./Anomalies/Anomalies";
+import Homepage from "./Homepage/Homepage";
+import Augments from "./Augments/Augments";
 import "./App.css";
 
 function App() {
