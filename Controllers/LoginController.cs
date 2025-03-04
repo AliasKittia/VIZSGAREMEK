@@ -1,0 +1,65 @@
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using ProjectName_Backend.DTOs;
+using ProjectName_Backend.Models;
+
+namespace ProjectName_Backend.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class LoginController : ControllerBase
+    {
+
+        [HttpPost("SaltRequest/{loginName}")]
+
+        public async Task<IActionResult> SaltRequest(string loginName)
+        {
+            using (var cx = new TftdatabaseContext())
+            {
+                try
+                {
+                    User response = await cx.Users.FirstOrDefaultAsync(f => f.LoginName == loginName);
+                    string tmpHash =Program.CreateSHA256("a" + response.Salt);
+                    return response == null ? BadRequest("Hiba") : Ok(response.Salt);
+                }
+                catch
+                (Exception ex)
+                {
+                    return BadRequest(ex.Message);
+                }
+            }
+        }
+
+        [HttpPost]
+
+        public async Task<IActionResult> Login(LoginDTO loginDTO)
+        {
+            using (var cx=new  TftdatabaseContext())
+            {
+                try
+                {
+                    string Hash = ProjectName_Backend.Program.CreateSHA256(loginDTO.TmpHash);
+                    User loggedUser = await cx.Users.Include(f=>f.Permission).FirstOrDefaultAsync(f => f.LoginName == loginDTO.LoginName && f.Hash == Hash);
+                    if (loggedUser!=null && loggedUser.Active)
+                    {
+                        string token=Guid.NewGuid().ToString();
+                        lock (Program.LoggedInUsers)
+                        {
+                            Program.LoggedInUsers.Add(token, loggedUser);
+                        }
+                        return Ok(new LoggedUser {Name=loggedUser.Name,Email=loggedUser.Email,Permission=loggedUser.Permission.Level,ProfilePicturePath=loggedUser.ProfilePicturePath,Token=token });
+                    }
+                    else
+                    {
+                        return BadRequest("Hibás név vagy jelszó/inaktív felhasználó!");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest(new LoggedUser { Permission=-1,Name=ex.Message,ProfilePicturePath="",Email=""});
+                }
+            }
+        }
+    }
+}
