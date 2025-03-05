@@ -60,7 +60,8 @@ namespace Karbantarto.Windows
                 MessageBox.Show("Hiba történt: " + ex.Message);
             }
         }
-       
+        private bool isFlipped = false;
+
         private void FrontCard_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Border frontCard = sender as Border;
@@ -72,20 +73,31 @@ namespace Karbantarto.Windows
                     Border backCard = parentGrid.FindName("BackCard") as Border;
                     if (backCard != null)
                     {
-                        // Átméretezés és láthatóság változtatása
-                        frontCard.Visibility = Visibility.Collapsed;
-                        backCard.Visibility = Visibility.Visible;
-
-                        // Animáció indítása
-                        DoubleAnimation animation = new DoubleAnimation
+                        if (!isFlipped)
                         {
-                            To = 300, // Az új magasság
-                            Duration = TimeSpan.FromSeconds(0.3)
-                        };
+                            // Átméretezés és láthatóság változtatása
+                            frontCard.Visibility = Visibility.Collapsed;
+                            backCard.Visibility = Visibility.Visible;
 
-                        // BackCard méretének animálása
-                        backCard.BeginAnimation(FrameworkElement.HeightProperty, animation);
-                        backCard.BeginAnimation(FrameworkElement.WidthProperty, animation);
+                            // Animáció indítása a nagyításhoz
+                            DoubleAnimation WidthAnimation = new DoubleAnimation
+                            {
+                                To = 550, // Az új magasság
+                                Duration = TimeSpan.FromSeconds(0.3)
+                            };
+                            DoubleAnimation HeightAnimation = new DoubleAnimation
+                            {
+                                To = 350, // Az új magasság
+                                Duration = TimeSpan.FromSeconds(0.3)
+                            };
+
+                            // BackCard méretének animálása
+                            backCard.BeginAnimation(FrameworkElement.HeightProperty, HeightAnimation);
+                            backCard.BeginAnimation(FrameworkElement.WidthProperty, WidthAnimation);
+                        }
+                        
+
+                        isFlipped = !isFlipped;
                     }
                 }
             }
@@ -102,34 +114,49 @@ namespace Karbantarto.Windows
                     Border frontCard = parentGrid.FindName("FrontCard") as Border;
                     if (frontCard != null)
                     {
-                        // Átméretezés és láthatóság változtatása
-                        frontCard.Visibility = Visibility.Visible;
-                        backCard.Visibility = Visibility.Collapsed;
-
-                        // 3 másodperces animáció, hogy visszaálljon az eredeti méretre
-                        DoubleAnimation OldSizeAnimationWidth = new DoubleAnimation
+                        if (isFlipped)
                         {
-                            From = backCard.ActualWidth,
-                            To = 150, // Eredeti szélesség
-                            // Az aktuális szélesség
-                            Duration = TimeSpan.FromSeconds(0.3) // 0.3 másodpercig tartó animáció
-                        };
+                            // Animációk létrehozása
+                            DoubleAnimation OldSizeAnimationWidth = new DoubleAnimation
+                            {
+                                To = 150, // Eredeti szélesség
+                                Duration = TimeSpan.FromSeconds(0.3)
+                            };
 
-                        DoubleAnimation OldSizeAnimationHeight = new DoubleAnimation
-                        {
-                            From = backCard.ActualHeight,
-                            To = 200, // Eredeti magasság
-                             // Az aktuális magasság
-                            Duration = TimeSpan.FromSeconds(0.3) // 0.3 másodpercig tartó animáció
-                        };
+                            DoubleAnimation OldSizeAnimationHeight = new DoubleAnimation
+                            {
+                                To = 200, // Eredeti magasság
+                                Duration = TimeSpan.FromSeconds(0.3)
+                            };
 
-                        // BackCard méretének visszaállítása animációval
-                        backCard.BeginAnimation(FrameworkElement.HeightProperty, OldSizeAnimationHeight);
-                        backCard.BeginAnimation(FrameworkElement.WidthProperty, OldSizeAnimationWidth);
+                            // Storyboard létrehozása az animációkhoz
+                            Storyboard storyboard = new Storyboard();
+                            storyboard.Children.Add(OldSizeAnimationWidth);
+                            storyboard.Children.Add(OldSizeAnimationHeight);
+
+                            Storyboard.SetTarget(OldSizeAnimationWidth, backCard);
+                            Storyboard.SetTargetProperty(OldSizeAnimationWidth, new PropertyPath(WidthProperty));
+
+                            Storyboard.SetTarget(OldSizeAnimationHeight, backCard);
+                            Storyboard.SetTargetProperty(OldSizeAnimationHeight, new PropertyPath(HeightProperty));
+
+                            // Amikor az animáció befejeződik, állítsa vissza a láthatóságot
+                            storyboard.Completed += (s, eArgs) =>
+                            {
+                                frontCard.Visibility = Visibility.Visible;
+                                backCard.Visibility = Visibility.Collapsed;
+                            };
+
+                            // Animáció indítása
+                            storyboard.Begin();
+                        }
+
+                        isFlipped = !isFlipped;
                     }
                 }
             }
         }
+
 
         private void FoOldalBTN_Click(object sender, RoutedEventArgs e)
             {

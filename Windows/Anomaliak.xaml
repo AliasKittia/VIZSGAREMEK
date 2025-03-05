@@ -30,6 +30,7 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
+                            <Image Height="100" Stretch="Uniform" Source="../Images/Amumu.png"/>
                             <TextBlock Text="{Binding AnomalyName}" FontWeight="Bold" FontSize="16"/>
                             <TextBlock Text="{Binding AnomalyEffect}" FontStyle="Italic"/>
                         </StackPanel>

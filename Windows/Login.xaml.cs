@@ -24,7 +24,7 @@ namespace Karbantarto.Windows
     /// </summary>
     public partial class Login : Window
     {
-        Registry Ujablak;
+        Menu Ujablak;
         private int probalkozasokSzama = 0;
         public Login()
         {
@@ -122,7 +122,7 @@ namespace Karbantarto.Windows
 
         private void RegistryBTN_Click(object sender, RoutedEventArgs e)
         {
-            Ujablak = new Registry();
+            Ujablak = new Menu();
             Ujablak.Show();
             
         }

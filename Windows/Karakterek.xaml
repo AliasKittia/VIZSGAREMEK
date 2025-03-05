@@ -45,10 +45,84 @@
                             </Border>
 
                             <Border x:Name="BackCard" Background="CadetBlue" BorderBrush="Black" Padding="10" Width="150" Height="200" Visibility="Collapsed" MouseDown="BackCard_MouseDown">
-                                <StackPanel>
-                                    <TextBlock Text="{Binding AbilityName}" FontWeight="Bold"/>
-                                    <TextBlock Text="{Binding Ability}"/>
-                                </StackPanel>
+                                <DockPanel>
+                                    <Image Source="{Binding Characterimageblob}" Height="100" Stretch="Uniform"/>
+                                    <StackPanel>
+                                        
+                                        <TextBlock Text="{Binding CharacterName}" FontWeight="Bold" FontSize="16"/>
+                                        
+                                        <TextBlock Text="{Binding Cost}" FontSize="14"/>
+                                        
+                                        <TextBlock  Text="Képesség: " FontWeight="Bold"/>
+                                        <TextBlock  Text="{Binding AbilityName}"/>
+                                        <TextBlock Text="{Binding Ability}" TextWrapping="Wrap"/>
+
+                                        <DockPanel>
+                                            <TextBlock FontWeight="Bold" Text="Életerő 1. szinten: "/>
+                                            <TextBlock Text="{Binding Health}"/>
+                                        </DockPanel>
+
+                                        <DockPanel>
+                                            <TextBlock FontWeight="Bold" Text="Életerő 2. szinten: "/>
+                                            <TextBlock Text="{Binding Health1}"/>
+                                        </DockPanel>
+                                        
+                                        <DockPanel>
+                                            <TextBlock FontWeight="Bold" Text="Életerő 3. szinten: "/>
+                                            <TextBlock Text="{Binding Health2}"/>
+                                        </DockPanel>
+
+                                        <DockPanel>
+                                            <TextBlock FontWeight="Bold" Text="Támadási sebesség: "/>
+                                            <TextBlock Text="{Binding AttackSpeed}"/>
+                                        </DockPanel>
+
+                                        <DockPanel>
+                                            <TextBlock FontWeight="Bold" Text="Sebzés 1. szinten: "/>
+                                            <TextBlock Text="{Binding Damage}"/>
+                                        </DockPanel>
+
+                                        <DockPanel>
+                                            <TextBlock FontWeight="Bold" Text="Sebzés 2. szinten: "/>
+                                            <TextBlock Text="{Binding Damage1}"/>
+                                        </DockPanel>
+
+                                        <DockPanel>
+                                            <TextBlock FontWeight="Bold" Text="Sebzés 3. szinten: "/>
+                                            <TextBlock Text="{Binding Damage2}"/>
+                                        </DockPanel>
+
+                                        <DockPanel>
+                                            <TextBlock FontWeight="Bold" Text="Varázserő: "/>
+                                            <TextBlock Text="{Binding AbilityPower}"/>
+                                        </DockPanel>
+
+                                        <DockPanel>
+                                            <TextBlock FontWeight="Bold" Text="Kezdő mana: "/>
+                                            <TextBlock Text="{Binding ManaStart}"/>
+                                        </DockPanel>
+
+                                        <DockPanel>
+                                            <TextBlock FontWeight="Bold" Text="Maximális mana: "/>
+                                            <TextBlock Text="{Binding ManaMax}"/>
+                                        </DockPanel>
+
+                                        <DockPanel>
+                                            <TextBlock FontWeight="Bold" Text="Páncél: "/>
+                                            <TextBlock Text="{Binding Armor}"/>
+                                        </DockPanel>
+
+                                        <DockPanel>
+                                            <TextBlock FontWeight="Bold" Text="Varázsellenállás: "/>
+                                            <TextBlock Text="{Binding MagicResist}"/>
+                                        </DockPanel>
+
+                                        <DockPanel>
+                                            <TextBlock FontWeight="Bold" Text="Hatótávolság: "/>
+                                            <TextBlock Text="{Binding Range}"/>
+                                        </DockPanel>
+                                    </StackPanel>
+                                </DockPanel>
                             </Border>
                         </Grid>
                     </DataTemplate>
