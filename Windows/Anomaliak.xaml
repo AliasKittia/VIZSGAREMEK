@@ -23,20 +23,26 @@
         </StackPanel>
 
         <!-- Tartalom: Anomáliák lista -->
-        <StackPanel Grid.Column="1" Margin="20">
-            
-            <TextBlock VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,20,0,0" FontSize="20" Text="Anomáliák"/>
-            <ListBox Name="AnomaliakListBox">
-                <ListBox.ItemTemplate>
+        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
+            <ItemsControl Name="AnomaliaListBox">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel>
-                            <Image Height="100" Stretch="Uniform" Source="../Images/Amumu.png"/>
-                            <TextBlock Text="{Binding AnomalyName}" FontWeight="Bold" FontSize="16"/>
-                            <TextBlock Text="{Binding AnomalyEffect}" FontStyle="Italic"/>
-                        </StackPanel>
+                        <Grid Margin="10">
+                            <Border x:Name="FrontCard" Background="LightGreen" BorderBrush="Black" BorderThickness="1" Padding="10" Width="150" Height="200">
+                                <StackPanel>
+                                    <TextBlock x:Name="CharacterNameText" Text="{Binding AnomalyName}" FontWeight="Bold" FontSize="16"/>
+                                    <TextBlock Text="{Binding AnomalyEffect}" FontSize="14" TextWrapping="Wrap"/>
+                                </StackPanel>
+                            </Border>
+                        </Grid>
                     </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-        </StackPanel>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
     </Grid>
 </Window>

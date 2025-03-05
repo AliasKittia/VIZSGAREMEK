@@ -44,7 +44,7 @@ namespace Karbantarto.Windows
             LoadAnomaliakAsync();
         }
 
-        public static List<AnomaliaLekeresDTO> AnomaliakLista { get; set; } = new List<AnomaliaLekeresDTO>();
+        public static List<AnomaliaLekeresDTO> AnomaliaLista { get; set; } = new List<AnomaliaLekeresDTO>();
         public async Task LoadAnomaliakAsync()
         {
             try
@@ -54,8 +54,8 @@ namespace Karbantarto.Windows
 
                 var json = await response.Content.ReadAsStringAsync();
                 var anomaliak = JsonConvert.DeserializeObject<List<AnomaliaLekeresDTO>>(json);
-                AnomaliakLista = anomaliak;
-                AnomaliakListBox.ItemsSource = AnomaliakLista;
+                AnomaliaLista = anomaliak;
+                AnomaliaListBox.ItemsSource = AnomaliaLista;
             }
             catch (Exception ex)
             {
