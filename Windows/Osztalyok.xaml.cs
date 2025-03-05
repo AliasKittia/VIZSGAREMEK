@@ -12,6 +12,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
@@ -38,9 +39,12 @@ namespace Karbantarto.Windows
         {
             InitializeComponent();
             LoadOsztalyokAsync();
+
         }
 
         public static List<OsztalyLekeresDTO> OsztalyLista { get; set; } = new List<OsztalyLekeresDTO>();
+        
+        private bool isFlipped = false;
 
         public async Task LoadOsztalyokAsync()
         {
@@ -57,6 +61,102 @@ namespace Karbantarto.Windows
             catch (Exception ex)
             {
                 MessageBox.Show("Hiba történt: " + ex.Message);
+            }
+        }
+        
+
+        private void FrontCard_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Border frontCard = sender as Border;
+            if (frontCard != null)
+            {
+                Grid parentGrid = frontCard.Parent as Grid;
+                if (parentGrid != null)
+                {
+                    Border backCard = parentGrid.FindName("BackCard") as Border;
+                    if (backCard != null)
+                    {
+                        if (!isFlipped)
+                        {
+                            // Átméretezés és láthatóság változtatása
+                            frontCard.Visibility = Visibility.Collapsed;
+                            backCard.Visibility = Visibility.Visible;
+
+                            // Animáció indítása a nagyításhoz
+                            DoubleAnimation WidthAnimation = new DoubleAnimation
+                            {
+                                To = 550, // Az új magasság
+                                Duration = TimeSpan.FromSeconds(0.3)
+                            };
+                            DoubleAnimation HeightAnimation = new DoubleAnimation
+                            {
+                                To = 350, // Az új magasság
+                                Duration = TimeSpan.FromSeconds(0.3)
+                            };
+
+                            // BackCard méretének animálása
+                            backCard.BeginAnimation(FrameworkElement.HeightProperty, HeightAnimation);
+                            backCard.BeginAnimation(FrameworkElement.WidthProperty, WidthAnimation);
+                        }
+
+
+                        isFlipped = !isFlipped;
+                    }
+                }
+            }
+        }
+
+        private void BackCard_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Border backCard = sender as Border;
+            if (backCard != null)
+            {
+                Grid parentGrid = backCard.Parent as Grid;
+                if (parentGrid != null)
+                {
+                    Border frontCard = parentGrid.FindName("FrontCard") as Border;
+                    if (frontCard != null)
+                    {
+                        if (isFlipped)
+                        {
+                            // Animációk létrehozása
+                            DoubleAnimation OldSizeAnimationWidth = new DoubleAnimation
+                            {
+                                To = 150, // Eredeti szélesség
+                                Duration = TimeSpan.FromSeconds(0.3)
+                            };
+
+                            DoubleAnimation OldSizeAnimationHeight = new DoubleAnimation
+                            {
+                                To = 200, // Eredeti magasság
+                                Duration = TimeSpan.FromSeconds(0.3)
+                            };
+
+                            // Storyboard létrehozása az animációkhoz
+                            Storyboard storyboard = new Storyboard();
+                            storyboard.Children.Add(OldSizeAnimationWidth);
+                            storyboard.Children.Add(OldSizeAnimationHeight);
+
+                            Storyboard.SetTarget(OldSizeAnimationWidth, backCard);
+                            Storyboard.SetTargetProperty(OldSizeAnimationWidth, new PropertyPath(WidthProperty));
+
+                            Storyboard.SetTarget(OldSizeAnimationHeight, backCard);
+                            Storyboard.SetTargetProperty(OldSizeAnimationHeight, new PropertyPath(HeightProperty));
+
+                            // Amikor az animáció befejeződik, állítsa vissza a láthatóságot
+                            storyboard.Completed += (s, eArgs) =>
+                            {
+                                frontCard.Visibility = Visibility.Visible;
+                                backCard.Visibility = Visibility.Collapsed;
+                            };
+
+                            // Animáció indítása
+                            storyboard.Begin();
+                        }
+
+                        isFlipped = !isFlipped;
+                    }
+                }
             }
         }
 

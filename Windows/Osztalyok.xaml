@@ -36,24 +36,45 @@
             <Button Name="KijelentkezesBTN" Content="Kijelentkezés" Margin="10" Click="KijelentkezesBTN_Click"/>
 
         </StackPanel>
-        <StackPanel Grid.Column="1" Margin="20">
-
-            <TextBlock VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,20,0,0" FontSize="20" Text="Osztályok"/>
-            <ListBox Name="OsztalyListBox">
-                <ListBox.ItemTemplate>
+        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
+            <ItemsControl Name="OsztalyListBox">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel>
-                            <Image>
-                                <Image.Source>
-                                    <BitmapImage UriSource="{Binding Classimageblob}" />
-                                </Image.Source>
-                            </Image>
-                            <TextBlock Text="{Binding ClassName}" FontWeight="Bold" FontSize="16"/>
-                            <TextBlock Text="{Binding BasicEffect}" FontWeight="Bold" FontSize="16"/>
-                        </StackPanel>
+                        <Grid Margin="10">
+                            <Border x:Name="FrontCard" Background="LightGreen" BorderBrush="Black" BorderThickness="1" Padding="10" Width="150" Height="200" MouseDown="FrontCard_MouseDown">
+                                <StackPanel>
+                                    <Image Source="{Binding Classimageblob}" Height="100" Stretch="Uniform"/>
+                                    <TextBlock x:Name="CharacterNameText" Text="{Binding ClassName}" FontWeight="Bold" FontSize="16"/>
+                                    <TextBlock Text="{Binding Cost}" FontSize="14"/>
+                                </StackPanel>
+                            </Border>
+
+                            <Border x:Name="BackCard" Background="CadetBlue" BorderBrush="Black" Padding="10" Width="150" Height="200" Visibility="Collapsed" MouseDown="BackCard_MouseDown">
+                                <DockPanel>
+                                    <Image Source="{Binding Classimageblob}" Height="100" Stretch="Uniform"/>
+                                    <StackPanel>
+
+                                        <TextBlock Text="{Binding ClassName}" FontWeight="Bold" FontSize="16"/>
+
+                                        <TextBlock Text="{Binding BasicEffect}" FontSize="14" TextWrapping="Wrap"/>
+
+                                        <DockPanel>
+                                            <TextBlock Text="Első szint" FontSize="14" TextWrapping="Wrap"/>
+                                            <TextBlock Text="{Binding Level}" FontSize="14" TextWrapping="Wrap"/>
+                                            <TextBlock Text="{Binding BonusEffect}" FontSize="14" TextWrapping="Wrap"/>
+                                        </DockPanel>
+                                    </StackPanel>
+                                </DockPanel>
+                            </Border>
+                        </Grid>
                     </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-        </StackPanel>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
     </Grid>
 </Window>
