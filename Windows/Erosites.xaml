@@ -36,20 +36,27 @@
             <Button Name="KijelentkezesBTN" Content="Kijelentkezés" Margin="10" Click="KijelentkezesBTN_Click"/>
 
         </StackPanel>
-        <StackPanel Grid.Column="1" Margin="20">
-
-            <TextBlock VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,20,0,0" FontSize="20" Text="Erősítések"/>
-            <ListBox Name="ErositesListBox">
-                <ListBox.ItemTemplate>
+        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
+            <ItemsControl Name="ErositesListBox">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel>
-                            <TextBlock Text="{Binding AugmentName}" FontWeight="Bold" FontSize="16"/>
-                            <TextBlock Text="{Binding AugmentRarity}" FontWeight="Bold" FontSize="16"/>
-                            <TextBlock Text="{Binding AugmentEffect}" FontStyle="Italic"/>
-                        </StackPanel>
+                        <Grid Margin="10">
+                            <Border x:Name="FrontCard" Background="LightGreen" BorderBrush="Black" BorderThickness="1" Padding="10" Width="150" Height="200">
+                                <StackPanel>
+                                    <TextBlock x:Name="CharacterNameText" Text="{Binding AugmentName}" FontWeight="Bold" FontSize="16"/>
+                                    <TextBlock Text="{Binding AugmentRarity}" FontSize="14" TextWrapping="Wrap"/>
+                                    <TextBlock Text="{Binding AugmentEffect}" FontSize="14" TextWrapping="Wrap"/>
+                                </StackPanel>
+                            </Border>
+                        </Grid>
                     </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-        </StackPanel>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
     </Grid>
 </Window>
