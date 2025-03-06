@@ -37,6 +37,7 @@
             <Button Name="KijelentkezesBTN" Content="Kijelentkezés" Margin="10" Click="KijelentkezesBTN_Click"/>
 
         </StackPanel>
+        <TextBlock Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center"  Text="Fél és teljes tárgyak"/>
         <Border BorderBrush="Black" BorderThickness="1" Grid.Column="1">
         <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
             <ItemsControl Name="FelTargyListBox">

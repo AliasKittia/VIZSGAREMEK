@@ -36,6 +36,8 @@
             <Button Name="KijelentkezesBTN" Content="Kijelentkezés" Margin="10" Click="KijelentkezesBTN_Click"/>
 
         </StackPanel>
+
+        <TextBlock Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center"  Text="Erősítések"/>
         <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
             <ItemsControl Name="ErositesListBox">
                 <ItemsControl.ItemsPanel>

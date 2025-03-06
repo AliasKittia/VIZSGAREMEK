@@ -26,6 +26,7 @@
         </StackPanel>
 
         <!-- Karakterek listája kártyákkal -->
+        <TextBlock Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center"  Text="Karakterek"/>
         <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
             <ItemsControl Name="KarakterListBox">
                 <ItemsControl.ItemsPanel>

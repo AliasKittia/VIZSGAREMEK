@@ -23,7 +23,11 @@
         </StackPanel>
 
         <!-- Tartalom: Anomáliák lista -->
-        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
+        <StackPanel Grid.Column="1">
+            <TextBlock  VerticalAlignment="Top" HorizontalAlignment="Center"  Text="Anomáliák"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1" >
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
             <ItemsControl Name="AnomaliaListBox">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -44,5 +48,6 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
+        </StackPanel>
     </Grid>
 </Window>
