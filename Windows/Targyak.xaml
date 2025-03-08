@@ -76,6 +76,8 @@
             
         </ScrollViewer>
         </Border>
+        
+        
         <Border BorderBrush="Black" BorderThickness="1" Grid.Column="1">
         <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
             <ItemsControl Name="TeljesTargyListBox">

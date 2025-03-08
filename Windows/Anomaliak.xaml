@@ -26,28 +26,28 @@
         <StackPanel Grid.Column="1">
             <TextBlock  VerticalAlignment="Top" HorizontalAlignment="Center"  Text="Anomáliák"/>
         </StackPanel>
-        <StackPanel Grid.Column="1" >
-        <ScrollViewer VerticalScrollBarVisibility="Auto">
-            <ItemsControl Name="AnomaliaListBox">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel Orientation="Horizontal" />
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Grid Margin="10">
-                            <Border x:Name="FrontCard" Background="LightGreen" BorderBrush="Black" BorderThickness="1" Padding="10" Width="150" Height="200">
+        <StackPanel Grid.Column="1">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Height="400">
+                <ItemsControl Name="AnomaliaListBox">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Background="LightGreen" BorderBrush="Black" BorderThickness="1" Padding="10" Width="150" Height="200" Margin="10">
                                 <StackPanel>
-                                    <TextBlock x:Name="CharacterNameText" Text="{Binding AnomalyName}" FontWeight="Bold" FontSize="16"/>
+                                    <TextBlock Text="{Binding AnomalyName}" FontWeight="Bold" FontSize="16"/>
                                     <TextBlock Text="{Binding AnomalyEffect}" FontSize="14" TextWrapping="Wrap"/>
                                 </StackPanel>
                             </Border>
-                        </Grid>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </ScrollViewer>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
         </StackPanel>
+
+
     </Grid>
 </Window>
