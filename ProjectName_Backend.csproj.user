@@ -4,11 +4,7 @@
     <ActiveDebugProfile>http</ActiveDebugProfile>
     <Controller_SelectedScaffolderID>MvcControllerEmptyScaffolder</Controller_SelectedScaffolderID>
     <Controller_SelectedScaffolderCategoryPath>root/Common/MVC/Controller</Controller_SelectedScaffolderCategoryPath>
-<<<<<<< HEAD
-    <NameOfLastUsedPublishProfile>C:\Users\MimitheEmili\source\repos\tftwpfbackend\Properties\PublishProfiles\FolderProfile.pubxml</NameOfLastUsedPublishProfile>
-=======
-    <NameOfLastUsedPublishProfile>C:\Users\MimiTheEmily\Documents\GitHub\wpfbackend\Properties\PublishProfiles\FolderProfile.pubxml</NameOfLastUsedPublishProfile>
->>>>>>> 6aa98e5ed0bd2f74c5d5577c5f8bf37f17f58365
+    <NameOfLastUsedPublishProfile>C:\Users\MimiTheEmily\Documents\GitHub\wpfbackend\Properties\PublishProfiles\FolderProfile1.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>

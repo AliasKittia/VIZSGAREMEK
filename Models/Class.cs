@@ -11,7 +11,7 @@ public partial class Class
 
     public string? BasicEffect { get; set; }
 
-    public byte[]? Classimageblob { get; set; }
+    public string? Classimageblob { get; set; }
 
     public virtual ICollection<Classlevelbonu> Classlevelbonus { get; set; } = new List<Classlevelbonu>();
 
