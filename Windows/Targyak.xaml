@@ -13,10 +13,14 @@
             <ColumnDefinition Width="*"/>
             <!-- Tartalom -->
         </Grid.ColumnDefinitions>
-
+        
+        <Grid.RowDefinitions >
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
 
         <!-- Oldalsáv -->
-        <StackPanel Grid.Column="0" Background="LightBlue" Width="200">
+        <StackPanel Grid.Column="0" Grid.RowSpan="2" Background="LightBlue" Width="200">
 
             <Button Name="FoOldalBTN"  Content="Főoldal" Margin="10,20,10,10" Click="FoOldalBTN_Click"/>
 
@@ -76,9 +80,9 @@
             
         </ScrollViewer>
         </Border>
-        
-        
-        <Border BorderBrush="Black" BorderThickness="1" Grid.Column="1">
+
+
+        <Border BorderBrush="Black" BorderThickness="1" Grid.Column="1" Grid.Row="1">
         <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
             <ItemsControl Name="TeljesTargyListBox">
                 <ItemsControl.ItemsPanel>
