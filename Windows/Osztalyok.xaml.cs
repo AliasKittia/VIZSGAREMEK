@@ -50,7 +50,8 @@ namespace Karbantarto.Windows
         {
             try
             {
-                var response = await sharedClient.GetAsync("Class");
+                var response = await sharedClient.GetAsync("Class/classes-with-bonuses");
+
                 response.EnsureSuccessStatusCode();
 
                 var json = await response.Content.ReadAsStringAsync();

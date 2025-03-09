@@ -51,7 +51,7 @@
                                 <StackPanel>
                                     <Image Source="{Binding Classimageblob}" Height="100" Stretch="Uniform"/>
                                     <TextBlock x:Name="CharacterNameText" Text="{Binding ClassName}" FontWeight="Bold" FontSize="16"/>
-                                    <TextBlock Text="{Binding Cost}" FontSize="14"/>
+                                    
                                 </StackPanel>
                             </Border>
 
@@ -59,14 +59,31 @@
                                 <DockPanel>
                                     <Image Source="{Binding Classimageblob}" Height="100" Stretch="Uniform"/>
                                     <StackPanel>
-
                                         <TextBlock Text="{Binding ClassName}" FontWeight="Bold" FontSize="16"/>
-
                                         <TextBlock Text="{Binding BasicEffect}" FontSize="14" TextWrapping="Wrap"/>
 
                                         <DockPanel>
-                                            <TextBlock Text="Első szint" FontSize="14" TextWrapping="Wrap"/>
+                                            <TextBlock Text="Első szint: " FontSize="14" TextWrapping="Wrap"/>
                                             <TextBlock Text="{Binding Level}" FontSize="14" TextWrapping="Wrap"/>
+                                            <TextBlock Text="{Binding CharacterCount}" FontSize="14" TextWrapping="Wrap"/>
+                                            <TextBlock Text="{Binding BonusEffect}" FontSize="14" TextWrapping="Wrap"/>
+                                        </DockPanel>
+                                        <DockPanel>
+                                            <TextBlock Text="Második szint: " FontSize="14" TextWrapping="Wrap"/>
+                                            <TextBlock Text="{Binding Level}" FontSize="14" TextWrapping="Wrap"/>
+                                            <TextBlock Text="{Binding CharacterCount}" FontSize="14" TextWrapping="Wrap"/>
+                                            <TextBlock Text="{Binding BonusEffect}" FontSize="14" TextWrapping="Wrap"/>
+                                        </DockPanel>
+                                        <DockPanel>
+                                            <TextBlock Text="Harmadik szint: " FontSize="14" TextWrapping="Wrap"/>
+                                            <TextBlock Text="{Binding Level}" FontSize="14" TextWrapping="Wrap"/>
+                                            <TextBlock Text="{Binding CharacterCount}" FontSize="14" TextWrapping="Wrap"/>
+                                            <TextBlock Text="{Binding BonusEffect}" FontSize="14" TextWrapping="Wrap"/>
+                                        </DockPanel>
+                                        <DockPanel>
+                                            <TextBlock Text="Negyedik szint: " FontSize="14" TextWrapping="Wrap"/>
+                                            <TextBlock Text="{Binding Level}" FontSize="14" TextWrapping="Wrap"/>
+                                            <TextBlock Text="{Binding CharacterCount}" FontSize="14" TextWrapping="Wrap"/>
                                             <TextBlock Text="{Binding BonusEffect}" FontSize="14" TextWrapping="Wrap"/>
                                         </DockPanel>
                                     </StackPanel>
