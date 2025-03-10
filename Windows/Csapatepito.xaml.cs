@@ -187,8 +187,7 @@ namespace Karbantarto.Windows
 
         private void CsapatTervezoBTN_Click(object sender, RoutedEventArgs e)
         {
-            CsapatepitoAblak = new Csapatepito();
-            CsapatepitoAblak.Show();
+            
 
         }
 
