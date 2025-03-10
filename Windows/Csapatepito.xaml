@@ -7,15 +7,14 @@
         mc:Ignorable="d"
         Title="Csapatepito" Height="450" Width="800">
     <Grid>
+        
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
-            <!-- Oldalsáv -->
+            <ColumnDefinition Width="160"/>
+            <ColumnDefinition Width="480"/>
             <ColumnDefinition Width="*"/>
-            <!-- Tartalom -->
         </Grid.ColumnDefinitions>
 
-        <!-- Oldalsáv -->
-        <StackPanel Grid.Column="0" Background="LightBlue" Width="200">
+        <StackPanel Grid.Column="0" Background="LightBlue" HorizontalAlignment="Left" Width="160">
 
             <Button Name="FoOldalBTN"  Content="Főoldal" Margin="10,20,10,10" Click="FoOldalBTN_Click"/>
 
@@ -36,6 +35,12 @@
             <Button Name="KijelentkezesBTN" Content="Kijelentkezés" Margin="10" Click="KijelentkezesBTN_Click"/>
 
         </StackPanel>
-        <TextBlock Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,20,0,0" FontSize="25" Text="Csapat építés"/>
+        <!-- Hexagonal Grid -->
+        <Border BorderBrush="Black" BorderThickness="1" Grid.Column="1">
+            <Canvas Name="HexGridCanvas" Margin="70,100,0,0" />
+        </Border>
+        <Border BorderBrush="Black" Background="LightBlue" BorderThickness="1" Grid.Column="2">
+            
+        </Border>
     </Grid>
 </Window>
