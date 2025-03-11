@@ -3,6 +3,8 @@ import "./Augments.css";
 
 const Augments = () => {
   const [augments, setAugments] = useState([]); // Initialize state
+  const [searchTerm, setSearchTerm] = useState(""); // Initialize search term state
+  const [rarityFilter, setRarityFilter] = useState(""); // Initialize rarity filter state
 
   useEffect(() => {
     // Fetch data from backend API
@@ -12,20 +14,63 @@ const Augments = () => {
       .catch((err) => console.error("Error fetching augments:", err));
   }, []); // Empty dependency array means this runs once on mount
 
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const handleRarityChange = (event) => {
+    setRarityFilter(event.target.value);
+  };
+
+  const filteredaugments = augments.filter((augment) => {
+    return (
+      augment.augmentName.toLowerCase().includes(searchTerm.toLowerCase()) &&
+      (rarityFilter === "" || augment.augmentRarity === rarityFilter)
+    );
+  });
+
   return (
     <div className="page-container">
       <h1 className="title">Augments</h1>
-      <p className="augments-description">
-        Az alábbiakban találhatóak a játékban előforduló augmentek, amelyek különleges hatásokkal bírnak.
-      </p>
+      <div className="homepage-section">
+        <p>
+          A játékban megtalálható erősítések.
+        </p>
+      </div>
+
+      <div className="search-container">
+        <label htmlFor="search-filter">Keresés: </label>
+        <input
+          type="text"
+          id="search-filter"
+          value={searchTerm}
+          onChange={handleSearchChange}
+          placeholder="Keresés név szerint..."
+          className="search-input"
+        />
+      </div>
+
+      <div className="filter-container">
+        <label htmlFor="rarity-filter">Ritkaság: </label>
+        <select
+          id="rarity-filter"
+          value={rarityFilter}
+          onChange={handleRarityChange}
+          className="filter-select"
+        >
+          <option value="">Összes</option>
+          <option value="gold">Arany</option>
+          <option value="prismatic">Prizmatikus</option>
+          <option value="silver">Ezüst</option>
+        </select>
+      </div>
+
       <div className="card-container">
-        {augments.map((augment) => (
+        {filteredaugments.map((augment) => (
           <div className="card" key={augment.augmentId}>
             <h2>{augment.augmentName}</h2>
             <p>{augment.augmentRarity}</p>
             <p>{augment.augmentEffect}</p>
-
-
           </div>
         ))}
       </div>

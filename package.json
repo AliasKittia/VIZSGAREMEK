@@ -3,9 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "cra-template": "1.2.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-router-dom": "^7.0.2",
     "react-scripts": "5.0.1"
   },
@@ -32,5 +31,20 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/plugin-syntax-jsx": "^7.25.9",
+    "@babel/plugin-transform-runtime": "^7.26.9",
+    "@babel/preset-env": "^7.26.9",
+    "@babel/preset-react": "^7.26.3",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^14.6.1",
+    "jest": "^29.0.0"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css|less|scss|sass)$": "<rootDir>/src/__mocks__/styleMock.js"
+    }
   }
 }

@@ -4,6 +4,7 @@ import "./Items.css";
 const Items = () => {
   const [fullItems, setFullItems] = useState([]);
   const [partialItems, setPartialItems] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     // Fetch FullItems from backend API
@@ -19,15 +20,42 @@ const Items = () => {
       .catch((err) => console.error("Error fetching partial items:", err));
   }, []);
 
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const filteredFullItems = fullItems.filter((item) =>
+    item.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const filteredPartialItems = partialItems.filter((item) =>
+    item.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="page-container">
-      <h1 className="title">Items</h1>
-      <p className="items-p">
-        A játékban megtalálható tárgyak listája. A tárgyakat két csoportba oszthatjuk.
-      </p>
-      <h2 className="title">Full Items</h2>
+      <h1 className="title">Tárgyak és receptek</h1>
+      <div className="homepage-section">
+        <p>
+          A játékban megtalálható tárgyak, külön bontva teljes tárgyakra és tárgyösszetevőkre.
+        </p>
+      </div>
+      
+      <div className="search-container">
+        <label htmlFor="search-filter">Search: </label>
+        <input
+          type="text"
+          id="search-filter"
+          value={searchTerm}
+          onChange={handleSearchChange}
+          placeholder="Keresés név szerint..."
+          className="search-input"
+        />
+      </div>
+
+      <h2 className="title">Kész tárgyak </h2>
       <div className="card-container">
-        {fullItems.map((item) => (
+        {filteredFullItems.map((item) => (
           <div className="card" key={item.id}>
             <h2>{item.name}</h2>
             <p>Effect 1: {item.halfitemeffect1}</p>
@@ -40,9 +68,9 @@ const Items = () => {
         ))}
       </div>
 
-      <h2 className="title">Partial Items</h2>
+      <h2 className="title">Tárgyösszetevők</h2>
       <div className="card-container">
-        {partialItems.map((item) => (
+        {filteredPartialItems.map((item) => (
           <div className="card" key={item.partial_item_id}>
             <h2>{item.name}</h2>
             <p>Effect: {item.effect}</p>
