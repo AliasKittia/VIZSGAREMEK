@@ -1,5 +1,4 @@
-import React from "react";
-import { render, screen, waitFor, fireEvent } from "@testing-library/react";
+import { act, render, screen, fireEvent, waitFor } from '@testing-library/react';
 import Characters from "./Characters";
 import "@testing-library/jest-dom";
 
@@ -27,7 +26,9 @@ beforeEach(() => {
 });
 
 test("renders character data from API", async () => {
-    render(<Characters />);
+    await act(async () => {
+        render(<Characters />);
+    });
 
     expect(screen.getByText(/Characters/i)).toBeInTheDocument();
     
@@ -51,7 +52,9 @@ test("renders character data from API", async () => {
 });
 
 test("filters characters by search", async () => {
-    render(<Characters />);
+    await act(async () => {
+        render(<Characters />);
+    });
     await screen.findByText("Loris");
 
     const searchInput = screen.getByPlaceholderText(/Keresés név szerint.../i);
@@ -70,7 +73,9 @@ test("displays no characters when API returns empty array", async () => {
         })
     );
 
-    render(<Characters />);
+    await act(async () => {
+        render(<Characters />);
+    });
 
     await waitFor(() => expect(fetch).toHaveBeenCalledTimes(1));
 
@@ -81,7 +86,9 @@ test("displays no characters when API returns empty array", async () => {
 test("displays error message when API call fails", async () => {
     fetch.mockImplementationOnce(() => Promise.reject("API is down"));
 
-    render(<Characters />);
+    await act(async () => {
+        render(<Characters />);
+    });
 
     await waitFor(() => expect(fetch).toHaveBeenCalledTimes(1));
 
@@ -89,7 +96,9 @@ test("displays error message when API call fails", async () => {
 });
 
 test("filters characters by cost", async () => {
-    render(<Characters />);
+    await act(async () => {
+        render(<Characters />);
+    });
     await screen.findByText("Loris");
 
     const select = screen.getByLabelText(/Szűrés érték szerint:/i);

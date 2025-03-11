@@ -59,9 +59,9 @@ const Augments = () => {
           className="filter-select"
         >
           <option value="">Összes</option>
-          <option value="gold">Arany</option>
-          <option value="prismatic">Prizmatikus</option>
-          <option value="silver">Ezüst</option>
+          <option value="Arany">Arany</option>
+          <option value="Prizmatikus">Prizmatikus</option>
+          <option value="Ezüst">Ezüst</option>
         </select>
       </div>
 
