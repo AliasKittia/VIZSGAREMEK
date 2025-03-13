@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Karbantarto"
         mc:Ignorable="d"
         x:Name="fomenu"
-        Title="Karbantartó rendszer" Height="450" Width="800">
+        Title="Karbantartó rendszer" Height="600" Width="900">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="160"/>
@@ -35,7 +35,7 @@
             <Button Name="KilepesBTN" Content="Kilépés" Margin="10" Click="KilepesBTN_Click"/>
 
             <Button Name="KijelentkezesBTN" Content="Kijelentkezés" Margin="10" Click="KijelentkezesBTN_Click"/>
-
+            <Image Source="Images/Designer.jpeg" Width="120" Height="120" Margin="0,50,0,0" HorizontalAlignment="Center"/>
         </StackPanel>
 
         <DockPanel  Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
