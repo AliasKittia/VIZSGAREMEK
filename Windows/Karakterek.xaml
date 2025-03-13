@@ -40,8 +40,9 @@
                             <Border x:Name="FrontCard" Background="LightGreen" BorderBrush="Black" BorderThickness="1" Padding="10" Width="150" Height="200" MouseDown="FrontCard_MouseDown">
                                 <StackPanel>
                                     <Image Source="{Binding Characterimageblob}" Height="100" Stretch="Uniform"/>
-                                    <TextBlock x:Name="CharacterNameText" Text="{Binding CharacterName}" FontWeight="Bold" FontSize="16"/>
-                                    <TextBlock Text="{Binding Cost}" FontSize="14"/>
+                                    <TextBlock x:Name="CharacterNameText" Text="{Binding CharacterName}" HorizontalAlignment="Center" FontWeight="Bold" FontSize="16"/>
+                                    <TextBlock></TextBlock>
+                                    <TextBlock Text="{Binding Cost}" FontSize="14" HorizontalAlignment="Center"/>
                                 </StackPanel>
                             </Border>
 
