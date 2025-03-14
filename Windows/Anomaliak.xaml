@@ -73,7 +73,7 @@
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <Border BorderBrush="Black" Background="#7D3C98" BorderThickness="2" Padding="10" Width="180" Height="290" Margin="10">
-                                <!-- Halványabb háttér -->
+                             
                                 
                                 <StackPanel>
                                     <TextBlock Foreground="#82C367" Text="{Binding AnomalyName}" Margin="0,0,0,10" FontFamily="Comic Sans MS" FontWeight="Bold" TextWrapping="Wrap" FontSize="17"/>

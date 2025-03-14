@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Karbantarto.Windows"
         mc:Ignorable="d"
-        Title="Erosites" Height="550" Width="990">
+        Title="Erosites" Height="550" Width="1070">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="FontFamily" Value="Comic Sans MS"/>
@@ -51,33 +51,40 @@
             <Button Name="KilepesBTN" Content="Kilépés" Margin="10" Click="KilepesBTN_Click"/>
             <Image Width="120" Margin="0,10,0,0">
                 <Image.Source>
-                    <BitmapImage DecodePixelWidth="300" UriSource="/images/KittyPic.png" />
+                    <BitmapImage DecodePixelWidth="300" UriSource="/Images/Kittylogo.png" />
                 </Image.Source>
             </Image>
         </StackPanel>
 
-        <TextBlock Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center"  Text="Erősítések"/>
-        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
-            <ItemsControl Name="ErositesListBox">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel Orientation="Horizontal" />
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Grid Margin="10">
-                            <Border x:Name="FrontCard" Background="LightGreen" BorderBrush="Black" BorderThickness="1" Padding="10" Width="150" Height="200">
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Margin="0,10,0,10" FontFamily="Comic Sans MS" FontSize="40" VerticalAlignment="Top" HorizontalAlignment="Center" FontWeight="Bold" Text="Erősítések"/>
+
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                <ItemsControl Name="ErositesListBox">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderBrush="Black" Background="#7D3C98" BorderThickness="2" Padding="10" Width="180" Height="290" Margin="10">
                                 <StackPanel>
-                                    <TextBlock x:Name="CharacterNameText" Text="{Binding AugmentName}" FontWeight="Bold" FontSize="16"/>
-                                    <TextBlock Text="{Binding AugmentRarity}" FontSize="14" TextWrapping="Wrap"/>
-                                    <TextBlock Text="{Binding AugmentEffect}" FontSize="14" TextWrapping="Wrap"/>
+                                    <TextBlock Text="{Binding AugmentName}" Margin="0,0,0,10" FontFamily="Comic Sans MS" FontWeight="Bold" TextWrapping="WrapWithOverflow" FontSize="17"/>
+                                    <TextBlock Text="{Binding AugmentRarity}" Foreground="	#222222" FontFamily="Comic Sans MS" FontSize="14" TextWrapping="Wrap"/>
+                                    <TextBlock Text="{Binding AugmentEffect}" Foreground="	#222222" FontFamily="Comic Sans MS" FontSize="14" TextWrapping="Wrap"/>
                                 </StackPanel>
                             </Border>
-                        </Grid>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </ScrollViewer>
-    </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </Grid>
+        </Grid>
 </Window>
