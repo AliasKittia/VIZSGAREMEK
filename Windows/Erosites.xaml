@@ -5,7 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Karbantarto.Windows"
         mc:Ignorable="d"
-        Title="Erosites" Height="450" Width="800">
+        Title="Erosites" Height="550" Width="990">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Background" Value="#7D3C98"/>
+        </Style>
+
+    </Window.Resources>
+
+    <Window.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#7D3C98" Offset="0"/>
+            <GradientStop Color="#0A001F" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
@@ -15,26 +31,25 @@
         </Grid.ColumnDefinitions>
 
         <!-- Oldalsáv -->
-        <StackPanel Grid.Column="0" Background="LightBlue" Width="200">
-
-            <Button Name="FoOldalBTN"  Content="Főoldal" Margin="10,20,10,10" Click="FoOldalBTN_Click"/>
-
+        <StackPanel Grid.Column="0" Width="150">
+            <StackPanel.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="#7D3C98" Offset="0"/>
+                    <GradientStop Color="#0A001F" Offset="1"/>
+                </LinearGradientBrush>
+            </StackPanel.Background>
+            <StackPanel.Effect>
+                <DropShadowEffect Color="Gray" Direction="100" ShadowDepth="5" BlurRadius="20" Opacity="1.5"/>
+            </StackPanel.Effect>
+            <Button Name="FoOldalBTN" Content="Főoldal" Margin="10,20,10,10" Click="FoOldalBTN_Click"/>
             <Button Name="KarakterekBTN" Content="Karakterek" Margin="10" Click="KarakterekBTN_Click"/>
-
             <Button Name="ClassokBTN" Content="Osztályok" Margin="10" Click="ClassokBTN_Click"/>
-
             <Button Name="ItemekBTN" Content="Tárgyak" Margin="10" Click="ItemekBTN_Click"/>
-
             <Button Name="AnomaliakBTN" Content="Anomáliák" Margin="10" Click="AnomaliakBTN_Click"/>
-
             <Button Name="TraitekBTN" Content="Erősítések" Margin="10" Click="TraitekBTN_Click"/>
-
             <Button Name="CsapatTervezoBTN" Content="Csapat tervező" Margin="10" Click="CsapatTervezoBTN_Click"/>
-
             <Button Name="KilepesBTN" Content="Kilépés" Margin="10" Click="KilepesBTN_Click"/>
-
-            <Button Name="KijelentkezesBTN" Content="Kijelentkezés" Margin="10" Click="KijelentkezesBTN_Click"/>
-            <Image Width="100"  Margin="0,40,0,0">
+            <Image Width="120" Margin="0,10,0,0">
                 <Image.Source>
                     <BitmapImage DecodePixelWidth="300" UriSource="/images/KittyPic.png" />
                 </Image.Source>
