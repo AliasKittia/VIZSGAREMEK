@@ -10,7 +10,10 @@
         <Style TargetType="Button">
             <Setter Property="FontFamily" Value="Comic Sans MS"/>
             <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Background" Value="#7D3C98"/>
+            <Setter Property="BorderBrush" Value="black"/>
         </Style>
+
     </Window.Resources>
 
     <Window.Background>
@@ -26,7 +29,16 @@
         </Grid.ColumnDefinitions>
 
         <!-- Oldalsáv -->
-        <StackPanel Grid.Column="0" Background="LightBlue" Width="200">
+        <StackPanel Grid.Column="0" Width="150">
+            <StackPanel.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="#7D3C98" Offset="0"/>
+                    <GradientStop Color="#0A001F" Offset="1"/>
+                </LinearGradientBrush>
+            </StackPanel.Background>
+            <StackPanel.Effect>
+                <DropShadowEffect Color="Gray" Direction="100" ShadowDepth="5" BlurRadius="20" Opacity="1.5"/>
+            </StackPanel.Effect>
             <Button Name="FoOldalBTN" Content="Főoldal" Margin="10,20,10,10" Click="FoOldalBTN_Click"/>
             <Button Name="KarakterekBTN" Content="Karakterek" Margin="10" Click="KarakterekBTN_Click"/>
             <Button Name="ClassokBTN" Content="Osztályok" Margin="10" Click="ClassokBTN_Click"/>
@@ -35,15 +47,24 @@
             <Button Name="TraitekBTN" Content="Erősítések" Margin="10" Click="TraitekBTN_Click"/>
             <Button Name="CsapatTervezoBTN" Content="Csapat tervező" Margin="10" Click="CsapatTervezoBTN_Click"/>
             <Button Name="KilepesBTN" Content="Kilépés" Margin="10" Click="KilepesBTN_Click"/>
-            <Image Width="100"  Margin="0,40,0,0">
+            <Image Width="120" Margin="0,10,0,0">
                 <Image.Source>
-                    <BitmapImage DecodePixelWidth="300" UriSource="/images/KittyPic.png" />
+                    <BitmapImage DecodePixelWidth="300" UriSource="/Images/Kittylogo.png" />
                 </Image.Source>
             </Image>
         </StackPanel>
 
-        <!-- Karakterek listája kártyákkal -->
-        <TextBlock Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center"  Text="Karakterek"/>
+
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Karakterek listája kártyákkal -->
+            <TextBlock Grid.Row="0" Margin="0,10,0,10" FontFamily="Comic Sans MS" FontSize="40" VerticalAlignment="Top" HorizontalAlignment="Center" Text="Karakterek"/>
+       
         <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
             <ItemsControl Name="KarakterListBox">
                 <ItemsControl.ItemsPanel>
@@ -148,5 +169,6 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
+    </Grid>
     </Grid>
 </Window>
