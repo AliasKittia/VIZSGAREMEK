@@ -34,7 +34,11 @@
             <Button Name="KilepesBTN" Content="Kilépés" Margin="10" Click="KilepesBTN_Click"/>
 
             <Button Name="KijelentkezesBTN" Content="Kijelentkezés" Margin="10" Click="KijelentkezesBTN_Click"/>
-
+            <Image Width="100"  Margin="0,40,0,0">
+                <Image.Source>
+                    <BitmapImage DecodePixelWidth="300" UriSource="/images/KittyPic.png" />
+                </Image.Source>
+            </Image>
         </StackPanel>
         <TextBlock Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center"  Text="Osztályok"/>
         <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">

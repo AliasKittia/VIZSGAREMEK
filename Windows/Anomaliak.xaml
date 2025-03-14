@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Karbantarto.Windows.Anomaliak"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Anomáliák" Height="450" Width="800">
+        Title="Anomáliák" Height="550" Width="950">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
@@ -20,15 +20,23 @@
             <Button Name="TraitekBTN" Content="Erősítések" Margin="10" Click="TraitekBTN_Click"/>
             <Button Name="CsapatTervezoBTN" Content="Csapat tervező" Margin="10" Click="CsapatTervezoBTN_Click"/>
             <Button Name="KilepesBTN" Content="Kilépés" Margin="10" Click="KilepesBTN_Click"/>
-            
+            <Image Width="130"  Margin="0,20,0,0">
+                <Image.Source>
+                    <BitmapImage DecodePixelWidth="300" UriSource="/images/KittyPic.png" />
+                </Image.Source>
+            </Image>
         </StackPanel>
 
-        <!-- Tartalom: Anomáliák lista -->
-        <StackPanel Grid.Column="1">
-            <TextBlock  VerticalAlignment="Top" HorizontalAlignment="Center"  Text="Anomáliák"/>
-        </StackPanel>
-        <StackPanel Grid.Column="1">
-            <ScrollViewer VerticalScrollBarVisibility="Auto" Height="400">
+        <!-- Tartalom -->
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Center" Text="Anomáliák" FontSize="18" FontWeight="Bold"/>
+
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
                 <ItemsControl Name="AnomaliaListBox">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -47,8 +55,6 @@
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
             </ScrollViewer>
-        </StackPanel>
-
-
+        </Grid>
     </Grid>
 </Window>
