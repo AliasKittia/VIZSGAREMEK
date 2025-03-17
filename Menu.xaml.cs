@@ -80,44 +80,49 @@ namespace Karbantarto
         
         private void FoOldalBTN_Click(object sender, RoutedEventArgs e)
         {
-
+            //Nem tud magára kattintani, nem kell.
         }
 
         private void KarakterekBTN_Click(object sender, RoutedEventArgs e)
         {
             KarakterAblak = new Karakterek();
             KarakterAblak.Show();
-            
+            this.Close();
         }
 
         private void ClassokBTN_Click(object sender, RoutedEventArgs e)
         {
             OsztalyAblak = new Osztalyok();
             OsztalyAblak.Show();
+            this.Close();
         }
 
         private void ItemekBTN_Click(object sender, RoutedEventArgs e)
         {
             TargyAblak = new Targyak();
             TargyAblak.Show();
+            this.Close();
         }
 
         private void AnomaliakBTN_Click(object sender, RoutedEventArgs e)
         {
             AnomaliaAblak = new Anomaliak();
             AnomaliaAblak.Show();
+            this.Close();
         }
 
         private void TraitekBTN_Click(object sender, RoutedEventArgs e)
         {
             ErositesAblak = new Erosites();
             ErositesAblak.Show();
+            this.Close();
         }
 
         private void CsapatTervezoBTN_Click(object sender, RoutedEventArgs e)
         {
             CsapatepitoAblak = new Csapatepito();
             CsapatepitoAblak.Show();
+            this.Close();
 
         }
 
@@ -130,10 +135,5 @@ namespace Karbantarto
             }
         }
 
-        private void KijelentkezesBTN_Click(object sender, RoutedEventArgs e)
-        {
-            
-
-        }
     }
 }
