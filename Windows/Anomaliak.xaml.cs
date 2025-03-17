@@ -27,7 +27,6 @@ namespace Karbantarto.Windows
         Karakterek KarakterAblak;
         Osztalyok OsztalyAblak;
         Targyak TargyAblak;
-        Anomaliak AnomaliaAblak;
         Erosites ErositesAblak;
         Csapatepito CsapatepitoAblak;
 
@@ -97,9 +96,7 @@ namespace Karbantarto.Windows
 
         private void AnomaliakBTN_Click(object sender, RoutedEventArgs e)
         {
-            AnomaliaAblak = new Anomaliak();
-            AnomaliaAblak.Show();
-            this.Close();
+            //Nem kell semmit csinálni, mert már itt vagyunk
         }
 
         private void TraitekBTN_Click(object sender, RoutedEventArgs e)
