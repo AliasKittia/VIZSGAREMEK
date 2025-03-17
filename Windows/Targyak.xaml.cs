@@ -105,12 +105,12 @@ namespace Karbantarto.Windows
                             // Animáció indítása a nagyításhoz
                             DoubleAnimation WidthAnimation = new DoubleAnimation
                             {
-                                To = 550, // Az új magasság
+                                To = 500, // Az új magasság
                                 Duration = TimeSpan.FromSeconds(0.3)
                             };
                             DoubleAnimation HeightAnimation = new DoubleAnimation
                             {
-                                To = 350, // Az új magasság
+                                To = 300, // Az új magasság
                                 Duration = TimeSpan.FromSeconds(0.3)
                             };
 
