@@ -28,7 +28,7 @@ namespace Karbantarto.Windows
         Osztalyok OsztalyAblak;
         Targyak TargyAblak;
         Anomaliak AnomaliaAblak;
-        Erosites ErositesAblak;
+        
         Csapatepito CsapatepitoAblak;
 
         public static HttpClient sharedClient = new()
@@ -99,9 +99,7 @@ namespace Karbantarto.Windows
 
         private void TraitekBTN_Click(object sender, RoutedEventArgs e)
         {
-            ErositesAblak = new Erosites();
-            ErositesAblak.Show();
-            this.Close();
+            //Nem kell megvalósítani, mert az erősítés oldalon vagyunk
         }
 
         private void CsapatTervezoBTN_Click(object sender, RoutedEventArgs e)
