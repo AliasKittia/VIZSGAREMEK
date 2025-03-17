@@ -102,69 +102,69 @@
                                             <TextBlock Text="{Binding Ability}" FontFamily="Comic Sans MS" TextWrapping="Wrap" FontSize="13"/>
 
                                            <DockPanel>
-     <TextBlock FontWeight="Bold" Text="Életerő 1. szinten: " FontFamily="Comic Sans MS" Foreground="#82C367" FontSize="14"/>
-     <TextBlock Text="{Binding Health}" FontFamily="Comic Sans MS" FontSize="13"/>
- </DockPanel>
+                                                 <TextBlock FontWeight="Bold" Text="Életerő 1. szinten: " FontFamily="Comic Sans MS" Foreground="#82C367" FontSize="14"/>
+                                                 <TextBlock Text="{Binding Health}" FontFamily="Comic Sans MS" FontSize="13"/>
+                                           </DockPanel>
 
- <DockPanel>
-     <TextBlock FontWeight="Bold" Text="Életerő 2. szinten: " FontFamily="Comic Sans MS" Foreground="#82C367" FontSize="14"/>
-     <TextBlock Text="{Binding Health1}" FontFamily="Comic Sans MS" FontSize="13"/>
- </DockPanel>
+                                           <DockPanel>
+                                                 <TextBlock FontWeight="Bold" Text="Életerő 2. szinten: " FontFamily="Comic Sans MS" Foreground="#82C367" FontSize="14"/>
+                                                 <TextBlock Text="{Binding Health1}" FontFamily="Comic Sans MS" FontSize="13"/>
+                                           </DockPanel>
 
- <DockPanel>
-     <TextBlock FontWeight="Bold" Text="Életerő 3. szinten: " FontFamily="Comic Sans MS" Foreground="#82C367" FontSize="14"/>
-     <TextBlock Text="{Binding Health2}" FontFamily="Comic Sans MS" FontSize="13"/>
- </DockPanel>
+                                             <DockPanel>
+                                                 <TextBlock FontWeight="Bold" Text="Életerő 3. szinten: " FontFamily="Comic Sans MS" Foreground="#82C367" FontSize="14"/>
+                                                 <TextBlock Text="{Binding Health2}" FontFamily="Comic Sans MS" FontSize="13"/>
+                                             </DockPanel>
 
- <DockPanel>
-     <TextBlock FontWeight="Bold" Text="Támadási sebesség: " FontFamily="Comic Sans MS" Foreground="#82C367" FontSize="14"/>
-     <TextBlock Text="{Binding AttackSpeed}" FontFamily="Comic Sans MS" FontSize="13"/>
- </DockPanel>
+                                             <DockPanel>
+                                                 <TextBlock FontWeight="Bold" Text="Támadási sebesség: " FontFamily="Comic Sans MS" Foreground="#82C367" FontSize="14"/>
+                                                 <TextBlock Text="{Binding AttackSpeed}" FontFamily="Comic Sans MS" FontSize="13"/>
+                                             </DockPanel>
 
- <DockPanel>
-     <TextBlock FontWeight="Bold" Text="Sebzés 1. szinten: " FontFamily="Comic Sans MS" Foreground="#82C367" FontSize="14"/>
-     <TextBlock Text="{Binding Damage}" FontFamily="Comic Sans MS" FontSize="13"/>
- </DockPanel>
+                                             <DockPanel>
+                                                 <TextBlock FontWeight="Bold" Text="Sebzés 1. szinten: " FontFamily="Comic Sans MS" Foreground="#82C367" FontSize="14"/>
+                                                 <TextBlock Text="{Binding Damage}" FontFamily="Comic Sans MS" FontSize="13"/>
+                                             </DockPanel>
 
- <DockPanel>
-     <TextBlock FontWeight="Bold" Text="Sebzés 2. szinten: " FontFamily="Comic Sans MS" Foreground="#82C367" FontSize="14"/>
-     <TextBlock Text="{Binding Damage1}" FontFamily="Comic Sans MS" FontSize="13"/>
- </DockPanel>
+                                             <DockPanel>
+                                                 <TextBlock FontWeight="Bold" Text="Sebzés 2. szinten: " FontFamily="Comic Sans MS" Foreground="#82C367" FontSize="14"/>
+                                                 <TextBlock Text="{Binding Damage1}" FontFamily="Comic Sans MS" FontSize="13"/>
+                                             </DockPanel>
 
- <DockPanel>
-     <TextBlock FontWeight="Bold" Text="Sebzés 3. szinten: " FontFamily="Comic Sans MS" Foreground="#82C367" FontSize="14"/>
-     <TextBlock Text="{Binding Damage2}" FontFamily="Comic Sans MS" FontSize="13"/>
- </DockPanel>
+                                             <DockPanel>
+                                                 <TextBlock FontWeight="Bold" Text="Sebzés 3. szinten: " FontFamily="Comic Sans MS" Foreground="#82C367" FontSize="14"/>
+                                                 <TextBlock Text="{Binding Damage2}" FontFamily="Comic Sans MS" FontSize="13"/>
+                                             </DockPanel>
 
- <DockPanel>
-     <TextBlock FontWeight="Bold" Text="Varázserő: " FontFamily="Comic Sans MS" Foreground="#82C367" FontSize="14"/>
-     <TextBlock Text="{Binding AbilityPower}" FontFamily="Comic Sans MS" FontSize="13"/>
- </DockPanel>
+                                             <DockPanel>
+                                                 <TextBlock FontWeight="Bold" Text="Varázserő: " FontFamily="Comic Sans MS" Foreground="#82C367" FontSize="14"/>
+                                                 <TextBlock Text="{Binding AbilityPower}" FontFamily="Comic Sans MS" FontSize="13"/>
+                                             </DockPanel>
 
- <DockPanel>
-     <TextBlock FontWeight="Bold" Text="Kezdő mana: " FontFamily="Comic Sans MS" Foreground="#82C367" FontSize="14"/>
-     <TextBlock Text="{Binding ManaStart}" FontFamily="Comic Sans MS" FontSize="13"/>
- </DockPanel>
+                                             <DockPanel>
+                                                 <TextBlock FontWeight="Bold" Text="Kezdő mana: " FontFamily="Comic Sans MS" Foreground="#82C367" FontSize="14"/>
+                                                 <TextBlock Text="{Binding ManaStart}" FontFamily="Comic Sans MS" FontSize="13"/>
+                                             </DockPanel>
 
- <DockPanel>
-     <TextBlock FontWeight="Bold" Text="Maximális mana: " FontFamily="Comic Sans MS" Foreground="#82C367" FontSize="14"/>
-     <TextBlock Text="{Binding ManaMax}" FontFamily="Comic Sans MS" FontSize="13"/>
- </DockPanel>
+                                             <DockPanel>
+                                                 <TextBlock FontWeight="Bold" Text="Maximális mana: " FontFamily="Comic Sans MS" Foreground="#82C367" FontSize="14"/>
+                                                 <TextBlock Text="{Binding ManaMax}" FontFamily="Comic Sans MS" FontSize="13"/>
+                                             </DockPanel>
 
- <DockPanel>
-     <TextBlock FontWeight="Bold" Text="Páncél: " FontFamily="Comic Sans MS" Foreground="#82C367" FontSize="14"/>
-     <TextBlock Text="{Binding Armor}" FontFamily="Comic Sans MS" FontSize="13"/>
- </DockPanel>
+                                             <DockPanel>
+                                                 <TextBlock FontWeight="Bold" Text="Páncél: " FontFamily="Comic Sans MS" Foreground="#82C367" FontSize="14"/>
+                                                 <TextBlock Text="{Binding Armor}" FontFamily="Comic Sans MS" FontSize="13"/>
+                                             </DockPanel>
 
- <DockPanel>
-     <TextBlock FontWeight="Bold" Text="Varázsellenállás: " FontFamily="Comic Sans MS" Foreground="#82C367" FontSize="14"/>
-     <TextBlock Text="{Binding MagicResist}" FontFamily="Comic Sans MS" FontSize="13"/>
- </DockPanel>
+                                             <DockPanel>
+                                                 <TextBlock FontWeight="Bold" Text="Varázsellenállás: " FontFamily="Comic Sans MS" Foreground="#82C367" FontSize="14"/>
+                                                 <TextBlock Text="{Binding MagicResist}" FontFamily="Comic Sans MS" FontSize="13"/>
+                                             </DockPanel>
 
- <DockPanel>
-     <TextBlock FontWeight="Bold" Text="Hatótávolság: " FontFamily="Comic Sans MS" Foreground="#82C367" FontSize="14"/>
-     <TextBlock Text="{Binding Range}" FontFamily="Comic Sans MS" FontSize="13"/>
- </DockPanel>    
+                                             <DockPanel>
+                                                 <TextBlock FontWeight="Bold" Text="Hatótávolság: " FontFamily="Comic Sans MS" Foreground="#82C367" FontSize="14"/>
+                                                 <TextBlock Text="{Binding Range}" FontFamily="Comic Sans MS" FontSize="13"/>
+                                             </DockPanel>    
                                         </StackPanel>
                                     </DockPanel>
                                 </Border>

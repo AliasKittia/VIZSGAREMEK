@@ -23,8 +23,8 @@ namespace Karbantarto.Windows
     /// </summary>
     public partial class Osztalyok : Window
     {
+        Menu MenuAblak;
         Karakterek KarakterAblak;
-        Osztalyok OsztalyAblak;
         Targyak TargyAblak;
         Anomaliak AnomaliaAblak;
         Erosites ErositesAblak;
@@ -164,44 +164,49 @@ namespace Karbantarto.Windows
 
         private void FoOldalBTN_Click(object sender, RoutedEventArgs e)
         {
-
+            MenuAblak = new Menu();
+            MenuAblak.Show();
+            this.Close();
         }
 
         private void KarakterekBTN_Click(object sender, RoutedEventArgs e)
         {
             KarakterAblak = new Karakterek();
             KarakterAblak.Show();
-
+            this.Close();
         }
 
         private void ClassokBTN_Click(object sender, RoutedEventArgs e)
         {
-            OsztalyAblak = new Osztalyok();
-            OsztalyAblak.Show();
+            //Nem kell, mert már itt vagyunk
         }
 
         private void ItemekBTN_Click(object sender, RoutedEventArgs e)
         {
             TargyAblak = new Targyak();
             TargyAblak.Show();
+            this.Close();
         }
 
         private void AnomaliakBTN_Click(object sender, RoutedEventArgs e)
         {
             AnomaliaAblak = new Anomaliak();
             AnomaliaAblak.Show();
+            this.Close();
         }
 
         private void TraitekBTN_Click(object sender, RoutedEventArgs e)
         {
             ErositesAblak = new Erosites();
             ErositesAblak.Show();
+            this.Close();
         }
 
         private void CsapatTervezoBTN_Click(object sender, RoutedEventArgs e)
         {
             CsapatepitoAblak = new Csapatepito();
             CsapatepitoAblak.Show();
+            this.Close();
 
         }
 
@@ -214,10 +219,6 @@ namespace Karbantarto.Windows
             }
         }
 
-        private void KijelentkezesBTN_Click(object sender, RoutedEventArgs e)
-        {
 
-
-        }
     }
 }
