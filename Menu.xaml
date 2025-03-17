@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Karbantarto"
         mc:Ignorable="d"
         x:Name="fomenu"
-        Title="Karbantartó rendszer" Height="550" Width="1070">
+        Title="Karbantartó rendszer" Height="550" Width="1090">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="FontFamily" Value="Comic Sans MS"/>

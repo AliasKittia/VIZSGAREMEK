@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Karbantarto.Windows"
         mc:Ignorable="d"
-        Title="Karakterek" Height="550" Width="1070">
+        Title="Karakterek" Height="550" Width="1090">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="FontFamily" Value="Comic Sans MS"/>
@@ -62,10 +62,9 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <!-- Karakterek listája kártyákkal -->
-            <TextBlock Grid.Row="0" Margin="0,10,0,10" FontFamily="Comic Sans MS" FontSize="40" VerticalAlignment="Top" HorizontalAlignment="Center" Text="Karakterek"/>
-       
-        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
+            <TextBlock Grid.Row="0" Margin="0,10,0,10" FontFamily="Comic Sans MS" FontSize="40" VerticalAlignment="Top" HorizontalAlignment="Center" Text="Karakterek" FontWeight="Bold"/>
+
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
             <ItemsControl Name="KarakterListBox">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -75,96 +74,102 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Grid Margin="10">
-                            <Border x:Name="FrontCard" Background="LightGreen" BorderBrush="Black" BorderThickness="1" Padding="10" Width="150" Height="200" MouseDown="FrontCard_MouseDown">
+                                <Border x:Name="FrontCard" Background="#7D3C98" BorderBrush="Black" BorderThickness="1" Padding="10" Width="150" Height="200" MouseDown="FrontCard_MouseDown">
                                 <StackPanel>
                                     <Image Source="{Binding Characterimageblob}" Height="100" Stretch="Uniform"/>
-                                    <TextBlock x:Name="CharacterNameText" Text="{Binding CharacterName}" HorizontalAlignment="Center" FontWeight="Bold" FontSize="16"/>
-                                    <TextBlock></TextBlock>
-                                    <TextBlock Text="{Binding Cost}" FontSize="14" HorizontalAlignment="Center"/>
-                                </StackPanel>
-                            </Border>
-
-                            <Border x:Name="BackCard" Background="CadetBlue" BorderBrush="Black" Padding="10" Width="150" Height="200" Visibility="Collapsed" MouseDown="BackCard_MouseDown">
-                                <DockPanel>
-                                    <Image Source="{Binding Characterimageblob}" Height="100" Stretch="Uniform"/>
-                                    <StackPanel>
-                                        
-                                        <TextBlock Text="{Binding CharacterName}" FontWeight="Bold" FontSize="16"/>
-                                        
-                                        <TextBlock Text="{Binding Cost}" FontSize="14"/>
-                                        
-                                        <TextBlock  Text="Képesség: " FontWeight="Bold"/>
-                                        <TextBlock  Text="{Binding AbilityName}"/>
-                                        <TextBlock Text="{Binding Ability}" TextWrapping="Wrap"/>
-
-                                        <DockPanel>
-                                            <TextBlock FontWeight="Bold" Text="Életerő 1. szinten: "/>
-                                            <TextBlock Text="{Binding Health}"/>
-                                        </DockPanel>
-
-                                        <DockPanel>
-                                            <TextBlock FontWeight="Bold" Text="Életerő 2. szinten: "/>
-                                            <TextBlock Text="{Binding Health1}"/>
-                                        </DockPanel>
-                                        
-                                        <DockPanel>
-                                            <TextBlock FontWeight="Bold" Text="Életerő 3. szinten: "/>
-                                            <TextBlock Text="{Binding Health2}"/>
-                                        </DockPanel>
-
-                                        <DockPanel>
-                                            <TextBlock FontWeight="Bold" Text="Támadási sebesség: "/>
-                                            <TextBlock Text="{Binding AttackSpeed}"/>
-                                        </DockPanel>
-
-                                        <DockPanel>
-                                            <TextBlock FontWeight="Bold" Text="Sebzés 1. szinten: "/>
-                                            <TextBlock Text="{Binding Damage}"/>
-                                        </DockPanel>
-
-                                        <DockPanel>
-                                            <TextBlock FontWeight="Bold" Text="Sebzés 2. szinten: "/>
-                                            <TextBlock Text="{Binding Damage1}"/>
-                                        </DockPanel>
-
-                                        <DockPanel>
-                                            <TextBlock FontWeight="Bold" Text="Sebzés 3. szinten: "/>
-                                            <TextBlock Text="{Binding Damage2}"/>
-                                        </DockPanel>
-
-                                        <DockPanel>
-                                            <TextBlock FontWeight="Bold" Text="Varázserő: "/>
-                                            <TextBlock Text="{Binding AbilityPower}"/>
-                                        </DockPanel>
-
-                                        <DockPanel>
-                                            <TextBlock FontWeight="Bold" Text="Kezdő mana: "/>
-                                            <TextBlock Text="{Binding ManaStart}"/>
-                                        </DockPanel>
-
-                                        <DockPanel>
-                                            <TextBlock FontWeight="Bold" Text="Maximális mana: "/>
-                                            <TextBlock Text="{Binding ManaMax}"/>
-                                        </DockPanel>
-
-                                        <DockPanel>
-                                            <TextBlock FontWeight="Bold" Text="Páncél: "/>
-                                            <TextBlock Text="{Binding Armor}"/>
-                                        </DockPanel>
-
-                                        <DockPanel>
-                                            <TextBlock FontWeight="Bold" Text="Varázsellenállás: "/>
-                                            <TextBlock Text="{Binding MagicResist}"/>
-                                        </DockPanel>
-
-                                        <DockPanel>
-                                            <TextBlock FontWeight="Bold" Text="Hatótávolság: "/>
-                                            <TextBlock Text="{Binding Range}"/>
-                                        </DockPanel>
+                                        <TextBlock x:Name="CharacterNameText" Foreground="#82C367" Text="{Binding CharacterName}" FontFamily="Comic Sans MS" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
+                                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,20,0,0">
+                                            <Run Text="Értéke" FontSize="15" FontFamily="Comic Sans MS"/>
+                                            <Run Text=": " FontSize="15" FontFamily="Comic Sans MS"/>
+                                            <Run Text="{Binding Cost}" FontSize="15" FontFamily="Comic Sans MS"/>
+                                        </TextBlock>
                                     </StackPanel>
-                                </DockPanel>
                             </Border>
-                        </Grid>
+
+                                <Border x:Name="BackCard" Background="#7D3C98" BorderBrush="Black" BorderThickness="2" Padding="10" Width="150" Height="200" Visibility="Collapsed" MouseDown="BackCard_MouseDown">
+                                    <DockPanel>
+                                        <Image Source="{Binding Characterimageblob}" Height="100" Stretch="Uniform"/>
+                                        <StackPanel >
+
+                                            <TextBlock  Text="{Binding CharacterName}" FontFamily="Comic Sans MS" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18"/>
+                                            <TextBlock FontFamily="Comic Sans MS"  HorizontalAlignment="Center">
+                                                <Run Text="Értéke:" FontSize="14" />
+                                                <Run Text="{Binding Cost}" FontFamily="Comic Sans MS" FontSize="13"/>
+                                            </TextBlock>
+
+                                            <TextBlock  Text="Képesség: " FontFamily="Comic Sans MS" FontWeight="Bold" Foreground="#82C367" FontSize="14"/>
+                                            <TextBlock  Text="{Binding AbilityName}" FontFamily="Comic Sans MS" FontSize="14" />
+                                            <TextBlock Text="{Binding Ability}" FontFamily="Comic Sans MS" TextWrapping="Wrap" FontSize="13"/>
+
+                                           <DockPanel>
+     <TextBlock FontWeight="Bold" Text="Életerő 1. szinten: " FontFamily="Comic Sans MS" Foreground="#82C367" FontSize="14"/>
+     <TextBlock Text="{Binding Health}" FontFamily="Comic Sans MS" FontSize="13"/>
+ </DockPanel>
+
+ <DockPanel>
+     <TextBlock FontWeight="Bold" Text="Életerő 2. szinten: " FontFamily="Comic Sans MS" Foreground="#82C367" FontSize="14"/>
+     <TextBlock Text="{Binding Health1}" FontFamily="Comic Sans MS" FontSize="13"/>
+ </DockPanel>
+
+ <DockPanel>
+     <TextBlock FontWeight="Bold" Text="Életerő 3. szinten: " FontFamily="Comic Sans MS" Foreground="#82C367" FontSize="14"/>
+     <TextBlock Text="{Binding Health2}" FontFamily="Comic Sans MS" FontSize="13"/>
+ </DockPanel>
+
+ <DockPanel>
+     <TextBlock FontWeight="Bold" Text="Támadási sebesség: " FontFamily="Comic Sans MS" Foreground="#82C367" FontSize="14"/>
+     <TextBlock Text="{Binding AttackSpeed}" FontFamily="Comic Sans MS" FontSize="13"/>
+ </DockPanel>
+
+ <DockPanel>
+     <TextBlock FontWeight="Bold" Text="Sebzés 1. szinten: " FontFamily="Comic Sans MS" Foreground="#82C367" FontSize="14"/>
+     <TextBlock Text="{Binding Damage}" FontFamily="Comic Sans MS" FontSize="13"/>
+ </DockPanel>
+
+ <DockPanel>
+     <TextBlock FontWeight="Bold" Text="Sebzés 2. szinten: " FontFamily="Comic Sans MS" Foreground="#82C367" FontSize="14"/>
+     <TextBlock Text="{Binding Damage1}" FontFamily="Comic Sans MS" FontSize="13"/>
+ </DockPanel>
+
+ <DockPanel>
+     <TextBlock FontWeight="Bold" Text="Sebzés 3. szinten: " FontFamily="Comic Sans MS" Foreground="#82C367" FontSize="14"/>
+     <TextBlock Text="{Binding Damage2}" FontFamily="Comic Sans MS" FontSize="13"/>
+ </DockPanel>
+
+ <DockPanel>
+     <TextBlock FontWeight="Bold" Text="Varázserő: " FontFamily="Comic Sans MS" Foreground="#82C367" FontSize="14"/>
+     <TextBlock Text="{Binding AbilityPower}" FontFamily="Comic Sans MS" FontSize="13"/>
+ </DockPanel>
+
+ <DockPanel>
+     <TextBlock FontWeight="Bold" Text="Kezdő mana: " FontFamily="Comic Sans MS" Foreground="#82C367" FontSize="14"/>
+     <TextBlock Text="{Binding ManaStart}" FontFamily="Comic Sans MS" FontSize="13"/>
+ </DockPanel>
+
+ <DockPanel>
+     <TextBlock FontWeight="Bold" Text="Maximális mana: " FontFamily="Comic Sans MS" Foreground="#82C367" FontSize="14"/>
+     <TextBlock Text="{Binding ManaMax}" FontFamily="Comic Sans MS" FontSize="13"/>
+ </DockPanel>
+
+ <DockPanel>
+     <TextBlock FontWeight="Bold" Text="Páncél: " FontFamily="Comic Sans MS" Foreground="#82C367" FontSize="14"/>
+     <TextBlock Text="{Binding Armor}" FontFamily="Comic Sans MS" FontSize="13"/>
+ </DockPanel>
+
+ <DockPanel>
+     <TextBlock FontWeight="Bold" Text="Varázsellenállás: " FontFamily="Comic Sans MS" Foreground="#82C367" FontSize="14"/>
+     <TextBlock Text="{Binding MagicResist}" FontFamily="Comic Sans MS" FontSize="13"/>
+ </DockPanel>
+
+ <DockPanel>
+     <TextBlock FontWeight="Bold" Text="Hatótávolság: " FontFamily="Comic Sans MS" Foreground="#82C367" FontSize="14"/>
+     <TextBlock Text="{Binding Range}" FontFamily="Comic Sans MS" FontSize="13"/>
+ </DockPanel>    
+                                        </StackPanel>
+                                    </DockPanel>
+                                </Border>
+
+                            </Grid>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
