@@ -60,17 +60,21 @@
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="220"/>
-                <RowDefinition Height="240"/>
-                
+                <RowDefinition Height="*"/>
+
             </Grid.RowDefinitions>
 
-            <TextBlock Grid.Row="0" Margin="0,10,0,10" FontFamily="Comic Sans MS" FontSize="40" VerticalAlignment="Top" HorizontalAlignment="Center" Text="Fél tárgyak" FontWeight="Bold"/>
-
-
+            <TextBlock Name="FeltargyakTBX" Visibility="Visible" Grid.Row="0" Margin="0,10,0,10" FontFamily="Comic Sans MS" FontSize="40" VerticalAlignment="Top" HorizontalAlignment="Center" Text="Fél tárgyak" FontWeight="Bold"/>
+            
+            <DockPanel>
+                <Button Name="FeltargyBTN" Content="Fél tárgyak" Width="110" Height="30" HorizontalAlignment="Left" Margin="20,30,30,0" Click="FeltargyBTN_Click"/>
+                <Button Name="TeljestargyBTN" Content="Teljes tárgyak" Width="110" Height="30" HorizontalAlignment="Left" Margin="20,30,30,0" Click="TeljestargyBTN_Click"/>
+            </DockPanel>
+        
+        
             <Border BorderBrush="Black" BorderThickness="1" Grid.Column="1" Grid.Row="1">
         <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
-            <ItemsControl Name="FelTargyListBox">
+            <ItemsControl Name="FelTargyListBox" Visibility="Visible">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Orientation="Horizontal" />
@@ -79,7 +83,7 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Grid Margin="10">
-                                    <Border x:Name="FrontCard" Background="LightGreen" BorderBrush="Black" BorderThickness="1" Padding="10" Width="130" Height="170" MouseDown="FrontCard_MouseDown">
+                                    <Border x:Name="FrontCard" Background="LightGreen" BorderBrush="Black" BorderThickness="1" Padding="10" Width="150" Height="200" MouseDown="FrontCard_MouseDown">
                                 <StackPanel>
                                     <Image Source="{Binding HalfItemimageblob}" Height="100" Stretch="Uniform"/>
                                             <TextBlock x:Name="CharacterNameText" Text="{Binding Name}" FontWeight="Bold" FontSize="16" TextWrapping="Wrap"/>
@@ -107,11 +111,11 @@
         </ScrollViewer>
         </Border>
 
+            <TextBlock Name="FulltargyTBX" Visibility="Collapsed" Grid.Row="0" Margin="0,10,0,10" FontFamily="Comic Sans MS" FontSize="40" VerticalAlignment="Top" HorizontalAlignment="Center" Text="Teljes tárgyak" FontWeight="Bold"/>
 
-            
             <Border BorderBrush="Black" BorderThickness="1" Grid.Column="1" Grid.Row="2">
         <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
-            <ItemsControl Name="TeljesTargyListBox">
+            <ItemsControl Name="TeljesTargyListBox" Visibility="Collapsed">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Orientation="Horizontal" />
@@ -120,7 +124,7 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Grid Margin="10">
-                                    <Border x:Name="FrontCard" Background="LightSkyBlue" BorderBrush="Black" BorderThickness="1" Padding="10" Width="130" Height="170"  MouseDown="FrontCard_MouseDown">
+                                    <Border x:Name="FrontCard" Background="LightSkyBlue" BorderBrush="Black" BorderThickness="1" Padding="10" Width="150" Height="200"  MouseDown="FrontCard_MouseDown">
                                 <StackPanel>
                                     <Image Source="{Binding Fullitemimageblob}" Height="100" Stretch="Uniform" />
                                             <TextBlock x:Name="FullItemNameText" Text="{Binding Name}" FontWeight="Bold" FontSize="16" TextWrapping="Wrap"/>

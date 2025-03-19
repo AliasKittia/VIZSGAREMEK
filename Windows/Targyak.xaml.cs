@@ -234,10 +234,16 @@ namespace Karbantarto.Windows
             }
         }
 
-        private void KijelentkezesBTN_Click(object sender, RoutedEventArgs e)
+        private void FeltargyBTN_Click(object sender, RoutedEventArgs e)
         {
+            FelTargyListBox.Visibility = Visibility.Visible;
+            TeljesTargyListBox.Visibility = Visibility.Collapsed;
+        }
 
-
+        private void TeljestargyBTN_Click(object sender, RoutedEventArgs e)
+        {
+            TeljesTargyListBox.Visibility = Visibility.Visible;
+            FelTargyListBox.Visibility = Visibility.Collapsed;
         }
     }
 }
