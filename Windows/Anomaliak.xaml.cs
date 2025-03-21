@@ -33,7 +33,7 @@ namespace Karbantarto.Windows
 
         public static HttpClient sharedClient = new()
         {
-            BaseAddress = new Uri("http://localhost:5000/"),
+            BaseAddress = new Uri("http://localhost:5000/api/Anomalies"),
         };
 
 
@@ -49,7 +49,7 @@ namespace Karbantarto.Windows
         {
             try
             {
-                var response = await sharedClient.GetAsync("Anomaly");
+                var response = await sharedClient.GetAsync("Anomalies");
                 response.EnsureSuccessStatusCode();
 
                 var json = await response.Content.ReadAsStringAsync();

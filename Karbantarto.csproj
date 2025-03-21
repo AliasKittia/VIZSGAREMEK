@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <None Remove="Images\Kittylogo.png" />
+    <None Remove="Images\TFTpic.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,6 +28,12 @@
     <PackageReference Include="System.ServiceModel.NetNamedPipe" Version="6.0.*" />
     <PackageReference Include="System.ServiceModel.NetTcp" Version="6.0.*" />
     <PackageReference Include="System.ServiceModel.Security" Version="6.0.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\TFTpic.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
