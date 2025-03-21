@@ -7,11 +7,11 @@ namespace tftwebapi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class FullItem_PartialItemController : ControllerBase
+    public class FullItemPartialItemController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
 
-        public FullItem_PartialItemController(ApplicationDbContext context)
+        public FullItemPartialItemController(ApplicationDbContext context)
         {
             _context = context;
         }

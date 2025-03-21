@@ -1,4 +1,4 @@
-namespace tftwebapi.Models;
+namespace tftwebapi.Models{
 
 public class PostCharacter
 {
@@ -21,4 +21,5 @@ public class PostCharacter
     public required int MagicResist { get; set; }
     public required int Range { get; set; }
     public required string CharacterImageBlob { get; set; } // Updated property name
+}
 }

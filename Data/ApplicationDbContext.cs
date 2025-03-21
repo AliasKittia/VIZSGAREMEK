@@ -9,13 +9,20 @@ namespace tftwebapi.Data
 
         public required DbSet<PostAnomalies> Anomalies { get; set; }
         public required DbSet<PostAugments> Augments { get; set; }
+        public required DbSet<PostBoard> Boards {get; set;}
+        public required DbSet<PostBoardHex> boardHexes {get;set;}
         public required DbSet<PostCharacter> Character { get; set; }
         public required DbSet<PostCharacterClass> CharacterClass { get; set; } 
         public required DbSet<PostClass> Class { get; set; }
         public required DbSet<PostClassLvlBonus> ClassLevelBonus { get; set; }
         public required DbSet<PostFullItem_PartialItems> FullItems_PartialItems { get; set; }
         public required DbSet<PostFullItems> FullItems { get; set; }
-        public required DbSet<PostPartialItems> PartialItems { get; set; }
+        public required DbSet<PostHexCell> hexCells {get;set;}
+         public required DbSet<PostPartialItems> PartialItems { get; set; }
+        public required DbSet<PostPermission> Permissions {get; set;}
+        public required DbSet<PostUser> User {get;set;}
+        
+        
 
 
 protected override void OnModelCreating(ModelBuilder modelBuilder)

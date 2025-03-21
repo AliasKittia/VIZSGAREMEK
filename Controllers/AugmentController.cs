@@ -7,11 +7,11 @@ namespace tftwebapi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AugmentsController : ControllerBase
+    public class AugmentController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
 
-        public AugmentsController(ApplicationDbContext context)
+        public AugmentController(ApplicationDbContext context)
         {
             _context = context;
         }
