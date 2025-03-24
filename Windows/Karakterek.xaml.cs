@@ -95,6 +95,25 @@ namespace Karbantarto.Windows
             }
         }
 
+        private void KarakterNevKeresoTBX_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (KarakterListBox == null) return;
+
+            string keresettNev = KarakterNevKeresoTBX.Text.ToLower();
+
+            if (string.IsNullOrWhiteSpace(keresettNev))
+            {
+                KarakterListBox.ItemsSource = KarakterLista;
+            }
+            else
+            {
+                var szurtLista = KarakterLista.Where(k => k.CharacterName.ToLower().Contains(keresettNev)).ToList();
+                KarakterListBox.ItemsSource = szurtLista;
+            }
+        }
+
+
+
         private bool isFlipped = false;
 
         private void FrontCard_MouseDown(object sender, MouseButtonEventArgs e)
@@ -113,23 +132,15 @@ namespace Karbantarto.Windows
                             frontCard.Visibility = Visibility.Collapsed;
                             backCard.Visibility = Visibility.Visible;
 
-                            var contentWidth = content.ActualWidth;  // A tartalom szélessége
-                            var contentHeight = content.ActualHeight;  // A tartalom magassága
-
-                            // Biztosítjuk, hogy a szélesség és a magasság megfelelő legyen
-                            double calculatedWidth = Math.Max(contentWidth, 550);  // Alapérték 550, de ha kell, nagyobb lesz
-                            double calculatedHeight = Math.Max(contentHeight, 410);  // Alapérték 410, de ha kell, nagyobb lesz
-
-                            // Alkalmazzuk az animációkat
                             DoubleAnimation WidthAnimation = new DoubleAnimation
                             {
-                                To = calculatedWidth,
+                                To = 550,
+
                                 Duration = TimeSpan.FromSeconds(0.3)
                             };
-
                             DoubleAnimation HeightAnimation = new DoubleAnimation
                             {
-                                To = calculatedHeight,
+                                To = 490,
                                 Duration = TimeSpan.FromSeconds(0.3)
                             };
 
