@@ -113,14 +113,23 @@ namespace Karbantarto.Windows
                             frontCard.Visibility = Visibility.Collapsed;
                             backCard.Visibility = Visibility.Visible;
 
+                            var contentWidth = content.ActualWidth;  // A tartalom szélessége
+                            var contentHeight = content.ActualHeight;  // A tartalom magassága
+
+                            // Biztosítjuk, hogy a szélesség és a magasság megfelelő legyen
+                            double calculatedWidth = Math.Max(contentWidth, 550);  // Alapérték 550, de ha kell, nagyobb lesz
+                            double calculatedHeight = Math.Max(contentHeight, 410);  // Alapérték 410, de ha kell, nagyobb lesz
+
+                            // Alkalmazzuk az animációkat
                             DoubleAnimation WidthAnimation = new DoubleAnimation
                             {
-                                To = 550,
+                                To = calculatedWidth,
                                 Duration = TimeSpan.FromSeconds(0.3)
                             };
+
                             DoubleAnimation HeightAnimation = new DoubleAnimation
                             {
-                                To = 410,
+                                To = calculatedHeight,
                                 Duration = TimeSpan.FromSeconds(0.3)
                             };
 
