@@ -1,4 +1,4 @@
-﻿namespace ProjectName_Backend.DTOs
+﻿namespace tftwebapi.DTO
 {
     public class TeljesTargyLekeresDTO
     {

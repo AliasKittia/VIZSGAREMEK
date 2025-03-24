@@ -1,72 +1,52 @@
 using System;
 using System.IO;
 using System.Net;
+using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace tftwebapi.Services
 {
     public class FtpService
     {
+        private readonly HttpClient _httpClient;
         private readonly string host = "ftp.nhely.hu";
         private readonly string user = "AliasKittia";
         private readonly string pass = "Miloka230803";
-        private readonly string ftpFolder = "/Characters/"; // Távoli könyvtár
+        private readonly string ftpFolder = "/Characters/"; 
+        
+
+        public FtpService(HttpClient httpClient)
+        {
+            _httpClient = httpClient;
+        }
 
         // 📌 FELTÖLTÉS FTP-re
-        public async Task<bool> UploadFileAsync(Stream fileStream, string fileName)
+        public async Task<string> UploadFileAsync(string ftpUrl, string filePath, string username, string password)
         {
-            string remotePath = $"ftp://{host}{ftpFolder}{fileName}";
-
-            try
+            var fileContent = new ByteArrayContent(File.ReadAllBytes(filePath));
+            var request = new HttpRequestMessage(HttpMethod.Put, ftpUrl)
             {
-                FtpWebRequest request = (FtpWebRequest)WebRequest.Create(remotePath);
-                request.Method = WebRequestMethods.Ftp.UploadFile;
-                request.Credentials = new NetworkCredential(user, pass);
-                request.UseBinary = true;
+                Content = fileContent
+            };
+            var byteArray = new UTF8Encoding().GetBytes($"{username}:{password}");
+            request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
 
-                using (Stream requestStream = await request.GetRequestStreamAsync())
-                {
-                    await fileStream.CopyToAsync(requestStream);
-                }
-
-                using (FtpWebResponse response = (FtpWebResponse)await request.GetResponseAsync())
-                {
-                    return response.StatusCode == FtpStatusCode.ClosingData;
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Hiba a feltöltés során: {ex.Message}");
-                return false;
-            }
+            var response = await _httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadAsStringAsync();
         }
 
         // 📌 LETÖLTÉS FTP-ről
-        public async Task<Stream> DownloadFileAsync(string fileName)
+        public async Task<string> DownloadFileAsync(string ftpUrl, string username, string password)
         {
-            string remotePath = $"ftp://{host}{ftpFolder}{fileName}";
+            var request = new HttpRequestMessage(HttpMethod.Get, ftpUrl);
+            var byteArray = new UTF8Encoding().GetBytes($"{username}:{password}");
+            request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
 
-            try
-            {
-                FtpWebRequest request = (FtpWebRequest)WebRequest.Create(remotePath);
-                request.Method = WebRequestMethods.Ftp.DownloadFile;
-                request.Credentials = new NetworkCredential(user, pass);
-                request.UseBinary = true;
-                
-
-                using (FtpWebResponse response = (FtpWebResponse)await request.GetResponseAsync())
-                {
-                    MemoryStream stream = new MemoryStream();
-                    await response.GetResponseStream().CopyToAsync(stream);
-                    stream.Position = 0; // Reset stream position
-                    return stream;
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Hiba a letöltés során: {ex.Message}");
-                return null;
-            }
+            var response = await _httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadAsStringAsync();
         }
 
         // 📌 FÁJLOK LISTÁZÁSA
@@ -76,16 +56,14 @@ namespace tftwebapi.Services
 
             try
             {
-                FtpWebRequest request = (FtpWebRequest)WebRequest.Create(remotePath);
-                request.Method = WebRequestMethods.Ftp.ListDirectory;
-                request.Credentials = new NetworkCredential(user, pass);
+                var request = new HttpRequestMessage(HttpMethod.Get, remotePath);
+                var byteArray = new UTF8Encoding().GetBytes($"{user}:{pass}");
+                request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
 
-                using (FtpWebResponse response = (FtpWebResponse)await request.GetResponseAsync())
-                using (StreamReader reader = new StreamReader(response.GetResponseStream()))
-                {
-                    string content = await reader.ReadToEndAsync();
-                    return content.Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries);
-                }
+                var response = await _httpClient.SendAsync(request);
+                response.EnsureSuccessStatusCode();
+                var content = await response.Content.ReadAsStringAsync();
+                return content.Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries);
             }
             catch (Exception ex)
             {
@@ -95,26 +73,14 @@ namespace tftwebapi.Services
         }
 
         // 📌 FÁJL TÖRLÉSE
-        public async Task<bool> DeleteFileAsync(string fileName)
+        public async Task DeleteFileAsync(string ftpUrl, string username, string password)
         {
-            string remotePath = $"ftp://{host}{ftpFolder}{fileName}";
+            var request = new HttpRequestMessage(HttpMethod.Delete, ftpUrl);
+            var byteArray = new UTF8Encoding().GetBytes($"{username}:{password}");
+            request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
 
-            try
-            {
-                FtpWebRequest request = (FtpWebRequest)WebRequest.Create(remotePath);
-                request.Method = WebRequestMethods.Ftp.DeleteFile;
-                request.Credentials = new NetworkCredential(user, pass);
-
-                using (FtpWebResponse response = (FtpWebResponse)await request.GetResponseAsync())
-                {
-                    return response.StatusCode == FtpStatusCode.FileActionOK;
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Hiba a törlés során: {ex.Message}");
-                return false;
-            }
+            var response = await _httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
         }
     }
 }

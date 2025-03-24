@@ -1,4 +1,3 @@
-
 namespace tftwebapi.Models
 {
     public class PostAugments
@@ -7,6 +6,5 @@ namespace tftwebapi.Models
         public required string AugmentName { get; set; }
         public required string AugmentRarity { get; set; }
         public required string AugmentEffect { get; set; }
-        
     }
 }

@@ -1,6 +1,6 @@
-﻿using ProjectName_Backend.Models;
+﻿using tftwebapi.Models;
 
-namespace ProjectName_Backend.DTOs
+namespace tftwebapi.DTO
 {
     public class KarakterLekeresDTO
     {
