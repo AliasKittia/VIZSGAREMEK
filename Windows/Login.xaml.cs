@@ -43,7 +43,7 @@ namespace Karbantarto.Windows
 
         private void LoginNev_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (LoginNev.Text == "")
+            if (LoginNev.Background == null) // Csak akkor állítjuk be, ha még nincs háttér
             {
                 ImageBrush LoginNevTextImageBrush = new ImageBrush();
                 LoginNevTextImageBrush.ImageSource = new BitmapImage(new Uri(@"Images\fn.jpg", UriKind.Relative));
@@ -52,12 +52,8 @@ namespace Karbantarto.Windows
                 LoginNevTextImageBrush.Stretch = Stretch.None;
                 LoginNev.Background = LoginNevTextImageBrush;
             }
-            else
-            {
-                LoginNev.Background = null;
-            }
-
         }
+
 
         private void Jelszo_PasswordChanged(object sender, RoutedEventArgs e)
         {
@@ -70,12 +66,6 @@ namespace Karbantarto.Windows
                 JelszoPasswordImageBrush.Stretch = Stretch.None;
                 Jelszo.Background = JelszoPasswordImageBrush;
             }
-            else
-            {
-                Jelszo.Background = null;
-            }
-
-
         }
 
         private void Bejelentkezes_Click(object sender, RoutedEventArgs e)
