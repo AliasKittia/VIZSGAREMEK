@@ -67,7 +67,7 @@
                 
                 <Image Width="650" Margin="0,10,0,0">
                     <Image.Source>
-                        <BitmapImage DecodePixelWidth="650" UriSource="/Images/TFTpic.png" />
+                        <BitmapImage DecodePixelWidth="700" UriSource="/Images/TFTpic.png" />
                     </Image.Source>
                 </Image>
             </StackPanel>
