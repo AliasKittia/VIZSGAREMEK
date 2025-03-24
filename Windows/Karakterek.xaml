@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Karbantarto.Windows"
         mc:Ignorable="d"
-        Title="Karakterek" Height="550" Width="1090">
+        Title="Karakterek" Height="580" Width="1090">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="FontFamily" Value="Comic Sans MS"/>
@@ -62,8 +62,16 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Grid.Row="0" Margin="0,10,0,10" FontFamily="Comic Sans MS" FontSize="40" VerticalAlignment="Top" HorizontalAlignment="Center" Text="Karakterek" FontWeight="Bold"/>
+            <StackPanel>
+            <TextBlock Grid.Row="0" Margin="0,5,0,5" FontFamily="Comic Sans MS" FontSize="40" VerticalAlignment="Top" HorizontalAlignment="Center" Text="Karakterek" FontWeight="Bold"/>
 
+                <DockPanel>
+                    <!--<TextBox Name="KarakterNevKeresoTBX" Text="Karakter Neve" HorizontalAlignment="Center" Margin="270,0,-200,0" Width="140" TextChanged="KarakterNevKeresoTBX_TextChanged"/>-->
+                    <ComboBox Name="KarakterClassCBX" HorizontalAlignment="Center" Width="140" SelectionChanged="KarakterClassCBX_SelectionChanged" Margin="0,0,0,10"/>
+
+                </DockPanel>
+
+            </StackPanel>
             <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
             <ItemsControl Name="KarakterListBox">
                 <ItemsControl.ItemsPanel>
@@ -86,7 +94,7 @@
                                     </StackPanel>
                             </Border>
 
-                                <Border x:Name="BackCard" Background="#7D3C98" BorderBrush="Black" BorderThickness="2" Padding="10" Width="150" Height="200" Visibility="Collapsed" MouseDown="BackCard_MouseDown">
+                                <Border x:Name="BackCard" Background="#7D3C98" BorderBrush="Black" BorderThickness="2" Padding="10" Width="150" Height="300" Visibility="Collapsed" MouseDown="BackCard_MouseDown">
                                     <DockPanel>
                                         <Image Source="{Binding Characterimageblob}" Height="100" Stretch="Uniform"/>
                                         <StackPanel >

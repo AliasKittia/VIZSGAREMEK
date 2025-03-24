@@ -18,14 +18,9 @@ using System.Windows.Shapes;
 
 namespace Karbantarto.Windows
 {
-    /// <summary>
-    /// Interaction logic for Karakterek.xaml
-    /// </summary>
     public partial class Karakterek : Window
     {
-
         Menu MenuAblak;
-        Karakterek KarakterAblak;
         Osztalyok OsztalyAblak;
         Targyak TargyAblak;
         Anomaliak AnomaliaAblak;
@@ -41,7 +36,9 @@ namespace Karbantarto.Windows
         {
             InitializeComponent();
             LoadAnomaliakAsync();
+            FillComboBox();
         }
+
         public static List<KarakterLekeresDTO> KarakterLista { get; set; } = new List<KarakterLekeresDTO>();
 
         public async Task LoadAnomaliakAsync()
@@ -61,6 +58,43 @@ namespace Karbantarto.Windows
                 MessageBox.Show("Hiba történt: " + ex.Message);
             }
         }
+
+        private void FillComboBox()
+        {
+            KarakterClassCBX.Items.Clear();
+            KarakterClassCBX.Items.Add(new ComboBoxItem { Content = "Összes" });
+            for (int i = 1; i <= 6; i++)
+            {
+                KarakterClassCBX.Items.Add(new ComboBoxItem { Content = $"{i} gold" });
+            }
+            KarakterClassCBX.SelectedIndex = 0; // Alapértelmezettként az "Összes" legyen kiválasztva
+
+            // A SelectionChanged esemény hozzáadása
+            KarakterClassCBX.SelectionChanged += KarakterClassCBX_SelectionChanged;
+        }
+
+        private void KarakterClassCBX_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // Ellenőrizzük, hogy a ComboBoxban kiválasztott elem egy számot tartalmaz-e
+            if (KarakterClassCBX.SelectedItem is ComboBoxItem selectedItem)
+            {
+                string selectedText = selectedItem.Content.ToString();
+                int selectedCost;
+
+                // Ha "Összes"-t választották, akkor minden karaktert megjelenítünk
+                if (selectedText == "Összes")
+                {
+                    KarakterListBox.ItemsSource = KarakterLista;
+                }
+                else if (int.TryParse(selectedText.Split(' ')[0], out selectedCost))
+                {
+                    // Ha számot választottak, szűrjük a karaktereket a Cost érték alapján
+                    var filteredCharacters = KarakterLista.Where(c => c.Cost == selectedCost).ToList();
+                    KarakterListBox.ItemsSource = filteredCharacters;
+                }
+            }
+        }
+
         private bool isFlipped = false;
 
         private void FrontCard_MouseDown(object sender, MouseButtonEventArgs e)
@@ -76,27 +110,23 @@ namespace Karbantarto.Windows
                     {
                         if (!isFlipped)
                         {
-                            // Átméretezés és láthatóság változtatása
                             frontCard.Visibility = Visibility.Collapsed;
                             backCard.Visibility = Visibility.Visible;
 
-                            // Animáció indítása a nagyításhoz
                             DoubleAnimation WidthAnimation = new DoubleAnimation
                             {
-                                To = 550, // Az új magasság
+                                To = 550,
                                 Duration = TimeSpan.FromSeconds(0.3)
                             };
                             DoubleAnimation HeightAnimation = new DoubleAnimation
                             {
-                                To = 410, // Az új magasság
+                                To = 410,
                                 Duration = TimeSpan.FromSeconds(0.3)
                             };
 
-                            // BackCard méretének animálása
                             backCard.BeginAnimation(FrameworkElement.HeightProperty, HeightAnimation);
                             backCard.BeginAnimation(FrameworkElement.WidthProperty, WidthAnimation);
                         }
-                        
 
                         isFlipped = !isFlipped;
                     }
@@ -117,20 +147,18 @@ namespace Karbantarto.Windows
                     {
                         if (isFlipped)
                         {
-                            // Animációk létrehozása
                             DoubleAnimation OldSizeAnimationWidth = new DoubleAnimation
                             {
-                                To = 150, // Eredeti szélesség
+                                To = 150,
                                 Duration = TimeSpan.FromSeconds(0.3)
                             };
 
                             DoubleAnimation OldSizeAnimationHeight = new DoubleAnimation
                             {
-                                To = 200, // Eredeti magasság
+                                To = 200,
                                 Duration = TimeSpan.FromSeconds(0.3)
                             };
 
-                            // Storyboard létrehozása az animációkhoz
                             Storyboard storyboard = new Storyboard();
                             storyboard.Children.Add(OldSizeAnimationWidth);
                             storyboard.Children.Add(OldSizeAnimationHeight);
@@ -141,14 +169,12 @@ namespace Karbantarto.Windows
                             Storyboard.SetTarget(OldSizeAnimationHeight, backCard);
                             Storyboard.SetTargetProperty(OldSizeAnimationHeight, new PropertyPath(HeightProperty));
 
-                            // Amikor az animáció befejeződik, állítsa vissza a láthatóságot
                             storyboard.Completed += (s, eArgs) =>
                             {
                                 frontCard.Visibility = Visibility.Visible;
                                 backCard.Visibility = Visibility.Collapsed;
                             };
 
-                            // Animáció indítása
                             storyboard.Begin();
                         }
 
@@ -157,7 +183,6 @@ namespace Karbantarto.Windows
                 }
             }
         }
-
 
         private void FoOldalBTN_Click(object sender, RoutedEventArgs e)
         {
@@ -168,9 +193,7 @@ namespace Karbantarto.Windows
 
         private void KarakterekBTN_Click(object sender, RoutedEventArgs e)
         {
-            KarakterAblak = new Karakterek();
-            KarakterAblak.Show();
-            this.Close();
+            // Nem kell semmit csinálni, mert már ezen az oldalon vagyunk
         }
 
         private void ClassokBTN_Click(object sender, RoutedEventArgs e)
@@ -206,7 +229,6 @@ namespace Karbantarto.Windows
             CsapatepitoAblak = new Csapatepito();
             CsapatepitoAblak.Show();
             this.Close();
-
         }
 
         private void KilepesBTN_Click(object sender, RoutedEventArgs e)
@@ -218,4 +240,4 @@ namespace Karbantarto.Windows
             }
         }
     }
-    } 
+}
