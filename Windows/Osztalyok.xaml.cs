@@ -44,7 +44,31 @@ namespace Karbantarto.Windows
 
         public static List<OsztalyLekeresDTO> OsztalyLista { get; set; } = new List<OsztalyLekeresDTO>();
         
+        public static List<OsztalySzintBonusLekeresDTO> OsztalySzintBonusLista { get; set; } = new List<OsztalySzintBonusLekeresDTO>();
+
+
         private bool isFlipped = false;
+
+
+        public async Task LoadBonuszOsztalyokAsync()
+        {
+            try
+            {
+                var response = await sharedClient.GetAsync("Class/classes-with-bonuses");
+
+                response.EnsureSuccessStatusCode();
+
+                var json = await response.Content.ReadAsStringAsync();
+                var osztaly = JsonConvert.DeserializeObject<List<OsztalyLekeresDTO>>(json);
+                OsztalyLista = osztaly;
+                OsztalyListBox.ItemsSource = OsztalyLista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hiba történt: " + ex.Message);
+            }
+        }
+
 
         public async Task LoadOsztalyokAsync()
         {
@@ -64,6 +88,7 @@ namespace Karbantarto.Windows
                 MessageBox.Show("Hiba történt: " + ex.Message);
             }
         }
+
         
 
         private void FrontCard_MouseDown(object sender, MouseButtonEventArgs e)

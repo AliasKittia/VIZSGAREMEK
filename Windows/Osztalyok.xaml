@@ -94,7 +94,7 @@
                                             <StackPanel>
                                                 <TextBlock FontSize="14" FontFamily="Comic Sans MS">
                                                     <Run Text="Szint: " Foreground="#82C367" FontSize="14"/>
-                                                    <Run Text="{Binding Level, StringFormat=' {0} '}" FontSize="13"/>
+                                                    <Run Text="{Binding Level, StringFormat=' {0} '}" FontSize="14"/>
                                                 </TextBlock>
                                                 <TextBlock FontSize="14" FontFamily="Comic Sans MS">
                                                     <Run Text="Szükséges karakterszám: "  Foreground="#82C367" FontSize="14"/>
