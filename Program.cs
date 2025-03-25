@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using tftwebapi.Data;
-using tftwebapi.Services; // Update this line to include the correct namespace for FtpService
+using tftwebapi.Services; // Ensure this namespace contains FtpService
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -8,6 +8,7 @@ using tftwebapi.Models;
 using System.Net.Mail;
 using System.Security.Cryptography;
 using System.Text;
+using System.Net.Http;
 
 namespace tftwebapi
 {
@@ -25,18 +26,13 @@ namespace tftwebapi
         {
             MailMessage mail = new MailMessage();
             SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
-            mail.From = new MailAddress("ide az email cimük");
+            mail.From = new MailAddress("ide az email címed");
             mail.To.Add(mailAddressTo);
             mail.Subject = subject;
             mail.Body = body;
 
-            /*System.Net.Mail.Attachment attachment;
-            attachment = new System.Net.Mail.Attachment("");
-            mail.Attachments.Add(attachment);*/
-
             SmtpServer.Port = 587;
-            SmtpServer.Credentials = new System.Net.NetworkCredential("ide az email cimük", "ide a 16 karakteres jelszó");
-
+            SmtpServer.Credentials = new System.Net.NetworkCredential("ide az email címed", "ide a 16 karakteres jelszó");
             SmtpServer.EnableSsl = true;
 
             await SmtpServer.SendMailAsync(mail);
@@ -45,13 +41,13 @@ namespace tftwebapi
         public static string GenerateSalt()
         {
             Random random = new Random();
-            string karakterek = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-            string salt = "";
+            const string karakterek = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            StringBuilder salt = new StringBuilder();
             for (int i = 0; i < SaltLength; i++)
             {
-                salt += karakterek[random.Next(karakterek.Length)];
+                salt.Append(karakterek[random.Next(karakterek.Length)]);
             }
-            return salt;
+            return salt.ToString();
         }
 
         public static string CreateSHA256(string input)
@@ -59,10 +55,10 @@ namespace tftwebapi
             using (SHA256 sha256 = SHA256.Create())
             {
                 byte[] data = sha256.ComputeHash(Encoding.UTF8.GetBytes(input));
-                var sBuilder = new StringBuilder();
-                for (int i = 0; i < data.Length; i++)
+                StringBuilder sBuilder = new StringBuilder();
+                foreach (byte b in data)
                 {
-                    sBuilder.Append(data[i].ToString("x2"));
+                    sBuilder.Append(b.ToString("x2"));
                 }
                 return sBuilder.ToString();
             }
@@ -77,8 +73,8 @@ namespace tftwebapi
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            // Register FtpService
-            builder.Services.AddScoped<FtpService>(); // Add this line to register FtpService
+            // Register HttpClient for FtpService
+            builder.Services.AddHttpClient<FtpService>(); // Módosítva, hogy az FtpService helyesen kapjon HttpClient-et
 
             // Configure DbContext with dependency injection
             builder.Services.AddDbContext<ApplicationDbContext>(options =>

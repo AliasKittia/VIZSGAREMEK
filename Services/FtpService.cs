@@ -4,11 +4,13 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 
 namespace tftwebapi.Services
 {
     public class FtpService
     {
+        private readonly IConfiguration _configuration;
         private readonly HttpClient _httpClient;
         private readonly string host = "ftp.nhely.hu";
         private readonly string user = "AliasKittia";
@@ -16,8 +18,9 @@ namespace tftwebapi.Services
         private readonly string ftpFolder = "/Characters/"; 
         
 
-        public FtpService(HttpClient httpClient)
+        public FtpService(IConfiguration configuration, HttpClient httpClient)
         {
+            _configuration = configuration;
             _httpClient = httpClient;
         }
 
