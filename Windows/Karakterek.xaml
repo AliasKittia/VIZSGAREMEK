@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Karbantarto.Windows"
         mc:Ignorable="d"
-        Title="Karakterek" Height="580" Width="1090">
+        Title="Karakterek" Height="640" Width="1090">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="FontFamily" Value="Comic Sans MS"/>

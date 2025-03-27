@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Karbantarto.Windows"
         mc:Ignorable="d"
-        Title="Osztályok" Height="580" Width="1090">
+        Title="Osztályok" Height="640" Width="1090">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="FontFamily" Value="Comic Sans MS"/>
@@ -65,7 +65,7 @@
 
             
             <StackPanel>
-                <TextBlock Grid.Row="0" Margin="0,10,0,10" FontFamily="Comic Sans MS" FontSize="40" VerticalAlignment="Top" HorizontalAlignment="Center" Text="Osztályok" FontWeight="Bold"/>
+                <TextBlock Grid.Row="0" Margin="0,10,0,10" FontFamily="Comic Sans MS" FontSize="40" VerticalAlignment="Top" HorizontalAlignment="Center" Text="Osztályok"  FontWeight="Bold"/>
 
                 <DockPanel>
                     <TextBox FontFamily="Comic Sans MS" Name="OsztalyNevKeresoTBX" Text="Osztály Neve" VerticalAlignment="Top" HorizontalAlignment="Left" Height="25" FontSize="16" Background="#D4B8E6" Width="140" Margin="10,0,0,10" TextChanged="OsztalyNevKeresoTBX_TextChanged"/>
@@ -83,14 +83,15 @@
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <Grid Margin="10">
+                                <!-- Front Card -->
                                 <Border x:Name="FrontCard" Background="#7D3C98" BorderBrush="Black" BorderThickness="1" Padding="10" Width="150" Height="200" MouseDown="FrontCard_MouseDown">
                                     <StackPanel>
                                         <Image Source="{Binding Classimageblob}" Height="100" Stretch="Uniform"/>
-                                        <TextBlock x:Name="CharacterNameText" Text="{Binding ClassName}" Foreground="#82C367" FontFamily="Comic Sans MS" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20" TextWrapping="Wrap"/>
-
+                                        <TextBlock Text="{Binding ClassName}" Foreground="#82C367" FontFamily="Comic Sans MS" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20" TextWrapping="Wrap"/>
                                     </StackPanel>
                                 </Border>
 
+                                <!-- Back Card -->
                                 <Border x:Name="BackCard" Background="#7D3C98" BorderBrush="Black" BorderThickness="2" Padding="10" Width="150" Height="200" Visibility="Collapsed" MouseDown="BackCard_MouseDown">
                                     <DockPanel>
                                         <Image Source="{Binding Classimageblob}" Height="100" Stretch="Uniform"/>
@@ -99,20 +100,45 @@
                                             <TextBlock Text="Képesség: " FontFamily="Comic Sans MS" FontWeight="Bold" Foreground="#82C367" FontSize="14"/>
                                             <TextBlock Text="{Binding BasicEffect}" FontFamily="Comic Sans MS" TextWrapping="Wrap" FontSize="13"/>
 
-                                            <StackPanel>
-                                                <TextBlock FontSize="14" FontFamily="Comic Sans MS">
-                                                    <Run Text="Szint: " Foreground="#82C367" FontSize="14"/>
-                                                    <Run Text="{Binding Level, StringFormat=' {0} '}" FontSize="14"/>
-                                                </TextBlock>
-                                                <TextBlock FontSize="14" FontFamily="Comic Sans MS">
-                                                    <Run Text="Szükséges karakterszám: "  Foreground="#82C367" FontSize="14"/>
-                                                    <Run Text="{Binding CharacterCount, StringFormat=' {0} '}"/>
-                                                </TextBlock>
-                                                <TextBlock FontSize="14" FontFamily="Comic Sans MS">
-                                                    <Run Text="Effekt "  Foreground="#82C367" FontSize="14"/>
-                                                    <Run Text="{Binding BonusEffect, StringFormat=' {0} '}"/>
-                                                </TextBlock>
-                                            </StackPanel>
+                                            <ItemsControl ItemsSource="{Binding Szintek}">
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <StackPanel>
+                                                            <TextBlock FontSize="14" FontFamily="Comic Sans MS">
+                                                                <Run Text="Szint: " Foreground="#82C367" FontSize="14"/>
+                                                                <Run Text="{Binding Level, StringFormat=' {0} '}" FontSize="14"/>
+                                                            </TextBlock>
+                                                            <TextBlock FontSize="14" FontFamily="Comic Sans MS">
+                                                                <Run Text="Szükséges karakterszám: " Foreground="#82C367" FontSize="14"/>
+                                                                <Run Text="{Binding CharacterCount, StringFormat=' {0} '}"/>
+                                                            </TextBlock>
+                                                            <TextBlock FontSize="14" FontFamily="Comic Sans MS">
+                                                                <Run Text="Effekt " Foreground="#82C367" FontSize="14"/>
+                                                                <Run Text="{Binding BonusEffect, StringFormat=' {0} '}"/>
+                                                            </TextBlock>
+                                                        </StackPanel>
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
+
+                                            <TextBlock FontSize="14" FontFamily="Comic Sans MS" Margin="0,10,0,0">
+                                                <Run Text="Karakterek: " Foreground="#82C367" FontSize="14"/>
+                                                <ItemsControl ItemsSource="{Binding Karakterek}">
+                                                    <ItemsControl.ItemsPanel>
+                                                        <ItemsPanelTemplate>
+                                                            <WrapPanel />
+                                                        </ItemsPanelTemplate>
+                                                    </ItemsControl.ItemsPanel>
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock Margin="5,0,5,0">
+                                                                <Run Text="{Binding CharacterName}" FontSize="14"/>
+                                                            </TextBlock>
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
+                                            </TextBlock>
+
                                         </StackPanel>
                                     </DockPanel>
                                 </Border>

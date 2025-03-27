@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Karbantarto.Classes.ProjectName_Backend.DTOs;
+using Newtonsoft.Json;
 using ProjectName_Backend.DTOs;
 using System;
 using System.Collections.Generic;
@@ -38,16 +39,37 @@ namespace Karbantarto.Windows
         public Osztalyok()
         {
             InitializeComponent();
-            LoadOsztalyokAsync();
+            LoadOsztalyAsync();
         }
 
-        //public static List<OsztalyLekeresDTO> OsztalyLista { get; set; } = new List<OsztalyLekeresDTO>();
-        
-        //public static List<OsztalySzintBonusLekeresDTO> OsztalySzintBonusLista { get; set; } = new List<OsztalySzintBonusLekeresDTO>();
+        public static List<OsztalyDTO> OsztalyLista { get; set; } = new List<OsztalyDTO>();
 
-        public static List <Oszta> OsztalyLista { get; set; } = new List<OsztalyLekeresDTO>();
+        public static List<SzintDTO> SzintLista { get; set; } = new List<SzintDTO>();
 
-         
+        public static List<KarakterDTO> KarakterLista { get; set; } = new List<KarakterDTO>();
+
+
+        //Osztályok listázása
+        public async Task LoadOsztalyAsync()
+        {
+            try
+            {
+                var response = await sharedClient.GetAsync("OsztalySzintEsKarakter");
+                response.EnsureSuccessStatusCode();
+
+                var json = await response.Content.ReadAsStringAsync();
+                var osztalyok = JsonConvert.DeserializeObject<List<OsztalyDTO>>(json);
+
+                OsztalyLista = osztalyok;
+                OsztalyListBox.ItemsSource = OsztalyLista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hiba történt: " + ex.Message);
+            }
+        }
+
+
 
         private void OsztalyNevKeresoTBX_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -69,48 +91,6 @@ namespace Karbantarto.Windows
 
 
         private bool isFlipped = false;
-
-
-        public async Task LoadBonuszOsztalyokAsync()
-        {
-            try
-            {
-                var response = await sharedClient.GetAsync("Class/classes-with-bonuses");
-
-                response.EnsureSuccessStatusCode();
-
-                var json = await response.Content.ReadAsStringAsync();
-                var osztaly = JsonConvert.DeserializeObject<List<OsztalyLekeresDTO>>(json);
-                OsztalyLista = osztaly;
-                OsztalyListBox.ItemsSource = OsztalyLista;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Hiba történt: " + ex.Message);
-            }
-        }
-
-
-        public async Task LoadOsztalyokAsync()
-        {
-            try
-            {
-                var response = await sharedClient.GetAsync("Class/classes-with-bonuses");
-
-                response.EnsureSuccessStatusCode();
-
-                var json = await response.Content.ReadAsStringAsync();
-                var osztaly = JsonConvert.DeserializeObject<List<OsztalyLekeresDTO>>(json);
-                OsztalyLista = osztaly;
-                OsztalyListBox.ItemsSource = OsztalyLista;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Hiba történt: " + ex.Message);
-            }
-        }
-
-        
 
         private void FrontCard_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -137,7 +117,7 @@ namespace Karbantarto.Windows
                             };
                             DoubleAnimation HeightAnimation = new DoubleAnimation
                             {
-                                To = 350, // Az új magasság
+                                To = 480, // Az új magasság
                                 Duration = TimeSpan.FromSeconds(0.3)
                             };
 
