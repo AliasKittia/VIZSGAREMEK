@@ -9,10 +9,9 @@ namespace tftwebapi.Controllers
     public class LogoutController : ControllerBase
     {
         [HttpPost("{uId}")]
-
         public IActionResult Logout(string uId)
         {
-            if (Program.LoggedInUsers.ContainsKey(uId))
+            if (Program.LoggedUser.ContainsKey(uId))
             {
                 Program.LoggedInUsers.Remove(uId);
                 return Ok("Sikeres kijelentkezés.");
@@ -22,6 +21,5 @@ namespace tftwebapi.Controllers
                 return BadRequest("Sikertelen kijelentkezés.");
             }
         }
-
     }
 }
