@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Karbantarto.Windows"
         mc:Ignorable="d"
-        Title="Osztalyok" Height="550" Width="1090">
+        Title="Osztályok" Height="580" Width="1090">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="FontFamily" Value="Comic Sans MS"/>
@@ -63,8 +63,16 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Grid.Row="0" Margin="0,10,0,10" FontFamily="Comic Sans MS" FontSize="40" VerticalAlignment="Top" HorizontalAlignment="Center" Text="Osztályok" FontWeight="Bold"/>
+            
+            <StackPanel>
+                <TextBlock Grid.Row="0" Margin="0,10,0,10" FontFamily="Comic Sans MS" FontSize="40" VerticalAlignment="Top" HorizontalAlignment="Center" Text="Osztályok" FontWeight="Bold"/>
 
+                <DockPanel>
+                    <TextBox FontFamily="Comic Sans MS" Name="OsztalyNevKeresoTBX" Text="Osztály Neve" VerticalAlignment="Top" HorizontalAlignment="Left" Height="25" FontSize="16" Background="#D4B8E6" Width="140" Margin="10,0,0,10" TextChanged="OsztalyNevKeresoTBX_TextChanged"/>
+
+                </DockPanel>
+
+            </StackPanel>
             <ScrollViewer Grid.Column="1" Grid.Row="1" VerticalScrollBarVisibility="Auto">
                 <ItemsControl Name="OsztalyListBox">
                     <ItemsControl.ItemsPanel>
@@ -78,7 +86,7 @@
                                 <Border x:Name="FrontCard" Background="#7D3C98" BorderBrush="Black" BorderThickness="1" Padding="10" Width="150" Height="200" MouseDown="FrontCard_MouseDown">
                                     <StackPanel>
                                         <Image Source="{Binding Classimageblob}" Height="100" Stretch="Uniform"/>
-                                        <TextBlock x:Name="CharacterNameText" Text="{Binding ClassName}" Foreground="#82C367" FontFamily="Comic Sans MS" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
+                                        <TextBlock x:Name="CharacterNameText" Text="{Binding ClassName}" Foreground="#82C367" FontFamily="Comic Sans MS" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20" TextWrapping="Wrap"/>
 
                                     </StackPanel>
                                 </Border>

@@ -39,12 +39,33 @@ namespace Karbantarto.Windows
         {
             InitializeComponent();
             LoadOsztalyokAsync();
-
         }
 
-        public static List<OsztalyLekeresDTO> OsztalyLista { get; set; } = new List<OsztalyLekeresDTO>();
+        //public static List<OsztalyLekeresDTO> OsztalyLista { get; set; } = new List<OsztalyLekeresDTO>();
         
-        public static List<OsztalySzintBonusLekeresDTO> OsztalySzintBonusLista { get; set; } = new List<OsztalySzintBonusLekeresDTO>();
+        //public static List<OsztalySzintBonusLekeresDTO> OsztalySzintBonusLista { get; set; } = new List<OsztalySzintBonusLekeresDTO>();
+
+        public static List <Oszta> OsztalyLista { get; set; } = new List<OsztalyLekeresDTO>();
+
+         
+
+        private void OsztalyNevKeresoTBX_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (OsztalyListBox == null) return;
+
+            string keresettNev = OsztalyNevKeresoTBX.Text.ToLower();
+
+            if (string.IsNullOrWhiteSpace(keresettNev))
+            {
+                OsztalyListBox.ItemsSource = OsztalyLista;
+            }
+            else
+            {
+                var szurtLista = OsztalyLista.Where(k => k.ClassName.ToLower().Contains(keresettNev)).ToList();
+                OsztalyListBox.ItemsSource = szurtLista;
+            }
+        }
+
 
 
         private bool isFlipped = false;

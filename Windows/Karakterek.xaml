@@ -86,7 +86,7 @@
                                 <Border x:Name="FrontCard" Background="#7D3C98" BorderBrush="Black" BorderThickness="1" Padding="10" Width="150" Height="200" MouseDown="FrontCard_MouseDown">
                                 <StackPanel>
                                     <Image Source="{Binding Characterimageblob}" Height="100" Stretch="Uniform"/>
-                                        <TextBlock x:Name="CharacterNameText" Foreground="#82C367" Text="{Binding CharacterName}" FontFamily="Comic Sans MS" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
+                                        <TextBlock x:Name="CharacterNameText" Foreground="#82C367" Text="{Binding CharacterName}" FontFamily="Comic Sans MS" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20" TextWrapping="Wrap"/>
                                         <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,20,0,0">
                                             <Run Text="Értéke" FontSize="15" FontFamily="Comic Sans MS"/>
                                             <Run Text=": " FontSize="15" FontFamily="Comic Sans MS"/>
