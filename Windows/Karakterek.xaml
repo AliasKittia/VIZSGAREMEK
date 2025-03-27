@@ -66,9 +66,9 @@
             <TextBlock Grid.Row="0" Margin="0,5,0,5" FontFamily="Comic Sans MS" FontSize="40" VerticalAlignment="Top" HorizontalAlignment="Center" Text="Karakterek" FontWeight="Bold"/>
 
                 <DockPanel>
-                    <TextBox FontFamily="Comic Sans MS" Name="KarakterNevKeresoTBX" Text="Karakter Neve" VerticalAlignment="Top" HorizontalAlignment="Center" Height="20" Width="140" Margin="270,0,-200,0" TextChanged="KarakterNevKeresoTBX_TextChanged"/>
+                    <TextBox FontFamily="Comic Sans MS" Name="KarakterNevKeresoTBX" Text="Karakter Neve" VerticalAlignment="Top" HorizontalAlignment="Left" Height="25" FontSize="16" Background="#D4B8E6" Width="140" Margin="10,0,0,0" TextChanged="KarakterNevKeresoTBX_TextChanged"/>
 
-                    <ComboBox FontFamily="Comic Sans MS" Name="KarakterClassCBX" HorizontalAlignment="Center" Width="140" SelectionChanged="KarakterClassCBX_SelectionChanged" Margin="0,0,0,10"/>
+                    <ComboBox FontFamily="Comic Sans MS" Name="KarakterClassCBX" HorizontalAlignment="Right" Width="140" SelectionChanged="KarakterClassCBX_SelectionChanged" Margin="0,0,37,10" Height="25" FontSize="16"/>
 
                 </DockPanel>
 
