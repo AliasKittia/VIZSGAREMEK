@@ -40,6 +40,7 @@ namespace Karbantarto.Windows
         {
             InitializeComponent();
             LoadErositesAsync();
+            FillComboBox();
         }
 
         public static List<ErositesLekeresDTO> ErositesLista { get; set; } = new List<ErositesLekeresDTO>();
@@ -61,6 +62,67 @@ namespace Karbantarto.Windows
                 MessageBox.Show("Hiba történt: " + ex.Message);
             }
         }
+
+        private void FillComboBox()
+        {
+            ErositesCBX.Items.Clear();
+            ErositesCBX.Items.Add(new ComboBoxItem { Content = "Összes" });
+
+            // Az új rarity értékek beállítása
+            string[] rarityOptions = { "ezüst", "arany", "prizmatikus" };
+
+            foreach (var rarity in rarityOptions)
+            {
+                ErositesCBX.Items.Add(new ComboBoxItem { Content = rarity });
+            }
+
+            ErositesCBX.SelectedIndex = 0; // Alapértelmezettként az "Összes" legyen kiválasztva
+            ErositesCBX.SelectionChanged += ErositesCBX_SelectionChanged; // Esemény feliratkozása
+        }
+
+        private void ErositesCBX_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ErositesCBX.SelectedItem is ComboBoxItem selectedItem)
+            {
+                string selectedText = selectedItem.Content.ToString();
+
+                // Ha "Összes"-t választották, akkor minden elemet megjelenítünk
+                if (selectedText == "Összes")
+                {
+                    ErositesListBox.ItemsSource = ErositesLista;
+                }
+                else
+                {
+                    // Szűrés az AugmentRarity értéke alapján
+                    var filteredList = ErositesLista
+                        .Where(c => c.AugmentRarity != null && c.AugmentRarity.Equals(selectedText, StringComparison.OrdinalIgnoreCase))
+                        .ToList();
+
+                    ErositesListBox.ItemsSource = filteredList;
+                }
+            }
+        }
+
+
+
+
+        private void ErositesNevKeresoTBX_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (ErositesListBox == null) return;
+
+            string keresettNev = ErositesNevKeresoTBX.Text.ToLower();
+
+            if (string.IsNullOrWhiteSpace(keresettNev))
+            {
+                ErositesListBox.ItemsSource = ErositesLista;
+            }
+            else
+            {
+                var szurtLista = ErositesLista.Where(k => k.AugmentName.ToLower().Contains(keresettNev)).ToList();
+                ErositesListBox.ItemsSource = szurtLista;
+            }
+        }
+
 
         private void FoOldalBTN_Click(object sender, RoutedEventArgs e)
         {
