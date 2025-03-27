@@ -93,38 +93,57 @@ namespace Karbantarto.Windows
                 Grid parentGrid = frontCard.Parent as Grid;
                 if (parentGrid != null)
                 {
-                    Border backCard = parentGrid.FindName("BackCard") as Border;
+                    Border backCard = FindChild<Border>(parentGrid, "BackCard");
                     if (backCard != null)
                     {
                         if (!isFlipped)
                         {
-                            // Átméretezés és láthatóság változtatása
                             frontCard.Visibility = Visibility.Collapsed;
                             backCard.Visibility = Visibility.Visible;
 
-                            // Animáció indítása a nagyításhoz
-                            DoubleAnimation WidthAnimation = new DoubleAnimation
+                            DoubleAnimation widthAnimation = new DoubleAnimation
                             {
-                                To = 500, // Az új magasság
-                                Duration = TimeSpan.FromSeconds(0.3)
-                            };
-                            DoubleAnimation HeightAnimation = new DoubleAnimation
-                            {
-                                To = 300, // Az új magasság
+                                To = 200, // Az új szélesség
                                 Duration = TimeSpan.FromSeconds(0.3)
                             };
 
-                            // BackCard méretének animálása
-                            backCard.BeginAnimation(FrameworkElement.HeightProperty, HeightAnimation);
-                            backCard.BeginAnimation(FrameworkElement.WidthProperty, WidthAnimation);
+                            DoubleAnimation heightAnimation = new DoubleAnimation
+                            {
+                                To = 250, // Az új magasság
+                                Duration = TimeSpan.FromSeconds(0.3)
+                            };
+
+                            backCard.BeginAnimation(WidthProperty, widthAnimation);
+                            backCard.BeginAnimation(HeightProperty, heightAnimation);
+
+                            isFlipped = true;
                         }
-
-
-                        isFlipped = !isFlipped;
                     }
                 }
             }
         }
+
+        // Segédmetódus a megfelelő elem megtalálására
+        private static T FindChild<T>(DependencyObject parent, string childName) where T : DependencyObject
+        {
+            int childCount = VisualTreeHelper.GetChildrenCount(parent);
+            for (int i = 0; i < childCount; i++)
+            {
+                var child = VisualTreeHelper.GetChild(parent, i);
+                if (child is T tChild && ((FrameworkElement)child).Name == childName)
+                {
+                    return tChild;
+                }
+                else
+                {
+                    T foundChild = FindChild<T>(child, childName);
+                    if (foundChild != null)
+                        return foundChild;
+                }
+            }
+            return null;
+        }
+
 
         private void BackCard_MouseDown(object sender, MouseButtonEventArgs e)
         {

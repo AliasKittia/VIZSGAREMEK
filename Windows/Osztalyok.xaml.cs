@@ -117,7 +117,7 @@ namespace Karbantarto.Windows
                             };
                             DoubleAnimation HeightAnimation = new DoubleAnimation
                             {
-                                To = 480, // Az új magasság
+                                To = 450, // Az új magasság
                                 Duration = TimeSpan.FromSeconds(0.3)
                             };
 

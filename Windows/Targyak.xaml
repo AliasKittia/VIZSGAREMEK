@@ -5,7 +5,7 @@
                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                 xmlns:local="clr-namespace:Karbantarto.Windows"
                 mc:Ignorable="d"
-        Title="Targyak" Height="550" Width="1090">
+        Title="Targyak" Height="640" Width="1090">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="FontFamily" Value="Comic Sans MS"/>
@@ -32,7 +32,7 @@
 
 
         <!-- Oldalsáv -->
-        <StackPanel Grid.Column="0" Width="150">
+        <StackPanel Grid.Column="0" Width="150" >
             <StackPanel.Background>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                     <GradientStop Color="#7D3C98" Offset="0"/>
@@ -42,7 +42,7 @@
             <StackPanel.Effect>
                 <DropShadowEffect Color="Gray" Direction="100" ShadowDepth="5" BlurRadius="20" Opacity="1.5"/>
             </StackPanel.Effect>
-            <Button Name="FoOldalBTN" Content="Főoldal" Margin="10,20,10,10" Click="FoOldalBTN_Click"/>
+            <Button Name="FoOldalBTN" Content="Főoldal" Margin="10,50,10,10" Click="FoOldalBTN_Click" />
             <Button Name="KarakterekBTN" Content="Karakterek" Margin="10" Click="KarakterekBTN_Click"/>
             <Button Name="ClassokBTN" Content="Osztályok" Margin="10" Click="ClassokBTN_Click"/>
             <Button Name="ItemekBTN" Content="Tárgyak" Margin="10" Click="ItemekBTN_Click"/>
@@ -50,7 +50,7 @@
             <Button Name="TraitekBTN" Content="Erősítések" Margin="10" Click="TraitekBTN_Click"/>
             <Button Name="CsapatTervezoBTN" Content="Csapat tervező" Margin="10" Click="CsapatTervezoBTN_Click"/>
             <Button Name="KilepesBTN" Content="Kilépés" Margin="10" Click="KilepesBTN_Click"/>
-            <Image Width="120" Margin="0,10,0,0">
+            <Image Width="120" Margin="0,40,0,0">
                 <Image.Source>
                     <BitmapImage DecodePixelWidth="300" UriSource="/Images/Kittylogo.png" />
                 </Image.Source>
@@ -93,14 +93,11 @@
                             <Border x:Name="BackCard" Background="CadetBlue" BorderBrush="Black" Padding="10" Width="150" Height="200" Visibility="Collapsed" MouseDown="BackCard_MouseDown">
                                 <DockPanel>
                                     <Image Source="{Binding HalfItemimageblob}" Height="100" Stretch="Uniform"/>
-                                    <StackPanel>
+                                        <StackPanel>
+                                            <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="16"/>
 
-                                        <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="16"/>
-
-                                        <TextBlock Text="{Binding Effect}" FontSize="14"/>
-                                        
-
-                                    </StackPanel>
+                                            <TextBlock Text="{Binding Effect}" FontSize="14"/>
+                                        </StackPanel>
                                 </DockPanel>
                             </Border>
                         </Grid>

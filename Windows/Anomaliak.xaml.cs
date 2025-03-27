@@ -42,6 +42,7 @@ namespace Karbantarto.Windows
         {
             InitializeComponent();
             LoadAnomaliakAsync();
+            
         }
 
         public static List<AnomaliaLekeresDTO> AnomaliaLista { get; set; } = new List<AnomaliaLekeresDTO>();
@@ -63,7 +64,22 @@ namespace Karbantarto.Windows
             }
         }
 
+        private void AnomaliaNevKeresoTBX_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (AnomaliaListBox == null) return;
 
+            string keresettNev = AnomaliaNevKeresoTBX.Text.ToLower();
+
+            if (string.IsNullOrWhiteSpace(keresettNev))
+            {
+                AnomaliaListBox.ItemsSource = AnomaliaLista;
+            }
+            else
+            {
+                var szurtLista = AnomaliaLista.Where(k => k.AnomalyName.ToLower().Contains(keresettNev)).ToList();
+                AnomaliaListBox.ItemsSource = szurtLista;
+            }
+        }
 
 
         private void FoOldalBTN_Click(object sender, RoutedEventArgs e)

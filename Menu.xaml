@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Karbantarto"
         mc:Ignorable="d"
         x:Name="fomenu"
-        Title="Karbantartó rendszer" Height="550" Width="1090">
+        Title="Karbantartó rendszer" Height="640" Width="1090">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="FontFamily" Value="Comic Sans MS"/>
@@ -33,7 +33,7 @@
 
         <!-- Oldalsáv -->
 
-        <StackPanel Grid.Column="0" Width="150">
+        <StackPanel Grid.Column="0" Width="150" >
             <StackPanel.Background>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                     <GradientStop Color="#7D3C98" Offset="0"/>
@@ -43,7 +43,7 @@
             <StackPanel.Effect>
                 <DropShadowEffect Color="Gray" Direction="100" ShadowDepth="5" BlurRadius="20" Opacity="1.5"/>
             </StackPanel.Effect>
-            <Button Name="FoOldalBTN" Content="Főoldal" Margin="10,20,10,10" Click="FoOldalBTN_Click"/>
+            <Button Name="FoOldalBTN" Content="Főoldal" Margin="10,50,10,10" Click="FoOldalBTN_Click" />
             <Button Name="KarakterekBTN" Content="Karakterek" Margin="10" Click="KarakterekBTN_Click"/>
             <Button Name="ClassokBTN" Content="Osztályok" Margin="10" Click="ClassokBTN_Click"/>
             <Button Name="ItemekBTN" Content="Tárgyak" Margin="10" Click="ItemekBTN_Click"/>
@@ -51,7 +51,7 @@
             <Button Name="TraitekBTN" Content="Erősítések" Margin="10" Click="TraitekBTN_Click"/>
             <Button Name="CsapatTervezoBTN" Content="Csapat tervező" Margin="10" Click="CsapatTervezoBTN_Click"/>
             <Button Name="KilepesBTN" Content="Kilépés" Margin="10" Click="KilepesBTN_Click"/>
-            <Image Width="120" Margin="0,10,0,0">
+            <Image Width="120" Margin="0,40,0,0">
                 <Image.Source>
                     <BitmapImage DecodePixelWidth="300" UriSource="/Images/Kittylogo.png" />
                 </Image.Source>
@@ -65,9 +65,9 @@
                 
                 <TextBlock Name="FooldalSzovegTBX" FontSize="20" Foreground="#82C367" FontFamily="Comic Sans MS" Text="Állítsd össze a legerősebb csapatot, stratégiázz okosan, és válj a legjobbá! "/>
                 
-                <Image Width="650" Margin="0,10,0,0">
+                <Image Width="800" Margin="0,10,0,0">
                     <Image.Source>
-                        <BitmapImage DecodePixelWidth="700" UriSource="/Images/TFTpic.png" />
+                        <BitmapImage DecodePixelWidth="800" UriSource="/Images/TFTpic.png" />
                     </Image.Source>
                 </Image>
             </StackPanel>
