@@ -10,7 +10,7 @@ namespace tftwebapinew.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AnomaliesController : ControllerBase // Fixed inheritance
+    public class AnomaliesController : ControllerBase 
     {
         private readonly tftdatabaseContext _context;
 

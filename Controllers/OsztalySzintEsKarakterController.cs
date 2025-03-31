@@ -1,20 +1,17 @@
-/*﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using ProjectName_Backend.DTOs;
-using ProjectName_Backend.Models;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace ProjectName_Backend.Controllers
+using tftwebapinew.Models;
+using tftwebapinew.DTO;
+using tftwebapinew.Database;
+namespace tftwebapinew.Controllers
 {
     [Route("[controller]")]
     [ApiController]
     public class OsztalySzintEsKarakterController : ControllerBase
     {
-        private readonly TftdatabaseContext _context;
+        private readonly tftdatabaseContext _context;
 
-        public OsztalySzintEsKarakterController(TftdatabaseContext context)
+        public OsztalySzintEsKarakterController(tftdatabaseContext context)
         {
             _context = context;
         }
@@ -24,10 +21,9 @@ namespace ProjectName_Backend.Controllers
         {
             try
             {
-                var osztalyok = await _context.Classes
+                var osztalyok = await _context.Class
                     .AsNoTracking()
-                    .Include(c => c.Classlevelbonus)
-                    .Include(c => c.Characters)
+                    .Include(c => c.Character)
                     .Select(c => new OsztalyDTO
                     {
                         ClassID = c.ClassId,
@@ -106,4 +102,4 @@ namespace ProjectName_Backend.Controllers
             }
         }
     }
-}*/
+}

@@ -9,7 +9,7 @@ namespace tftwebapinew.Database
 
         public required DbSet<PostAnomaly> Anomalies { get; set; }
         public required DbSet<PostAugment> Augments { get; set; }
-        public required DbSet<PostBoard> Boards {get; set;}
+        public required DbSet<PostBoard> Board {get; set;}
         public required DbSet<PostBoardHex> boardHexes {get;set;}
         public required DbSet<PostCharacter> Character { get; set; }
         public required DbSet<PostClass> Class { get; set; }
