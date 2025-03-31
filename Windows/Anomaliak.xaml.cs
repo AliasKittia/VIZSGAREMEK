@@ -33,7 +33,7 @@ namespace Karbantarto.Windows
 
         public static HttpClient sharedClient = new()
         {
-            BaseAddress = new Uri("http://localhost:5000/api/Anomalies"),
+            BaseAddress = new Uri("http://localhost:5166/api/Anomalies"),
         };
 
 

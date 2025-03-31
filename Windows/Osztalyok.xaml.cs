@@ -69,8 +69,6 @@ namespace Karbantarto.Windows
             }
         }
 
-
-
         private void OsztalyNevKeresoTBX_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (OsztalyListBox == null) return;

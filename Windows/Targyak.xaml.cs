@@ -39,15 +39,14 @@ namespace Karbantarto.Windows
         public Targyak()
         {
             InitializeComponent();
-            LoadFeltargyAsync();
-            LoadTeljestargyAsync();
+            LoadOssztargyAsync();
         }
 
         public static List<FelTargyLekeresDTO> FelTargyLista { get; set; } = new List<FelTargyLekeresDTO>();
         public static List<TeljesTargyLekeresDTO> TeljesTargyLista { get; set; } = new List<TeljesTargyLekeresDTO>();
 
 
-        public async Task LoadFeltargyAsync()
+        public async Task LoadOssztargyAsync()
         {
             try
             {
@@ -57,7 +56,7 @@ namespace Karbantarto.Windows
                 var json = await response.Content.ReadAsStringAsync();
                 var feltargy = JsonConvert.DeserializeObject<List<FelTargyLekeresDTO>>(json);
                 FelTargyLista = feltargy;
-                FelTargyListBox.ItemsSource = FelTargyLista;
+                OsszTargyLisBox.ItemsSource = FelTargyLista;
             }
             catch (Exception ex)
             {
@@ -65,23 +64,7 @@ namespace Karbantarto.Windows
             }
         }
 
-        public async Task LoadTeljestargyAsync()
-        {
-            try
-            {
-                var response = await sharedClient.GetAsync("Fullitem");
-                response.EnsureSuccessStatusCode();
-
-                var json = await response.Content.ReadAsStringAsync();
-                var teljestargy = JsonConvert.DeserializeObject<List<TeljesTargyLekeresDTO>>(json);
-                TeljesTargyLista = teljestargy;
-                TeljesTargyListBox.ItemsSource = TeljesTargyLista;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Hiba történt: " + ex.Message);
-            }
-        }
+        
 
         private bool isFlipped = false;
 
@@ -102,7 +85,7 @@ namespace Karbantarto.Windows
                             backCard.Visibility = Visibility.Visible;
 
                             DoubleAnimation widthAnimation = new DoubleAnimation
-                            {
+                            {   
                                 To = 200, // Az új szélesség
                                 Duration = TimeSpan.FromSeconds(0.3)
                             };
@@ -253,16 +236,16 @@ namespace Karbantarto.Windows
             }
         }
 
-        private void FeltargyBTN_Click(object sender, RoutedEventArgs e)
-        {
-            FelTargyListBox.Visibility = Visibility.Visible;
-            TeljesTargyListBox.Visibility = Visibility.Collapsed;
-        }
+        //private void FeltargyBTN_Click(object sender, RoutedEventArgs e)
+        //{
+        //    FelTargyListBox.Visibility = Visibility.Visible;
+        //    TeljesTargyListBox.Visibility = Visibility.Collapsed;
+        //}
 
-        private void TeljestargyBTN_Click(object sender, RoutedEventArgs e)
-        {
-            TeljesTargyListBox.Visibility = Visibility.Visible;
-            FelTargyListBox.Visibility = Visibility.Collapsed;
-        }
+        //private void TeljestargyBTN_Click(object sender, RoutedEventArgs e)
+        //{
+        //    TeljesTargyListBox.Visibility = Visibility.Visible;
+        //    FelTargyListBox.Visibility = Visibility.Collapsed;
+        //}
     }
 }

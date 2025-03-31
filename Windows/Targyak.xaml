@@ -65,16 +65,16 @@
             </Grid.RowDefinitions>
 
             <TextBlock Name="FeltargyakTBX" Visibility="Visible" Grid.Row="0" Margin="0,10,0,10" FontFamily="Comic Sans MS" FontSize="40" VerticalAlignment="Top" HorizontalAlignment="Center" Text="Fél tárgyak" FontWeight="Bold"/>
-            
-            <DockPanel>
+            <TextBlock Name="FulltargyTBX" Visibility="Collapsed" Grid.Row="0" Margin="0,10,0,10" FontFamily="Comic Sans MS" FontSize="40" VerticalAlignment="Top" HorizontalAlignment="Center" Text="Teljes tárgyak" FontWeight="Bold"/>
+            <!--<DockPanel>
                 <Button Name="FeltargyBTN" Content="Fél tárgyak" Width="110" Height="30" HorizontalAlignment="Left" Margin="20,30,30,0" Click="FeltargyBTN_Click"/>
                 <Button Name="TeljestargyBTN" Content="Teljes tárgyak" Width="110" Height="30" HorizontalAlignment="Left" Margin="20,30,30,0" Click="TeljestargyBTN_Click"/>
-            </DockPanel>
+            </DockPanel>-->
         
         
             <Border BorderBrush="Black" BorderThickness="1" Grid.Column="1" Grid.Row="1">
         <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
-            <ItemsControl Name="FelTargyListBox" Visibility="Visible">
+            <ItemsControl Name="OsszTargyLisBox" Visibility="Visible">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Orientation="Horizontal" />
@@ -108,46 +108,6 @@
         </ScrollViewer>
         </Border>
 
-            <TextBlock Name="FulltargyTBX" Visibility="Collapsed" Grid.Row="0" Margin="0,10,0,10" FontFamily="Comic Sans MS" FontSize="40" VerticalAlignment="Top" HorizontalAlignment="Center" Text="Teljes tárgyak" FontWeight="Bold"/>
-
-            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="1" Grid.Row="2">
-        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
-            <ItemsControl Name="TeljesTargyListBox" Visibility="Collapsed">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel Orientation="Horizontal" />
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Grid Margin="10">
-                                    <Border x:Name="FrontCard" Background="LightSkyBlue" BorderBrush="Black" BorderThickness="1" Padding="10" Width="150" Height="200"  MouseDown="FrontCard_MouseDown">
-                                <StackPanel>
-                                    <Image Source="{Binding Fullitemimageblob}" Height="100" Stretch="Uniform" />
-                                            <TextBlock x:Name="FullItemNameText" Text="{Binding Name}" FontWeight="Bold" FontSize="16" TextWrapping="Wrap"/>
-                                </StackPanel>
-                            </Border>
-
-                            <Border x:Name="BackCard" Background="LightSteelBlue" BorderBrush="Black" Padding="10" Width="150" Height="250" Visibility="Collapsed" MouseDown="BackCard_MouseDown">
-                                <DockPanel>
-                                    <Image Source="{Binding Fullitemimageblob}" Height="100" Stretch="Uniform"/>
-                                    <StackPanel>
-                                        <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="16"/>
-                                        <TextBlock Text="{Binding Halfitemeffect1}" FontSize="14"/>
-                                        <TextBlock Text="{Binding Halfitemeffect2}" FontSize="14"/>
-                                        <TextBlock Text="{Binding Bonuseffect}" FontSize="14"/>
-                                        <TextBlock Text="{Binding Bonuseffect1}" FontSize="14"/>
-                                        <TextBlock Text="{Binding Bonuseffect2}" FontSize="14"/>
-                                        <TextBlock Text="{Binding ActiveEffect}" FontSize="14"/>
-                                    </StackPanel>
-                                </DockPanel>
-                            </Border>
-                        </Grid>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </ScrollViewer>
-        </Border>
     </Grid>
     </Grid>
 </Window>
