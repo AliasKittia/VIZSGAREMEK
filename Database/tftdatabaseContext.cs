@@ -13,6 +13,7 @@ namespace tftwebapinew.Database
         public required DbSet<PostBoardHex> boardHexes {get;set;}
         public required DbSet<PostCharacter> Character { get; set; }
         public required DbSet<PostClass> Class { get; set; }
+        public virtual DbSet<ClassLevelBonus> Classlevelbonus { get; set; }
         public required DbSet<PostFullitem_Partialitem> FullItems_PartialItems { get; set; }
         public required DbSet<PostFullitem> FullItems { get; set; }
         public required DbSet<PostHexCell> hexCells {get;set;}
@@ -39,7 +40,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
             // PostClass konfiguráció
             modelBuilder.Entity<PostClass>()
-                .HasKey(c => c.ClassID); // ClassId mint elsődleges kulcs
+                .HasKey(c => c.ClassId); // ClassId mint elsődleges kulcs
 
             
             // PostFullItem_PartialItems konfiguráció
@@ -53,6 +54,9 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
             // PostPartialItems konfiguráció
             modelBuilder.Entity<PostPartialitem>()
                 .HasKey(pi => pi.partial_item_id); // PartialItemId mint elsődleges kulcs
+
+            modelBuilder.Entity<ClassLevelBonus>()
+               .HasKey(clb => clb.ClassId); // PartialItemId mint elsődleges kulcs
         }
     }
 

@@ -47,14 +47,14 @@ namespace tftwebapinew.Controllers
             _context.Class.Add(classEntity);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetClass), new { id = classEntity.ClassID }, classEntity);
+            return CreatedAtAction(nameof(GetClass), new { id = classEntity.ClassId }, classEntity);
         }
 
         // PUT: api/Class/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutClass(int id, PostClass classEntity)
         {
-            if (id != classEntity.ClassID)
+            if (id != classEntity.ClassId)
             {
                 return BadRequest();
             }
@@ -98,7 +98,7 @@ namespace tftwebapinew.Controllers
 
         private bool ClassExists(int id)
         {
-            return _context.Class.Any(e => e.ClassID == id);
+            return _context.Class.Any(e => e.ClassId == id);
         }
     }
 }

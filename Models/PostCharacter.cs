@@ -1,3 +1,5 @@
+using System.Security.Claims;
+
 namespace tftwebapinew.Models
 {
     public class PostCharacter{
@@ -20,6 +22,10 @@ namespace tftwebapinew.Models
         public required int MagicResist {get; set;}
         public required int Range {get; set;}
         public required string Characterimageblob {get; set;}
+
+
+        public virtual ICollection<PostBoardHex> BoardHexes { get; set; } = new List<PostBoardHex>();
+        public virtual ICollection<PostClass> Classes { get; set; } = new List<PostClass>();
 
     }
 }

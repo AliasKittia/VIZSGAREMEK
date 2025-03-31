@@ -4,8 +4,8 @@ namespace tftwebapinew.Models
     {
         public int Id { get; set; }
         public string Name { get; set; } = null!;
-        public int PostUserId { get; set; } // Foreign key for PostUser
+        public int PostUserId { get; set; } 
 
-        public virtual PostUser PostUser { get; set; } = null!; // Navigation property
+        public virtual PostUser PostUser { get; set; } = null!;
     }
 }

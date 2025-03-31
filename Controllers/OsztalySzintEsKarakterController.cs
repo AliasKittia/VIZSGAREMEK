@@ -22,14 +22,15 @@ namespace tftwebapinew.Controllers
             try
             {
                 var osztalyok = await _context.Class
-                    .AsNoTracking()
-                    .Include(c => c.Character)
+                   .AsNoTracking()
+                    .Include(c => c.Classlevelbonus)
+                    .Include(c => c.Characters)
                     .Select(c => new OsztalyDTO
                     {
-                        ClassID = c.ClassId,
+                        ClassId = c.ClassId,
                         ClassName = c.ClassName,
                         BasicEffect = c.BasicEffect,
-                        Classimageblob = c.Classimageblob,
+                        Classimageblob = new string[] { c.Classimageblob },
                         Szintek = c.Classlevelbonus.Select(cl => new SzintDTO
                         {
                             Level = cl.Level,
@@ -38,9 +39,9 @@ namespace tftwebapinew.Controllers
                         }).ToList(),
                         Karakterek = c.Characters.Select(ch => new KarakterDTO
                         {
-                            CharacterId = ch.CharacterId,
+                            CharacterId = ch.CharacterID,
                             CharacterName = ch.CharacterName,
-                            Characterimageblob = ch.Characterimageblob
+                            Characterimageblob = new string[] { ch.Characterimageblob }
                         }).ToList()
                     })
                     .ToListAsync();
@@ -63,17 +64,17 @@ namespace tftwebapinew.Controllers
         {
             try
             {
-                var osztaly = await _context.Classes
+                var osztaly = await _context.Class
                     .AsNoTracking()
                     .Include(c => c.Classlevelbonus)
                     .Include(c => c.Characters)
                     .Where(c => c.ClassId == id)
                     .Select(c => new OsztalyDTO
                     {
-                        ClassID = c.ClassId,
+                        ClassId = c.ClassId,
                         ClassName = c.ClassName,
                         BasicEffect = c.BasicEffect,
-                        Classimageblob = c.Classimageblob,
+                        Classimageblob = new string[] { c.Classimageblob },
                         Szintek = c.Classlevelbonus.Select(cl => new SzintDTO
                         {
                             Level = cl.Level,
@@ -82,9 +83,9 @@ namespace tftwebapinew.Controllers
                         }).ToList(),
                         Karakterek = c.Characters.Select(ch => new KarakterDTO
                         {
-                            CharacterId = ch.CharacterId,
+                            CharacterId = ch.CharacterID,
                             CharacterName = ch.CharacterName,
-                            Characterimageblob = ch.Characterimageblob
+                            Characterimageblob = new string[] { ch.Characterimageblob }
                         }).ToList()
                     })
                     .FirstOrDefaultAsync();
