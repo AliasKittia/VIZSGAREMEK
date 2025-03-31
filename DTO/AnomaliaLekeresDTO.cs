@@ -1,4 +1,4 @@
-﻿    namespace tftwebapi.DTO
+﻿    namespace tftwebapinew.DTO
     {
         public class AnomaliaLekeresDTO
         {

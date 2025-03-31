@@ -1,5 +1,4 @@
-﻿namespace tftwebapi.DTO
-{
+namespace tftwebapinew.DTO{
     public class HexCellDTO
     {
         public int Id { get; set; }

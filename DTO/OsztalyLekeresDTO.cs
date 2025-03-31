@@ -1,5 +1,4 @@
-﻿namespace tftwebapi.DTO
-{
+namespace tftwebapinew.DTO{
     public class OsztalyLekeresDTO
     {
         public int ClassID { get; set; }
@@ -11,6 +10,4 @@
         public int? CharacterCount { get; set; }
         public string? BonusEffect { get; set; }
     }
-
-   
 }

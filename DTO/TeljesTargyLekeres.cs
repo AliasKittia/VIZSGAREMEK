@@ -1,5 +1,4 @@
-﻿namespace tftwebapi.DTO
-{
+namespace tftwebapinew.DTO{
     public class TeljesTargyLekeresDTO
     {
         public int Id { get; set; }

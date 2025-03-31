@@ -1,5 +1,4 @@
-﻿namespace tftwebapi.DTO
-{
+namespace tftwebapinew.DTO{
     public class FelTargyLekeresDTO
     {
         public int PartialItemId { get; set; }

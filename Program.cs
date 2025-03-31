@@ -1,17 +1,11 @@
 using Microsoft.EntityFrameworkCore;
-using tftwebapi.Data;
-using tftwebapi.Services;
+using tftwebapinew.Database;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using tftwebapi.Models;
-using System.Net.Mail;
-using System.Security.Cryptography;
-using System.Text;
-using System.Net.Http;
-using MySql.EntityFrameworkCore.Extensions;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
-namespace tftwebapi
+namespace tftwebapinew
 {
     public class Program
     {
@@ -19,21 +13,18 @@ namespace tftwebapi
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-            builder.Services.AddControllers();
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
-
-            // Register HttpClient for FtpService
-            builder.Services.AddHttpClient<FtpService>();
-
             // Get connection string with null check
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") 
                 ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 
             // Configure DbContext with dependency injection for MySQL
-            builder.Services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseMySQL(connectionString));
+            builder.Services.AddDbContext<tftdatabaseContext>(options =>
+                options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+
+            // Add services to the container.
+            builder.Services.AddControllers();
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen();
 
             // Add CORS policy
             builder.Services.AddCors(options =>
@@ -58,7 +49,7 @@ namespace tftwebapi
             // Enable serving static files (e.g., images)
             app.UseStaticFiles();
 
-            // Apply the CORS policy globally
+            // Apply the CORS policy globally (moved before UseHttpsRedirection)
             app.UseCors("ReactPolicy");
 
             app.UseHttpsRedirection();

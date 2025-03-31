@@ -1,8 +1,6 @@
-﻿
-namespace tftwebapi.Models{
-    public partial class PostPermission
-{
-    public int Id { get; set; }
+namespace tftwebapinew.Models{
+    public class PostPermission{
+        public int Id { get; set; }
 
     public int Level { get; set; }
 
@@ -11,7 +9,5 @@ namespace tftwebapi.Models{
     public string Description { get; set; } = null!;
 
     public virtual ICollection<PostUser> Users { get; set; } = new List<PostUser>();
+    }
 }
-
-}
-

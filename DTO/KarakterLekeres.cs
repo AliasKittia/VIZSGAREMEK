@@ -1,7 +1,4 @@
-﻿using tftwebapi.Models;
-
-namespace tftwebapi.DTO
-{
+namespace tftwebapinew.DTO{
     public class KarakterLekeresDTO
     {
         public int CharacterId { get; set; }
@@ -41,7 +38,5 @@ namespace tftwebapi.DTO
         public int? Range { get; set; }
 
         public string? Characterimageblob { get; set; }
-
-        
     }
 }

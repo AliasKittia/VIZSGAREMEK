@@ -1,13 +1,7 @@
-﻿namespace tftwebapi.Models
-{
-    public partial class PostBoard
-        {
-            public int BoardId { get; set; }
-
-            public int Id { get; set; }
-
-            public string Boardname { get; set; } = null!;
-
-            public virtual PostUser IdNavigation { get; set; } = null!;
-        }
+namespace tftwebapinew.Models{
+    public class PostBoard{
+        public required int Board_id {get; set;}
+        public required int Id {get; set;}
+        public required string Boardname {get; set;}
+    }
 }

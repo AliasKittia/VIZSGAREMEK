@@ -1,6 +1,5 @@
-﻿namespace tftwebapi.DTO
-{
-    public class ErositesLekeresDTO
+namespace tftwebapinew.DTO{
+     public class ErositesLekeresDTO
     {
         public int AugmentId { get; set; }
 

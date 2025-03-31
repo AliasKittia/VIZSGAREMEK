@@ -1,34 +1,34 @@
 using Microsoft.AspNetCore.Mvc;
-using tftwebapi.Data;
 using Microsoft.EntityFrameworkCore;
-using tftwebapi.Models;
+using tftwebapinew.Models;
+using tftwebapinew.Database;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace tftwebapi.Controllers
+namespace tftwebapinew.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AnomaliesController : ControllerBase
+    public class AnomaliesController : ControllerBase // Fixed inheritance
     {
-        private readonly ApplicationDbContext _context;
+        private readonly tftdatabaseContext _context;
 
-        public AnomaliesController(ApplicationDbContext context)
+        public AnomaliesController(tftdatabaseContext context)
         {
             _context = context;
         }
 
         // GET: api/PostAnomalies
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<PostAnomalies>>> GetAnomalies()
+        public async Task<ActionResult<IEnumerable<PostAnomaly>>> GetAnomalies()
         {
             return await _context.Anomalies.ToListAsync();
         }
 
         // GET: api/PostAnomalies/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<PostAnomalies>> GetAnomaly(int id)
+        public async Task<ActionResult<PostAnomaly>> GetAnomaly(int id)
         {
             var anomaly = await _context.Anomalies.FindAsync(id);
 
@@ -42,7 +42,7 @@ namespace tftwebapi.Controllers
 
         // POST: api/PostAnomalies
         [HttpPost]
-        public async Task<ActionResult<PostAnomalies>> PostAnomaly(PostAnomalies anomaly)
+        public async Task<ActionResult<PostAnomaly>> PostAnomaly(PostAnomaly anomaly)
         {
             _context.Anomalies.Add(anomaly);
             await _context.SaveChangesAsync();
@@ -52,7 +52,7 @@ namespace tftwebapi.Controllers
 
         // PUT: api/PostAnomalies/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAnomaly(int id, PostAnomalies anomaly)
+        public async Task<IActionResult> PutAnomaly(int id, PostAnomaly anomaly)
         {
             if (id != anomaly.AnomalyId)
             {

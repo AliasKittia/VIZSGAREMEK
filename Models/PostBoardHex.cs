@@ -1,17 +1,10 @@
-﻿namespace tftwebapi.Models{
-public partial class PostBoardHex
+namespace tftwebapinew.Models
 {
-    public int Id { get; set; }
-
-    public int BoardId { get; set; }
-
-    public int CharacterId { get; set; }
-
-    public int HexX { get; set; }
-
-    public int HexY { get; set; }
-
-    public virtual PostCharacter Character { get; set; } = null!;
+    public class PostBoardHex{
+        public required int Id {get; set;}
+        public required int Board_id {get; set;}
+        public required int CharacterID {get; set;}
+        public required int hex_x {get; set;}
+        public required int hex_y {get; set;}
+    }
 }
-}
-
