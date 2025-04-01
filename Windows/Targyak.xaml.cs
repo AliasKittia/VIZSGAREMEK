@@ -33,20 +33,21 @@ namespace Karbantarto.Windows
 
         public static HttpClient sharedClient = new()
         {
-            BaseAddress = new Uri("http://localhost:5000/"),
+            BaseAddress = new Uri("http://localhost:5166/"),
         };
 
         public Targyak()
         {
             InitializeComponent();
-            LoadOssztargyAsync();
+            LoadFeltargyAsync();
+            LoadTeljestargyAsync();
         }
 
         public static List<FelTargyLekeresDTO> FelTargyLista { get; set; } = new List<FelTargyLekeresDTO>();
         public static List<TeljesTargyLekeresDTO> TeljesTargyLista { get; set; } = new List<TeljesTargyLekeresDTO>();
 
 
-        public async Task LoadOssztargyAsync()
+        public async Task LoadFeltargyAsync()
         {
             try
             {
@@ -56,7 +57,24 @@ namespace Karbantarto.Windows
                 var json = await response.Content.ReadAsStringAsync();
                 var feltargy = JsonConvert.DeserializeObject<List<FelTargyLekeresDTO>>(json);
                 FelTargyLista = feltargy;
-                OsszTargyLisBox.ItemsSource = FelTargyLista;
+                FelTargyListBox.ItemsSource = FelTargyLista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hiba történt: " + ex.Message);
+            }
+        }
+        public async Task LoadTeljestargyAsync()
+        {
+            try
+            {
+                var response = await sharedClient.GetAsync("Fullitems");
+                response.EnsureSuccessStatusCode();
+
+                var json = await response.Content.ReadAsStringAsync();
+                var teljestargy = JsonConvert.DeserializeObject<List<TeljesTargyLekeresDTO>>(json);
+                TeljesTargyLista = teljestargy;
+                TeljesTargyListBox.ItemsSource = TeljesTargyLista;
             }
             catch (Exception ex)
             {
@@ -64,7 +82,6 @@ namespace Karbantarto.Windows
             }
         }
 
-        
 
         private bool isFlipped = false;
 

@@ -29,7 +29,7 @@ namespace Karbantarto.Windows
 
         public static HttpClient sharedClient = new()
         {
-            BaseAddress = new Uri("http://localhost:5000/"),
+            BaseAddress = new Uri("http://localhost:5166/api/Character"),
         };
 
         public Karakterek()
