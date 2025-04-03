@@ -11,6 +11,6 @@ namespace tftwebapinew.Models
         public required string ActiveEffect { get; set; }
         public required string Fullitemimageblob { get; set; }
 
-        public virtual ICollection<PostFullitem_Partialitem> FullitemsPartialitems { get; set; } = new List<PostFullitem_Partialitem>();
+        public virtual ICollection<PostFullitem_Partialitem> Fullitem_Partialitems { get; set; } = new List<PostFullitem_Partialitem>();
     }
 }
