@@ -8,13 +8,13 @@ const Items = () => {
 
   useEffect(() => {
     // Fetch FullItems from backend API
-    fetch("http://localhost:5287/api/FullItems")
+    fetch("http://localhost:5166/api/FullItems")
       .then((res) => res.json())
       .then((data) => setFullItems(data))
       .catch((err) => console.error("Error fetching full items:", err));
 
     // Fetch PartialItems from backend API
-    fetch("http://localhost:5287/api/PartialItems")
+    fetch("http://localhost:5166/api/PartialItems")
       .then((res) => res.json())
       .then((data) => setPartialItems(data))
       .catch((err) => console.error("Error fetching partial items:", err));

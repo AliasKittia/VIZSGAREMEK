@@ -8,7 +8,7 @@ const Augments = () => {
 
   useEffect(() => {
     // Fetch data from backend API
-    fetch("http://localhost:5287/api/Augments")
+    fetch("http://localhost:5166/api/Augment")
       .then((res) => res.json())
       .then((data) => setAugments(data)) // Store data in state
       .catch((err) => console.error("Error fetching augments:", err));

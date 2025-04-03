@@ -8,7 +8,7 @@ const Characters = () => {
 
   useEffect(() => {
     // Fetch data from backend API
-    fetch("http://localhost:5287/api/Character")
+    fetch("http://localhost:5166/api/Character")
       .then((res) => res.json())
       .then((data) => setCharacters(data)) // Store data in state
       .catch((err) => console.error("Error fetching characters:", err));
@@ -25,7 +25,7 @@ const Characters = () => {
     setSearchTerm(event.target.value);
   };
 
-  const filteredCharacters = characters.filter(char => {
+  const filteredCharacters = characters.filter((char) => {
     const matchesCost = selectedCost === "all" || char.cost === parseInt(selectedCost);
     const matchesSearch = char.characterName.toLowerCase().includes(searchTerm.toLowerCase());
     return matchesCost && matchesSearch;

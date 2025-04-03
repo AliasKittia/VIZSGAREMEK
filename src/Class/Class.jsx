@@ -7,7 +7,7 @@ const Class = () => {
 
   useEffect(() => {
     // Fetch data from backend API
-    fetch("http://localhost:5287/api/Class")
+    fetch("http://localhost:5166/api/Class")
       .then((res) => res.json())
       .then((data) => setClasses(data)) // Store data in state
       .catch((err) => console.error("Error fetching classes:", err));

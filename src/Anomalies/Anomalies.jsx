@@ -7,7 +7,7 @@ const Anomalies = () => {
 
   useEffect(() => {
     // Fetch data from backend API
-    fetch("http://localhost:5287/api/Anomalies")
+    fetch("http://localhost:5166/api/Anomalies")
       .then((res) => res.json())
       .then((data) => setAnomalies(data)) // Store data in state
       .catch((err) => console.error("Error fetching anomalies:", err));
