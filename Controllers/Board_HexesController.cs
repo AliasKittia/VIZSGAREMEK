@@ -10,23 +10,23 @@ namespace tftwebapinew.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class HexCellController : ControllerBase
+    public class BoardHexesController : ControllerBase
     {
         private readonly tftdatabaseContext _context;
 
-        public HexCellController(tftdatabaseContext context)
+        public PostBoardHex(tftdatabaseContext context)
         {
             _context = context;
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<PostHexCell>>> GetHexCells()
+        public async Task<ActionResult<IEnumerable<BoardHex>>> GetHexCells()
         {
-            return await _context.hexCells.ToListAsync();
+            return await _context.BoardHexes.ToListAsync();
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<PostHexCell>> GetHexCell(int id)
+        public async Task<ActionResult<PostBoardHex>> GetHexCell(int id)
         {
             var hexCell = await _context.hexCells.FindAsync(id);
 
@@ -39,7 +39,7 @@ namespace tftwebapinew.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<PostHexCell>> PostHexCell(PostHexCell hexCell)
+        public async Task<ActionResult<PostBoardHex>> PostHexCell(PostBoardHex hexCell)
         {
             _context.hexCells.Add(hexCell);
             await _context.SaveChangesAsync();
@@ -48,7 +48,7 @@ namespace tftwebapinew.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutHexCell(int id, PostHexCell hexCell)
+        public async Task<IActionResult> PutHexCell(int id, PostBoardHex hexCell)
         {
             if (id != hexCell.Id)
             {

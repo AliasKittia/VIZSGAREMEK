@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using tftwebapinew.Models;
+using tftwebapinew.DTO;
 
 namespace tftwebapinew.Database
 {
@@ -9,93 +10,56 @@ namespace tftwebapinew.Database
 
         public required DbSet<PostAnomaly> Anomalies { get; set; }
         public required DbSet<PostAugment> Augments { get; set; }
-        public required DbSet<PostBoard> Board { get; set; }
-        public required DbSet<PostBoardHex> boardHexes { get; set; }
+        public required DbSet<PostBoard> Board {get; set;}
+        public required DbSet<PostBoardHex> BoardHexes {get;set;}
         public required DbSet<PostCharacter> Character { get; set; }
         public required DbSet<PostClass> Class { get; set; }
         public virtual DbSet<PostClassLevelBonus> Classlevelbonus { get; set; }
         public required DbSet<PostFullitem_Partialitem> FullItems_PartialItems { get; set; }
         public required DbSet<PostFullitem> FullItems { get; set; }
-        public required DbSet<PostHexCell> hexCells { get; set; }
-        public required DbSet<PostPartialitem> PartialItems { get; set; }
-        public required DbSet<PostPermission> Permissions { get; set; }
-        public required DbSet<PostUser> User { get; set; }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+         public required DbSet<PostPartialitem> PartialItems { get; set; }
+        public required DbSet<PostPermission> Permissions {get; set;}
+        public required DbSet<PostUser> User {get;set;}
+       
+        
+protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            // Configure the many-to-many relationship between PostCharacter and PostClass
-            modelBuilder.Entity<PostCharacter>()
-                .HasMany(p => p.Classes)
-                .WithMany(p => p.Characters)
-                .UsingEntity<Dictionary<string, object>>(
-                    "characterclass",
-                    j => j.HasOne<PostClass>().WithMany()
-                        .HasForeignKey("ClassId")
-                        .HasConstraintName("characterclass_ibfk_2"),
-                    j => j.HasOne<PostCharacter>().WithMany()
-                        .HasForeignKey("CharacterId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .HasConstraintName("characterclass_ibfk_1"),
-                    j =>
-                    {
-                        j.HasKey("CharacterId", "ClassId").HasName("PRIMARY");
-                        j.ToTable("characterclass");
-                        j.HasIndex(new[] { "ClassId" }, "ClassID");
-                        j.IndexerProperty<int>("CharacterId")
-                            .HasColumnName("CharacterID");
-                        j.IndexerProperty<int>("ClassId")
-                            .HasColumnName("ClassID");
-                    });
-
-            // PostAnomaly configuration
+            // PostAnomalies konfiguráció
             modelBuilder.Entity<PostAnomaly>()
-                .HasKey(a => a.AnomalyId);
+                .HasKey(a => a.AnomalyId); // AnomalyId mint elsődleges kulcs
 
-            // PostAugment configuration
+            // PostAugments konfiguráció
             modelBuilder.Entity<PostAugment>()
-                .HasKey(a => a.AugmentId);
+                .HasKey(a => a.AugmentId); // AugmentId mint elsődleges kulcs
 
-            // PostCharacter configuration
+            // PostCharacter konfiguráció
             modelBuilder.Entity<PostCharacter>()
-                .HasKey(c => c.CharacterID);
+                .HasKey(c => c.CharacterID); // CharacterId mint elsődleges kulcs
 
-            // PostClass configuration
+            // PostClass konfiguráció
             modelBuilder.Entity<PostClass>()
-                .HasKey(c => c.ClassId);
+                .HasKey(c => c.ClassId); // ClassId mint elsődleges kulcs
 
-            // PostFullitem_Partialitem configuration
+            
+            // PostFullItem_PartialItems konfiguráció
             modelBuilder.Entity<PostFullitem_Partialitem>()
-                .HasKey(fipi => fipi.Id);
+                .HasKey(fipi => fipi.Id); // FullItemId mint elsődleges kulcs
 
-            // PostFullitem configuration
+            // PostFullItems konfiguráció
             modelBuilder.Entity<PostFullitem>()
-                .HasKey(fi => fi.Id);
+                .HasKey(fi => fi.Id); // FullItemId mint elsődleges kulcs
 
-            // PostPartialitem configuration
+            // PostPartialItems konfiguráció
             modelBuilder.Entity<PostPartialitem>()
-                .HasKey(pi => pi.partial_item_id);
+                .HasKey(pi => pi.partial_item_id); // PartialItemId mint elsődleges kulcs
 
-            // PostClassLevelBonus configuration - changed to composite key
             modelBuilder.Entity<PostClassLevelBonus>()
-               .HasKey(clb => new { clb.ClassId, clb.Level });
-
-            // BoardHex configuration
-            modelBuilder.Entity<PostBoardHex>()
-                .HasKey(bh => bh.Id);
-
-            // Board configuration
-            modelBuilder.Entity<PostBoard>()
-                .HasKey(b => b.Board_id);
-
-            // Permission configuration
-            modelBuilder.Entity<PostPermission>()
-                .HasKey(p => p.Id);
-
-            // User configuration
-            modelBuilder.Entity<PostUser>()
-                .HasKey(u => u.Id);
+               .HasKey(clb => clb.ClassId); // PartialItemId mint elsődleges kulcs
         }
     }
-}
+    
+
+    }
+
