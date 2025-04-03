@@ -1,93 +1,75 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using tftwebapinew.Models;
-using tftwebapinew.Database;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace tftwebapinew.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
-    public class BoardHexesController : ControllerBase
+    [Route("api/[controller]")]
+    public class Board_HexesController : ControllerBase
     {
-        private readonly tftdatabaseContext _context;
+        private static List<PostBoardHex> _boardHexes = new List<PostBoardHex>();
 
-        public PostBoardHex(tftdatabaseContext context)
-        {
-            _context = context;
-        }
-
+        // GET: api/Board_Hexes
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<BoardHex>>> GetHexCells()
+        public IActionResult GetAll()
         {
-            return await _context.BoardHexes.ToListAsync();
+            return Ok(_boardHexes);
         }
 
+        // GET: api/Board_Hexes/{id}
         [HttpGet("{id}")]
-        public async Task<ActionResult<PostBoardHex>> GetHexCell(int id)
+        public IActionResult GetById(int id)
         {
-            var hexCell = await _context.hexCells.FindAsync(id);
+            var hex = _boardHexes.FirstOrDefault(h => h.Id == id);
+            if (hex == null)
+            {
+                return NotFound();
+            }
+            return Ok(hex);
+        }
 
-            if (hexCell == null)
+        // POST: api/Board_Hexes
+        [HttpPost]
+        public IActionResult Create([FromBody] PostBoardHex newHex)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            _boardHexes.Add(newHex);
+            return CreatedAtAction(nameof(GetById), new { id = newHex.Id }, newHex);
+        }
+
+        // PUT: api/Board_Hexes/{id}
+        [HttpPut("{id}")]
+        public IActionResult Update(int id, [FromBody] PostBoardHex updatedHex)
+        {
+            var hex = _boardHexes.FirstOrDefault(h => h.Id == id);
+            if (hex == null)
             {
                 return NotFound();
             }
 
-            return hexCell;
-        }
-
-        [HttpPost]
-        public async Task<ActionResult<PostBoardHex>> PostHexCell(PostBoardHex hexCell)
-        {
-            _context.hexCells.Add(hexCell);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction(nameof(GetHexCell), new { id = hexCell.Id }, hexCell);
-        }
-
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutHexCell(int id, PostBoardHex hexCell)
-        {
-            if (id != hexCell.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(hexCell).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!_context.hexCells.Any(e => e.Id == id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            hex.Board_id = updatedHex.Board_id;
+            hex.CharacterID = updatedHex.CharacterID;
+            hex.hex_x = updatedHex.hex_x;
+            hex.hex_y = updatedHex.hex_y;
 
             return NoContent();
         }
 
+        // DELETE: api/Board_Hexes/{id}
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteHexCell(int id)
+        public IActionResult Delete(int id)
         {
-            var hexCell = await _context.hexCells.FindAsync(id);
-            if (hexCell == null)
+            var hex = _boardHexes.FirstOrDefault(h => h.Id == id);
+            if (hex == null)
             {
                 return NotFound();
             }
 
-            _context.hexCells.Remove(hexCell);
-            await _context.SaveChangesAsync();
-
+            _boardHexes.Remove(hex);
             return NoContent();
         }
     }
