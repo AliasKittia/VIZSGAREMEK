@@ -9,7 +9,7 @@ namespace tftwebapinew.Models
         public required string bonuseffect1 { get; set; }
          public required string? bonuseffect2 { get; set; }
         public required string ActiveEffect { get; set; }
-        public required string Fullitemimagineblob { get; set; }
+        public required string Fullitemimageblob { get; set; }
 
         public virtual ICollection<FullitemsPartialitem> FullitemsPartialitems { get; set; } = new List<FullitemsPartialitem>();
     }

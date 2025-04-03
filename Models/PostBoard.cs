@@ -1,11 +1,15 @@
+using System.Text.Json.Serialization;
+
 namespace tftwebapinew.Models
 {
     public class PostBoard
     {
-        public int Id { get; set; }
-        public string Name { get; set; } = null!;
+        public int Board_id { get; set; }
+        public int id { get; set; }
+        public string? Boardname { get; set; }
         public int PostUserId { get; set; } 
 
-        public virtual PostUser PostUser { get; set; } = null!;
+        [JsonIgnore]
+        public virtual PostUser? PostUser { get; set; } // Made nullable to avoid initialization issues
     }
 }

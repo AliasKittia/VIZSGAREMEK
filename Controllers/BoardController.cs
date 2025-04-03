@@ -47,14 +47,14 @@ namespace tftwebapinew.Controllers
             _context.Board.Add(board);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetBoard), new { id = board.Id }, board);
+            return CreatedAtAction(nameof(GetBoard), new { id = board.Board_id }, board);
         }
 
         // PUT: api/Board/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutBoard(int id, PostBoard board)
         {
-            if (id != board.Id)
+            if (id != board.Board_id)
             {
                 return BadRequest();
             }
@@ -98,7 +98,7 @@ namespace tftwebapinew.Controllers
 
         private bool BoardExists(int id)
         {
-            return _context.Board.Any(e => e.Id == id);
+            return _context.Board.Any(e => e.Board_id == id);
         }
     }
 }
