@@ -1,4 +1,5 @@
 using System.Security.Claims;
+using System.Text.Json.Serialization;
 
 namespace tftwebapinew.Models
 {
@@ -21,9 +22,9 @@ namespace tftwebapinew.Models
         public required int Armor {get; set;}
         public required int MagicResist {get; set;}
         public required int Range {get; set;}
-        public required string Characterimageblob {get; set;}
+        public required string? Characterimageblob {get; set;}
 
-
+        [JsonIgnore]
         public virtual ICollection<PostBoardHex> BoardHexes { get; set; } = new List<PostBoardHex>();
         public virtual ICollection<PostClass> Classes { get; set; } = new List<PostClass>();
 

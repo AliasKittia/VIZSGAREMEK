@@ -1,4 +1,7 @@
-﻿namespace tftwebapinew.DTO
+﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
+
+namespace tftwebapinew.DTO
 {
     public class OsztalyDTO
     {
@@ -12,7 +15,6 @@
 
     public class SzintDTO
     {
-        public int ClassId { get; set; }
         public int Level { get; set; }
         public int? CharacterCount { get; set; }
         public string? BonusEffect { get; set; }
@@ -24,6 +26,4 @@
         public string CharacterName { get; set; } = null!;
         public string[]? Characterimageblob { get; set; }
     }
-
-
 }

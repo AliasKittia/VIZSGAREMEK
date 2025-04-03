@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using tftwebapinew.Models;
 using tftwebapinew.DTO;
 using tftwebapinew.Database;
+
 namespace tftwebapinew.Controllers
 {
     [Route("[controller]")]
@@ -30,7 +30,7 @@ namespace tftwebapinew.Controllers
                         ClassId = c.ClassId,
                         ClassName = c.ClassName,
                         BasicEffect = c.BasicEffect,
-                        Classimageblob = new string[] { c.Classimageblob },
+                        Classimageblob = c.Classimageblob != null ? new string[] { c.Classimageblob } : null,
                         Szintek = c.Classlevelbonus.Select(cl => new SzintDTO
                         {
                             Level = cl.Level,
@@ -41,17 +41,12 @@ namespace tftwebapinew.Controllers
                         {
                             CharacterId = ch.CharacterID,
                             CharacterName = ch.CharacterName,
-                            Characterimageblob = new string[] { ch.Characterimageblob }
+                            Characterimageblob = ch.Characterimageblob != null ? new string[] { ch.Characterimageblob } : null
                         }).ToList()
                     })
                     .ToListAsync();
 
-                if (osztalyok == null || !osztalyok.Any())
-                {
-                    return NotFound("No classes found in the database.");
-                }
-
-                return Ok(osztalyok);
+                return osztalyok.Any() ? Ok(osztalyok) : NotFound("No classes found in the database.");
             }
             catch (Exception ex)
             {
@@ -74,7 +69,7 @@ namespace tftwebapinew.Controllers
                         ClassId = c.ClassId,
                         ClassName = c.ClassName,
                         BasicEffect = c.BasicEffect,
-                        Classimageblob = new string[] { c.Classimageblob },
+                        Classimageblob = c.Classimageblob != null ? new string[] { c.Classimageblob } : null,
                         Szintek = c.Classlevelbonus.Select(cl => new SzintDTO
                         {
                             Level = cl.Level,
@@ -85,17 +80,12 @@ namespace tftwebapinew.Controllers
                         {
                             CharacterId = ch.CharacterID,
                             CharacterName = ch.CharacterName,
-                            Characterimageblob = new string[] { ch.Characterimageblob }
+                            Characterimageblob = ch.Characterimageblob != null ? new string[] { ch.Characterimageblob } : null
                         }).ToList()
                     })
                     .FirstOrDefaultAsync();
 
-                if (osztaly == null)
-                {
-                    return NotFound($"Class with ID {id} not found.");
-                }
-
-                return Ok(osztaly);
+                return osztaly != null ? Ok(osztaly) : NotFound($"Class with ID {id} not found.");
             }
             catch (Exception ex)
             {
