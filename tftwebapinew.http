@@ -1,6 +1,6 @@
 @tftwebapinew_HostAddress = http://localhost:5166
 
-GET {{tftwebapinew_HostAddress}}/weatherforecast/
+
 Accept: application/json
 
 ###

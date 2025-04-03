@@ -7,7 +7,7 @@ namespace tftwebapinew.Models
         public required string Classimageblob { get; set; }
 
 
-        public virtual ICollection<ClassLevelBonus> Classlevelbonus { get; set; } = new List<ClassLevelBonus>();
+        public virtual ICollection<PostClassLevelBonus> Classlevelbonus { get; set; } = new List<PostClassLevelBonus>();
 
         public virtual ICollection<PostCharacter> Characters { get; set; } = new List<PostCharacter>();
     }

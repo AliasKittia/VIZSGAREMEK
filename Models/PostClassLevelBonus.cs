@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace tftwebapinew.Models
 {
-    public class ClassLevelBonus
+    public class PostClassLevelBonus
     {
         public int ClassId { get; set; }
 
