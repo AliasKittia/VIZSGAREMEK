@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using tftwebapinew.Models;
+using tftwebapinew.DTO;
 
 namespace tftwebapinew.Database
 {
@@ -10,17 +11,16 @@ namespace tftwebapinew.Database
         public required DbSet<PostAnomaly> Anomalies { get; set; }
         public required DbSet<PostAugment> Augments { get; set; }
         public required DbSet<PostBoard> Board {get; set;}
-        public required DbSet<PostBoardHex> boardHexes {get;set;}
+        public required DbSet<PostBoardHex> BoardHexes {get;set;}
         public required DbSet<PostCharacter> Character { get; set; }
         public required DbSet<PostClass> Class { get; set; }
         public virtual DbSet<PostClassLevelBonus> Classlevelbonus { get; set; }
         public required DbSet<PostFullitem_Partialitem> FullItems_PartialItems { get; set; }
         public required DbSet<PostFullitem> FullItems { get; set; }
-        public required DbSet<PostHexCell> hexCells {get;set;}
          public required DbSet<PostPartialitem> PartialItems { get; set; }
         public required DbSet<PostPermission> Permissions {get; set;}
         public required DbSet<PostUser> User {get;set;}
-        
+       
         
 protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -59,6 +59,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
                .HasKey(clb => clb.ClassId); // PartialItemId mint elsődleges kulcs
         }
     }
+    
 
     }
 
