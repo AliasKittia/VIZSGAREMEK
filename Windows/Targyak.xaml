@@ -30,7 +30,7 @@
         </Grid.ColumnDefinitions>
 
         <!-- Oldalsáv -->
-        <StackPanel Grid.Column="0" Width="150">
+        <StackPanel Grid.Column="0" Width="150" >
             <StackPanel.Background>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                     <GradientStop Color="#7D3C98" Offset="0"/>
@@ -40,23 +40,28 @@
             <StackPanel.Effect>
                 <DropShadowEffect Color="Gray" Direction="100" ShadowDepth="5" BlurRadius="20" Opacity="1.5"/>
             </StackPanel.Effect>
-            <Button Name="FoOldalBTN" Content="Főoldal" Margin="10,20,10,10" Click="FoOldalBTN_Click"/>
-            <Button Name="KarakterekBTN" Content="Karakterek" Margin="10" Click="KarakterekBTN_Click"/>
-            <Button Name="ClassokBTN" Content="Osztályok" Margin="10" Click="ClassokBTN_Click"/>
-            <Button Name="ItemekBTN" Content="Tárgyak" Margin="10" Click="ItemekBTN_Click"/>
-            <Button Name="AnomaliakBTN" Content="Anomáliák" Margin="10" Click="AnomaliakBTN_Click"/>
-            <Button Name="TraitekBTN" Content="Erősítések" Margin="10" Click="TraitekBTN_Click"/>
-            <Button Name="CsapatTervezoBTN" Content="Csapat tervező" Margin="10" Click="CsapatTervezoBTN_Click"/>
-            <Button Name="KilepesBTN" Content="Kilépés" Margin="10" Click="KilepesBTN_Click"/>
-            <Image Width="120" Margin="0,10,0,0" Source="/Images/Kittylogo.png"/>
+            <Button Name="FoOldalBTN" Content="Főoldal" Margin="10,50,10,20" Click="FoOldalBTN_Click" Height="30" FontSize="17" FontWeight="Bold"/>
+            <Button Name="KarakterekBTN" Content="Karakterek" Margin="10,10,10,20" Click="KarakterekBTN_Click" Height="30" FontSize="17" FontWeight="Bold"/>
+            <Button Name="ClassokBTN" Content="Osztályok" Margin="10,10,10,20" Click="ClassokBTN_Click" Height="30" FontSize="17" FontWeight="Bold"/>
+            <Button Name="ItemekBTN" Content="Tárgyak" Margin="10,10,10,20" Click="ItemekBTN_Click" Height="30" FontSize="17" FontWeight="Bold"/>
+            <Button Name="AnomaliakBTN" Content="Anomáliák" Margin="10,10,10,20" Click="AnomaliakBTN_Click" Height="30" FontSize="17" FontWeight="Bold"/>
+            <Button Name="TraitekBTN" Content="Erősítések" Margin="10,10,10,20" Click="TraitekBTN_Click" Height="30" FontSize="17" FontWeight="Bold"/>
+            <Button Name="CsapatTervezoBTN" Content="Csapat tervező" Margin="10,10,10,20" Click="CsapatTervezoBTN_Click" Height="30" FontSize="17" FontWeight="Bold"/>
+            <Button Name="KilepesBTN" Content="Kilépés" Margin="10,10,10,20" Click="KilepesBTN_Click" Height="30" FontSize="17" FontWeight="Bold"/>
+            <Image Width="120" Margin="0,0,0,0">
+                <Image.Source>
+                    <BitmapImage DecodePixelWidth="300" UriSource="/Images/Kittylogo.png" />
+                </Image.Source>
+            </Image>
         </StackPanel>
+
 
         <!-- Tartalom -->
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="240"/>
-                <RowDefinition Height="240"/>
+                <RowDefinition Height="310"/>
+                <RowDefinition Height="310"/>
             </Grid.RowDefinitions>
 
             <StackPanel>
@@ -67,7 +72,7 @@
 
                 </DockPanel>
             </StackPanel>
-            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="1" Grid.Row="1" Height="Auto" MinHeight="250">
+            <Border BorderBrush="Black" BorderThickness="2" Grid.Column="1" Grid.Row="1" Height="Auto" MinHeight="310">
                 <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
                     <ItemsControl Name="FelTargyListBox">
                         <ItemsControl.ItemsPanel>
@@ -78,7 +83,7 @@
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <Grid Margin="10">
-                                    <Border x:Name="FrontCard" Background="#7D3C98" BorderBrush="Black" BorderThickness="1" Padding="10" Width="150" Height="200" MouseDown="FrontCard_MouseDown">
+                                    <Border x:Name="FrontCard" Background="#7D3C98" BorderBrush="Black" BorderThickness="1" Padding="10" Width="150" Height="245" MouseDown="FrontCard_MouseDown">
                                         <StackPanel>
                                             <Image Source="{Binding HalfItemimageblob}" Height="100" Stretch="Uniform" />
                                             <TextBlock x:Name="CharacterNameText" Text="{Binding Name}" Foreground="#82C367" FontFamily="Comic Sans MS" FontWeight="Bold" FontSize="16" TextWrapping="Wrap"/>
@@ -113,7 +118,7 @@
             </Border>
 
 
-            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="1" Grid.Row="2" Height="Auto" MinHeight="250">
+            <Border BorderBrush="Black" BorderThickness="2"  Grid.Column="1" Grid.Row="2" Height="310" >
                 <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
                     <ItemsControl Name="TeljesTargyListBox">
                         <ItemsControl.ItemsPanel>
