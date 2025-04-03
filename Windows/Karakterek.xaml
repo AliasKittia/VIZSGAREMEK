@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Karbantarto.Windows"
         mc:Ignorable="d"
-        Title="Karakterek" Height="640" Width="1090">
+        Title="Karakterek" Height="700" Width="1090">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="FontFamily" Value="Comic Sans MS"/>
@@ -39,20 +39,21 @@
             <StackPanel.Effect>
                 <DropShadowEffect Color="Gray" Direction="100" ShadowDepth="5" BlurRadius="20" Opacity="1.5"/>
             </StackPanel.Effect>
-            <Button Name="FoOldalBTN" Content="Főoldal" Margin="10,50,10,10" Click="FoOldalBTN_Click" />
-            <Button Name="KarakterekBTN" Content="Karakterek" Margin="10" Click="KarakterekBTN_Click"/>
-            <Button Name="ClassokBTN" Content="Osztályok" Margin="10" Click="ClassokBTN_Click"/>
-            <Button Name="ItemekBTN" Content="Tárgyak" Margin="10" Click="ItemekBTN_Click"/>
-            <Button Name="AnomaliakBTN" Content="Anomáliák" Margin="10" Click="AnomaliakBTN_Click"/>
-            <Button Name="TraitekBTN" Content="Erősítések" Margin="10" Click="TraitekBTN_Click"/>
-            <Button Name="CsapatTervezoBTN" Content="Csapat tervező" Margin="10" Click="CsapatTervezoBTN_Click"/>
-            <Button Name="KilepesBTN" Content="Kilépés" Margin="10" Click="KilepesBTN_Click"/>
-            <Image Width="120" Margin="0,40,0,0">
+            <Button Name="FoOldalBTN" Content="Főoldal" Margin="10,50,10,20" Click="FoOldalBTN_Click" Height="30" FontSize="17" FontWeight="Bold"/>
+            <Button Name="KarakterekBTN" Content="Karakterek" Margin="10,10,10,20" Click="KarakterekBTN_Click" Height="30" FontSize="17" FontWeight="Bold"/>
+            <Button Name="ClassokBTN" Content="Osztályok" Margin="10,10,10,20" Click="ClassokBTN_Click" Height="30" FontSize="17" FontWeight="Bold"/>
+            <Button Name="ItemekBTN" Content="Tárgyak" Margin="10,10,10,20" Click="ItemekBTN_Click" Height="30" FontSize="17" FontWeight="Bold"/>
+            <Button Name="AnomaliakBTN" Content="Anomáliák" Margin="10,10,10,20" Click="AnomaliakBTN_Click" Height="30" FontSize="17" FontWeight="Bold"/>
+            <Button Name="TraitekBTN" Content="Erősítések" Margin="10,10,10,20" Click="TraitekBTN_Click" Height="30" FontSize="17" FontWeight="Bold"/>
+            <Button Name="CsapatTervezoBTN" Content="Csapat tervező" Margin="10,10,10,20" Click="CsapatTervezoBTN_Click" Height="30" FontSize="17" FontWeight="Bold"/>
+            <Button Name="KilepesBTN" Content="Kilépés" Margin="10,10,10,20" Click="KilepesBTN_Click" Height="30" FontSize="17" FontWeight="Bold"/>
+            <Image Width="120" Margin="0,0,0,0">
                 <Image.Source>
                     <BitmapImage DecodePixelWidth="300" UriSource="/Images/Kittylogo.png" />
                 </Image.Source>
             </Image>
         </StackPanel>
+
 
 
         <Grid Grid.Column="1">
@@ -84,7 +85,7 @@
                         <Grid Margin="10">
                                 <Border x:Name="FrontCard" Background="#7D3C98" BorderBrush="Black" BorderThickness="1" Padding="10" Width="150" Height="200" MouseDown="FrontCard_MouseDown">
                                 <StackPanel>
-                                    <Image Source="{Binding Characterimageblob}" Height="100" Stretch="Uniform"/>
+                                        <Image Source="{Binding Characterimageblob}" Height="100" Stretch="Uniform"/>
                                         <TextBlock x:Name="CharacterNameText" Foreground="#82C367" Text="{Binding CharacterName}" FontFamily="Comic Sans MS" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20" TextWrapping="Wrap"/>
                                         <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,20,0,0">
                                             <Run Text="Értéke" FontSize="15" FontFamily="Comic Sans MS"/>
@@ -96,7 +97,7 @@
 
                                 <Border x:Name="BackCard" Background="#7D3C98" BorderBrush="Black" BorderThickness="2" Padding="10" Width="150" Height="300" Visibility="Collapsed" MouseDown="BackCard_MouseDown">
                                     <DockPanel>
-                                        <Image Source="{Binding Characterimageblob}" Height="100" Stretch="Uniform"/>
+                                        
                                         <StackPanel >
 
                                             <TextBlock  Text="{Binding CharacterName}" FontFamily="Comic Sans MS" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18"/>
