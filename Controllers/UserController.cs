@@ -30,7 +30,9 @@ namespace tftwebapinew.Controllers
                     PermissionId = user.PermissionId,
                     Active = user.Active,
                     Email = user.Email,
-                    ProfilePicturePath = user.ProfilePicturePath
+                    ProfilePicturePath = user.ProfilePicturePath,
+                    Salt = user.Salt, // Ensure Salt is included
+                    Hash = user.Hash // Ensure Hash is included
                 })
                 .ToListAsync();
         }
@@ -48,7 +50,9 @@ namespace tftwebapinew.Controllers
                     PermissionId = u.PermissionId,
                     Active = u.Active,
                     Email = u.Email,
-                    ProfilePicturePath = u.ProfilePicturePath
+                    ProfilePicturePath = u.ProfilePicturePath,
+                    Salt = u.Salt, // Ensure Salt is included
+                    Hash = u.Hash // Ensure Hash is included
                 })
                 .FirstOrDefaultAsync(u => u.Id == id);
 
