@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Karbantarto.Windows"
         mc:Ignorable="d"
-        Title="Csapatepito" Height="550" Width="1090">
+        Title="Csapatepito" Height="700" Width="1090">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="FontFamily" Value="Comic Sans MS"/>
@@ -26,17 +26,13 @@
         
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
-            <ColumnDefinition Width="600"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="650"/>
+            <ColumnDefinition Width="240"/>
         </Grid.ColumnDefinitions>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="300"/>
-            <RowDefinition Height="150"/>
-        </Grid.RowDefinitions>
+       
 
-        <StackPanel Grid.Column="0" Grid.RowSpan="3" Width="150">
+        <StackPanel Grid.Column="0" Grid.RowSpan="3" Width="150" >
             <StackPanel.Background>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                     <GradientStop Color="#7D3C98" Offset="0"/>
@@ -46,34 +42,55 @@
             <StackPanel.Effect>
                 <DropShadowEffect Color="Gray" Direction="100" ShadowDepth="5" BlurRadius="20" Opacity="1.5"/>
             </StackPanel.Effect>
-            <Button Name="FoOldalBTN" Content="Főoldal" Margin="10,20,10,10" Click="FoOldalBTN_Click"/>
-            <Button Name="KarakterekBTN" Content="Karakterek" Margin="10" Click="KarakterekBTN_Click"/>
-            <Button Name="ClassokBTN" Content="Osztályok" Margin="10" Click="ClassokBTN_Click"/>
-            <Button Name="ItemekBTN" Content="Tárgyak" Margin="10" Click="ItemekBTN_Click"/>
-            <Button Name="AnomaliakBTN" Content="Anomáliák" Margin="10" Click="AnomaliakBTN_Click"/>
-            <Button Name="TraitekBTN" Content="Erősítések" Margin="10" Click="TraitekBTN_Click"/>
-            <Button Name="CsapatTervezoBTN" Content="Csapat tervező" Margin="10" Click="CsapatTervezoBTN_Click"/>
-            <Button Name="KilepesBTN" Content="Kilépés" Margin="10" Click="KilepesBTN_Click"/>
-            <Image Width="120" Margin="0,10,0,0">
+            <Button Name="FoOldalBTN" Content="Főoldal" Margin="10,50,10,20" Click="FoOldalBTN_Click" Height="30" FontSize="17" FontWeight="Bold"/>
+            <Button Name="KarakterekBTN" Content="Karakterek" Margin="10,10,10,20" Click="KarakterekBTN_Click" Height="30" FontSize="17" FontWeight="Bold"/>
+            <Button Name="ClassokBTN" Content="Osztályok" Margin="10,10,10,20" Click="ClassokBTN_Click" Height="30" FontSize="17" FontWeight="Bold"/>
+            <Button Name="ItemekBTN" Content="Tárgyak" Margin="10,10,10,20" Click="ItemekBTN_Click" Height="30" FontSize="17" FontWeight="Bold"/>
+            <Button Name="AnomaliakBTN" Content="Anomáliák" Margin="10,10,10,20" Click="AnomaliakBTN_Click" Height="30" FontSize="17" FontWeight="Bold"/>
+            <Button Name="TraitekBTN" Content="Erősítések" Margin="10,10,10,20" Click="TraitekBTN_Click" Height="30" FontSize="17" FontWeight="Bold"/>
+            <Button Name="CsapatTervezoBTN" Content="Csapat tervező" Margin="10,10,10,20" Click="CsapatTervezoBTN_Click" Height="30" FontSize="17" FontWeight="Bold"/>
+            <Button Name="KilepesBTN" Content="Kilépés" Margin="10,10,10,20" Click="KilepesBTN_Click" Height="30" FontSize="17" FontWeight="Bold"/>
+            <Image Width="120" Margin="0,0,0,0">
                 <Image.Source>
                     <BitmapImage DecodePixelWidth="300" UriSource="/Images/Kittylogo.png" />
                 </Image.Source>
             </Image>
         </StackPanel>
 
-        <TextBlock Text="Csapat építő:" Grid.Row="0" Grid.Column="1" Margin="0,0,0,20" FontFamily="Comic Sans MS" FontSize="40" VerticalAlignment="Top" HorizontalAlignment="Center"  FontWeight="Bold" />
+        
 
-
-
-        <!-- Hexagonal Grid -->
-        <Border BorderBrush="Black" BorderThickness="0" Grid.Column="1">
-            <Canvas Name="HexGridCanvas" Margin="70,100,0,0" />
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="400"/>
+                <RowDefinition Height="190"/>
+            </Grid.RowDefinitions>
+            <!-- Hexagonal Grid -->
+            <TextBlock  Text="Csapat építő:" Grid.Row="0" Grid.Column="1" Margin="0,0,0,20" FontFamily="Comic Sans MS" FontSize="40" VerticalAlignment="Top" HorizontalAlignment="Center"  FontWeight="Bold" />
+            
+        <Border BorderBrush="Black" BorderThickness="2" Grid.Column="1" Grid.Row="1">
+                <Canvas Name="HexGridCanvas" Margin="90,100,0,0" Height="400" Width="650" />
         </Border>
 
-        <Border BorderBrush="Black" Background="#7D3C98" BorderThickness="2" Padding="10" Grid.Row="2" Grid.Column="1" VerticalAlignment="Stretch">
+        <Border BorderBrush="Black" Background="#7D3C98" BorderThickness="2" Grid.Row="2" Grid.Column="1" >
             <StackPanel>
                 <!-- A StackPanel tartalma ide kerülhet -->
             </StackPanel>
         </Border>
+           
+        </Grid>
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="475"/>
+                <RowDefinition Height="190"/>
+            </Grid.RowDefinitions>
+            <Border BorderBrush="Black" BorderThickness="2"  Grid.Row="2" Grid.Column="2" >
+            <StackPanel>
+                    <TextBlock Text="Táblák:" FontFamily="Comic Sans MS" FontSize="25" Foreground="#82C367"/>
+                    <ComboBox Name="TablaCMB" Height="30" Width="150" Margin="0,20,0,20"/>
+                    <Button Name="TablaMentesBTN" Content="Mentés" Height="30" Width="150" Margin="0,20,0,20" FontFamily="Comic Sans MS" FontWeight="Bold" FontSize="20" Click="TablaMentesBTN_Click" />
+            </StackPanel>
+        </Border>
+        </Grid>
     </Grid>
 </Window>

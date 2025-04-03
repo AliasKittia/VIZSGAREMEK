@@ -33,7 +33,7 @@ namespace Karbantarto.Windows
 
         private void CreateHexagonalGrid(int rows, int columns)
         {
-            double hexRadius = 35; // Hexagon sugara
+            double hexRadius = 40; // Hexagon sugara
             double hexWidth = Math.Sqrt(3) * hexRadius; // Hexagon szélessége
             double hexHeight = 2 * hexRadius; // Hexagon magassága
             double horizontalSpacing = hexWidth; // Vízszintes eltolás
@@ -208,6 +208,10 @@ namespace Karbantarto.Windows
             }
         }
 
+        private void TablaMentesBTN_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
 

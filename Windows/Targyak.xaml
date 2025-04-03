@@ -60,19 +60,19 @@
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="310"/>
-                <RowDefinition Height="310"/>
+                <RowDefinition Height="300"/>
+                <RowDefinition Height="300"/>
             </Grid.RowDefinitions>
 
             <StackPanel>
                 <TextBlock Grid.Row="0" Margin="0,5,0,5" FontFamily="Comic Sans MS" FontSize="40" VerticalAlignment="Top" HorizontalAlignment="Center" Text="Tárgyak" FontWeight="Bold"/>
 
                 <DockPanel>
-                    <TextBox FontFamily="Comic Sans MS" Name="TargyNevKeresoTBX" Text="Teljes tárgy Neve" VerticalAlignment="Top" HorizontalAlignment="Left" Height="25" FontSize="16" Background="#D4B8E6" Width="140" Margin="10,0,0,20" TextChanged="TargyNevKeresoTBX_TextChanged"/>
+                    <TextBox FontFamily="Comic Sans MS" Name="TargyNevKeresoTBX" Text="Teljes tárgy Neve" VerticalAlignment="Top" HorizontalAlignment="Left" Height="25" FontSize="16" Background="#D4B8E6" Width="140" Margin="10,0,0,10" TextChanged="TargyNevKeresoTBX_TextChanged"/>
 
                 </DockPanel>
             </StackPanel>
-            <Border BorderBrush="Black" BorderThickness="2" Grid.Column="1" Grid.Row="1" Height="Auto" MinHeight="310">
+            <Border BorderBrush="Black" BorderThickness="2" Grid.Column="1" Grid.Row="1" Height="310" >
                 <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
                     <ItemsControl Name="FelTargyListBox">
                         <ItemsControl.ItemsPanel>
