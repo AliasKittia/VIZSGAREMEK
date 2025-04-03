@@ -1,14 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
 using tftwebapinew.Models;
+using Microsoft.EntityFrameworkCore;
 using tftwebapinew.Database;
-using System.Threading.Tasks;
-using System.Security.Cryptography;
-using System.Text;
 
 namespace tftwebapinew.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class RegistryController : ControllerBase
     {
         private readonly tftdatabaseContext _context;
@@ -18,59 +16,86 @@ namespace tftwebapinew.Controllers
             _context = context;
         }
 
-        [HttpPost]
-        public async Task<IActionResult> RegisterUser(PostUser user)
+        // GET: api/Registry
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<PostUser>>> GetUsers()
         {
-            if (_context.User.Any(u => u.LoginName == user.LoginName))
+            return await _context.Set<PostUser>().ToListAsync();
+        }
+
+        // GET: api/Registry/{id}
+        [HttpGet("{id}")]
+        public async Task<ActionResult<PostUser>> GetUser(int id)
+        {
+            var user = await _context.Set<PostUser>().FindAsync(id);
+
+            if (user == null)
             {
-                return BadRequest("User with this login name already exists.");
+                return NotFound();
             }
 
-            if (_context.User.Any(u => u.Email == user.Email))
-            {
-                return BadRequest("User with this email already exists.");
-            }
+            return user;
+        }
 
-            // Generate a salt and hash the password
-            var salt = GenerateSalt();
-            user.Salt = salt;
-            user.Hash = HashPassword(user.Password, salt);
-
-            // Assign a default profile picture if none is provided
-            if (string.IsNullOrEmpty(user.ProfilePicturePath))
-            {
-                user.ProfilePicturePath = "default-profile-picture.png"; // Path to the default profile picture
-            }
-
-            // Set default values for other fields if necessary
-            user.Active = true; // Assuming new users are active by default
-            user.PermissionId = 1; // Assuming a default permission level for new users
-
-            // Add user to the database
-            _context.User.Add(user);
+        // POST: api/Registry
+        [HttpPost]
+        public async Task<ActionResult<PostUser>> CreateUser(PostUser user)
+        {
+            _context.Set<PostUser>().Add(user);
             await _context.SaveChangesAsync();
 
-            return Ok("User registered successfully.");
+            return CreatedAtAction(nameof(GetUser), new { id = user.Id }, user);
         }
 
-        private string HashPassword(string password, string salt)
+        // PUT: api/Registry/{id}
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateUser(int id, PostUser user)
         {
-            using (var sha256 = SHA256.Create())
+            if (id != user.Id)
             {
-                var bytes = Encoding.UTF8.GetBytes(password + salt);
-                var hash = sha256.ComputeHash(bytes);
-                return Convert.ToBase64String(hash);
+                return BadRequest();
             }
+
+            _context.Entry(user).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!UserExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
         }
 
-        private string GenerateSalt()
+        // DELETE: api/Registry/{id}
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteUser(int id)
         {
-            var randomBytes = new byte[16];
-            using (var rng = RandomNumberGenerator.Create())
+            var user = await _context.Set<PostUser>().FindAsync(id);
+            if (user == null)
             {
-                rng.GetBytes(randomBytes);
+                return NotFound();
             }
-            return Convert.ToBase64String(randomBytes);
+
+            _context.Set<PostUser>().Remove(user);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        private bool UserExists(int id)
+        {
+            return _context.Set<PostUser>().Any(e => e.Id == id);
         }
     }
 }
