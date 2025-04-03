@@ -18,6 +18,8 @@ namespace tftwebapinew.Models{
 
             public string ProfilePicturePath { get; set; } = null!;
 
+            public string Password { get; set; } = null!; // Add this field for plain-text password input
+
             public virtual ICollection<PostBoard> Boards { get; set; } = new List<PostBoard>();
 
             public virtual PostPermission Permission { get; set; } = null!;
