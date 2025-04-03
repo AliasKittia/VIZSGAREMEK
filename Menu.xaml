@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Karbantarto"
         mc:Ignorable="d"
         x:Name="fomenu"
-        Title="Karbantartó rendszer" Height="640" Width="1090">
+        Title="Karbantartó rendszer" Height="700" Width="1090">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="FontFamily" Value="Comic Sans MS"/>
@@ -43,15 +43,15 @@
             <StackPanel.Effect>
                 <DropShadowEffect Color="Gray" Direction="100" ShadowDepth="5" BlurRadius="20" Opacity="1.5"/>
             </StackPanel.Effect>
-            <Button Name="FoOldalBTN" Content="Főoldal" Margin="10,50,10,10" Click="FoOldalBTN_Click" />
-            <Button Name="KarakterekBTN" Content="Karakterek" Margin="10" Click="KarakterekBTN_Click"/>
-            <Button Name="ClassokBTN" Content="Osztályok" Margin="10" Click="ClassokBTN_Click"/>
-            <Button Name="ItemekBTN" Content="Tárgyak" Margin="10" Click="ItemekBTN_Click"/>
-            <Button Name="AnomaliakBTN" Content="Anomáliák" Margin="10" Click="AnomaliakBTN_Click"/>
-            <Button Name="TraitekBTN" Content="Erősítések" Margin="10" Click="TraitekBTN_Click"/>
-            <Button Name="CsapatTervezoBTN" Content="Csapat tervező" Margin="10" Click="CsapatTervezoBTN_Click"/>
-            <Button Name="KilepesBTN" Content="Kilépés" Margin="10" Click="KilepesBTN_Click"/>
-            <Image Width="120" Margin="0,40,0,0">
+            <Button Name="FoOldalBTN" Content="Főoldal" Margin="10,50,10,20" Click="FoOldalBTN_Click" Height="30" FontSize="17" FontWeight="Bold"/>
+            <Button Name="KarakterekBTN" Content="Karakterek" Margin="10,10,10,20" Click="KarakterekBTN_Click" Height="30" FontSize="17" FontWeight="Bold"/>
+            <Button Name="ClassokBTN" Content="Osztályok" Margin="10,10,10,20" Click="ClassokBTN_Click" Height="30" FontSize="17" FontWeight="Bold"/>
+            <Button Name="ItemekBTN" Content="Tárgyak" Margin="10,10,10,20" Click="ItemekBTN_Click" Height="30" FontSize="17" FontWeight="Bold"/>
+            <Button Name="AnomaliakBTN" Content="Anomáliák" Margin="10,10,10,20" Click="AnomaliakBTN_Click" Height="30" FontSize="17" FontWeight="Bold"/>
+            <Button Name="TraitekBTN" Content="Erősítések" Margin="10,10,10,20" Click="TraitekBTN_Click" Height="30" FontSize="17" FontWeight="Bold"/>
+            <Button Name="CsapatTervezoBTN" Content="Csapat tervező" Margin="10,10,10,20" Click="CsapatTervezoBTN_Click" Height="30" FontSize="17" FontWeight="Bold"/>
+            <Button Name="KilepesBTN" Content="Kilépés" Margin="10,10,10,20" Click="KilepesBTN_Click" Height="30" FontSize="17" FontWeight="Bold"/>
+            <Image Width="120" Margin="0,0,0,0">
                 <Image.Source>
                     <BitmapImage DecodePixelWidth="300" UriSource="/Images/Kittylogo.png" />
                 </Image.Source>
@@ -63,11 +63,11 @@
                 
                 <TextBlock Name="FooldalUdvozloTBX" Foreground="#82C367" FontFamily="Comic Sans MS"  Text="Üdvözlünk az alkalmazásban!" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,20"/>
                 
-                <TextBlock Name="FooldalSzovegTBX" FontSize="20" Foreground="#82C367" FontFamily="Comic Sans MS" Text="Állítsd össze a legerősebb csapatot, stratégiázz okosan, és válj a legjobbá! "/>
+                <TextBlock Name="FooldalSzovegTBX" FontSize="20" Foreground="#82C367" HorizontalAlignment="Center" FontFamily="Comic Sans MS" Text="Állítsd össze a legerősebb csapatot, stratégiázz okosan, és válj a legjobbá! "/>
                 
-                <Image Width="800" Margin="0,10,0,0">
+                <Image Width="870" Margin="0,10,0,0">
                     <Image.Source>
-                        <BitmapImage DecodePixelWidth="800" UriSource="/Images/TFTpic.png" />
+                        <BitmapImage DecodePixelWidth="870" UriSource="/Images/TFTpic.png" />
                     </Image.Source>
                 </Image>
             </StackPanel>

@@ -23,7 +23,7 @@ namespace Karbantarto.Windows
     /// </summary>
     public partial class Targyak : Window
     {
-
+        Menu MenuAblak;
         Karakterek KarakterAblak;
         Osztalyok OsztalyAblak;
         Targyak TargyAblak;
@@ -33,7 +33,11 @@ namespace Karbantarto.Windows
 
         public static HttpClient sharedClient = new()
         {
-            BaseAddress = new Uri("http://localhost:5166/"),
+            BaseAddress = new Uri("http://localhost:5166/Api/Fullitems"),
+        };
+        public static HttpClient sharedsClient = new()
+        {
+            BaseAddress = new Uri("http://localhost:5166/Api/Partialitems"),
         };
 
         public Targyak()
@@ -201,47 +205,69 @@ namespace Karbantarto.Windows
 
 
 
+
+        private void TargyNevKeresoTBX_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (TeljesTargyListBox == null) return;
+
+            string keresettNev = TargyNevKeresoTBX.Text.ToLower();
+
+            if (string.IsNullOrWhiteSpace(keresettNev))
+            {
+                TeljesTargyListBox.ItemsSource = TeljesTargyLista;
+            }
+            else
+            {
+                var szurtLista = TeljesTargyLista.Where(k => k.Name.ToLower().Contains(keresettNev)).ToList();
+                TeljesTargyListBox.ItemsSource = szurtLista;
+            }
+        }
+
         private void FoOldalBTN_Click(object sender, RoutedEventArgs e)
         {
-
+            MenuAblak = new Menu();
+            MenuAblak.Show();
+            this.Close();
         }
 
         private void KarakterekBTN_Click(object sender, RoutedEventArgs e)
         {
             KarakterAblak = new Karakterek();
             KarakterAblak.Show();
-
+            this.Close();
         }
 
         private void ClassokBTN_Click(object sender, RoutedEventArgs e)
         {
             OsztalyAblak = new Osztalyok();
             OsztalyAblak.Show();
+            this.Close();
         }
 
         private void ItemekBTN_Click(object sender, RoutedEventArgs e)
         {
-            TargyAblak = new Targyak();
-            TargyAblak.Show();
+            //nem kell, mert ezen az oldalon vagyunk
         }
 
         private void AnomaliakBTN_Click(object sender, RoutedEventArgs e)
         {
             AnomaliaAblak = new Anomaliak();
             AnomaliaAblak.Show();
+            this.Close();
         }
 
         private void TraitekBTN_Click(object sender, RoutedEventArgs e)
         {
             ErositesAblak = new Erosites();
             ErositesAblak.Show();
+            this.Close();
         }
 
         private void CsapatTervezoBTN_Click(object sender, RoutedEventArgs e)
         {
             CsapatepitoAblak = new Csapatepito();
             CsapatepitoAblak.Show();
-
+            this.Close();
         }
 
         private void KilepesBTN_Click(object sender, RoutedEventArgs e)
