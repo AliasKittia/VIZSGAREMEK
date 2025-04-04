@@ -42,16 +42,28 @@ namespace ProjectName_Backend.Controllers
         }
 
         [HttpPost("Login")]
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        [ProducesResponseType(typeof(LoggedUser), 200)]
+        [ProducesResponseType(401)]
+        [ProducesResponseType(500)]
         public async Task<IActionResult> Login([FromBody] LoginDTO loginDTO)
         {
             try
             {
-                string hash = Program.CreateSHA256(loginDTO.TmpHash);
+                // Retrieve the user by login name
                 var user = await _context.User.Include(u => u.Permission)
-                                              .FirstOrDefaultAsync(u => u.LoginName == loginDTO.LoginName && u.Hash == hash);
+                                              .FirstOrDefaultAsync(u => u.LoginName == loginDTO.LoginName);
                 if (user == null || !user.Active)
                 {
                     return Unauthorized("Hibás név vagy jelszó / inaktív felhasználó!");
+                }
+
+                // Compute hash using the provided plain-text password and the user's stored salt
+                string computedHash = Program.CreateSHA256(loginDTO.Password + user.Salt);
+                if (computedHash != user.Hash)
+                {
+                    return Unauthorized("Hibás név vagy jelszó!");
                 }
 
                 string token = Guid.NewGuid().ToString();
@@ -74,5 +86,24 @@ namespace ProjectName_Backend.Controllers
                 return StatusCode(500, "Szerverhiba: " + ex.Message);
             }
         }
+
+        // NEW ENDPOINT: Generate a hash from password and salt
+        [HttpPost("GenerateHash")]
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        [ProducesResponseType(typeof(string), 200)]
+        public IActionResult GenerateHash([FromBody] PasswordSaltDTO dto)
+        {
+            var combined = dto.Password + dto.Salt;
+            var hash = Program.CreateSHA256(combined);
+            return Ok(hash);
+        }
+    }
+
+    // DTO for password and salt input
+    public class PasswordSaltDTO
+    {
+        public string Password { get; set; }
+        public string Salt { get; set; }
     }
 }

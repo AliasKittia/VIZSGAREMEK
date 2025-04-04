@@ -37,14 +37,36 @@ namespace tftwebapinew.Controllers
             return user;
         }
 
-        // POST: api/Registry
-        [HttpPost]
-        public async Task<ActionResult<PostUser>> CreateUser(PostUser user)
+        // POST: api/Registry/Register
+        [HttpPost("Register")]
+        public async Task<ActionResult<PostUser>> Register([FromBody] RegisterUserDTO dto)
         {
-            _context.Set<PostUser>().Add(user);
+            // Check if the provided LoginName is already in use
+            if (_context.Set<PostUser>().Any(u => u.LoginName == dto.LoginName))
+            {
+                return BadRequest("A felhasználónév már foglalt.");
+            }
+            // Generate salt and compute hash from the plain-text password and salt
+            var salt = Program.GenerateSalt();
+            var hash = Program.CreateSHA256(dto.Password + salt);
+
+            // Create new user record; adjust properties as needed
+            var newUser = new PostUser
+            {
+                LoginName = dto.LoginName,
+                Name = dto.Name,
+                Email = dto.Email,
+                Salt = salt,
+                Hash = hash,
+                Active = true,
+                ProfilePicturePath = string.Empty,   // Set required member to a default value
+                PermissionId = 1                       // Set a default PermissionId (make sure a permission with Id=1 exists)
+                // ...populate any additional fields...
+            };
+            _context.Set<PostUser>().Add(newUser);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetUser), new { id = user.Id }, user);
+            return CreatedAtAction(nameof(GetUser), new { id = newUser.Id }, newUser);
         }
 
         // PUT: api/Registry/{id}
@@ -97,5 +119,15 @@ namespace tftwebapinew.Controllers
         {
             return _context.Set<PostUser>().Any(e => e.Id == id);
         }
+    }
+
+    // DTO for registration input
+    public class RegisterUserDTO
+    {
+        public string LoginName { get; set; }
+        public string Password { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        // ...include additional fields if needed...
     }
 }
