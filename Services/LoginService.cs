@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Reflection.Metadata;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -14,41 +15,82 @@ namespace Karbantarto.Services
 {
     internal class LoginService
     {
-        public static string GetSalt(HttpClient httpClient, string loginName)
+        public static async Task<string> GetSaltAsync(HttpClient httpClient, string loginName)
         {
             try
             {
                 string uri = $"{httpClient.BaseAddress}api/Login/SaltRequest/{loginName}";
-                var response = httpClient.PostAsync(uri, null).Result;
+                var response = await httpClient.GetAsync(uri); // GET kérés lett
+
                 if (response.IsSuccessStatusCode)
                 {
-                    return response.Content.ReadAsStringAsync().Result;
+                    return await response.Content.ReadAsStringAsync();
+                }
+                else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    throw new Exception("Felhasználó nem található");
                 }
                 else
                 {
-                    return "Hiba";
+                    throw new Exception($"Hiba a só lekérésekor: {response.StatusCode}");
                 }
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                throw new Exception($"Hálózati hiba: {ex.Message}");
             }
         }
 
-        public static string Login(HttpClient httpClient, string loginName, string tmpHash)
+        public static async Task<string> LoginAsync(HttpClient httpClient, string loginName, string password, string salt)
         {
-            string url = $"{httpClient.BaseAddress}api/Login";
-
-            LoginDTO loginUser = new LoginDTO { LoginName = loginName, TmpHash = tmpHash };
-            string json = JsonSerializer.Serialize(loginUser);
-            var request = new StringContent(json, Encoding.UTF8, "application/json");
-            var response = httpClient.PostAsync(url, request).Result;
-            if (!response.IsSuccessStatusCode)
+            try
             {
-                throw new Exception($"HTTP hiba: {response.StatusCode}");
+                string url = $"{httpClient.BaseAddress}api/Login/Login"; // Új endpoint
+
+                // Hash generálása
+                string hash = GenerateSHA256Hash(password + salt);
+
+                LoginDTO loginUser = new LoginDTO
+                {
+                    LoginName = loginName,
+                    Password = hash // Most már a hash-t küldjük
+                };
+
+                string json = JsonSerializer.Serialize(loginUser);
+                var request = new StringContent(json, Encoding.UTF8, "application/json");
+                var response = await httpClient.PostAsync(url, request);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                    {
+                        throw new Exception("Hibás név vagy jelszó / inaktív felhasználó!");
+                    }
+                    throw new Exception($"HTTP hiba: {response.StatusCode}");
+                }
+
+                return await response.Content.ReadAsStringAsync();
             }
-            return response.Content.ReadAsStringAsync().Result;
+            catch (Exception ex)
+            {
+                throw new Exception($"Bejelentkezési hiba: {ex.Message}");
+            }
         }
 
+        private static string GenerateSHA256Hash(string input)
+        {
+            using (SHA512 sha256Hash = SHA512.Create())
+            {
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
+
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
+            }
+        }
     }
+
 }

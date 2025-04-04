@@ -1,36 +1,48 @@
-﻿using System.Configuration;
-using System.Data;
-using System.Windows;
+﻿using System.Windows;
 using Karbantarto.Windows;
 
 namespace Karbantarto
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : Application
     {
-        private void Login(object sender, StartupEventArgs e)
+        private async void Login(object sender, StartupEventArgs e)
         {
-            Login login = new Login();
-            Application.Current.MainWindow = login;
-            Menu menu = new Menu();
-            login.ShowDialog();
-            if (Karbantarto.Menu.bejelentkezve)
+            // Alkalmazás indításakor megjelenítjük a bejelentkező ablakot
+            var loginWindow = new Login();
+            Current.MainWindow = loginWindow;
+            loginWindow.ShowDialog();
+
+            // Ha sikeres volt a bejelentkezés
+            if (Menu.bejelentkezve && Menu.loggedUser != null)
             {
-                //menu.mnu_dat_Felh.Visibility = Visibility.Hidden;
-                if (Menu.loggedUser.permission == 9)
+                var mainMenu = new Menu();
+
+                // Menüelemek beállítása a jogosultságtól függően
+                // Megjegyzés: Ha nem kell külön kezelni, ezek a sorok törölhetők
+                /*
+                if (Menu.loggedUser.Permission == 9) // Admin jogosultság
                 {
-                   // menu.mnu_dat_Felh.IsEnabled = true;
+                    mainMenu.mnu_dat_Felh.IsEnabled = true;
+                    mainMenu.mnu_dat_Felh.Visibility = Visibility.Visible;
                 }
                 else
                 {
-                  //  menu.mnu_dat_Felh.IsEnabled = false;
+                    mainMenu.mnu_dat_Felh.IsEnabled = false;
+                    mainMenu.mnu_dat_Felh.Visibility = Visibility.Collapsed;
                 }
-                menu.Show();
-                menu.fomenu.Title = "Karbantartó rendszer\t\tBejelentkezve: " + Karbantarto.Menu.loggedUser.name;
+                */
+
+                // Főmenü címsorának beállítása
+                mainMenu.fomenu.Title = $"Karbantartó rendszer\t\tBejelentkezve: {Menu.loggedUser.name}";
+
+                Current.MainWindow = mainMenu;
+                mainMenu.Show();
+            }
+            else
+            {
+                // Ha nem sikerült a bejelentkezés, az alkalmazás bezárul
+                Current.Shutdown();
             }
         }
     }
-
 }
