@@ -10,6 +10,6 @@ namespace Karbantarto.Classes
     {
         public string LoginName { get; set; }
 
-        public string TmpHash { get; set; }
+        public string Password { get; set; }
     }
 }

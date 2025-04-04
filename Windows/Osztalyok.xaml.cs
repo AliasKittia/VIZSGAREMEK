@@ -33,7 +33,7 @@ namespace Karbantarto.Windows
 
         public static HttpClient sharedClient = new()
         {
-            BaseAddress = new Uri("https://localhost:7256/OsztalySzintEsKarakter"),
+            BaseAddress = new Uri("http://localhost:5166/OsztalySzintEsKarakter"),
         };
 
         public Osztalyok()

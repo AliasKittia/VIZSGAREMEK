@@ -32,6 +32,8 @@ namespace Karbantarto.Windows
         {
             InitializeComponent();
         }
+     
+
 
         void CloseWindow(object sender, CancelEventArgs e)
         {

@@ -18,7 +18,7 @@ namespace Karbantarto.Services
         {
             try
             {
-                string uri = $"{httpClient.BaseAddress}Login/SaltRequest/{loginName}";
+                string uri = $"{httpClient.BaseAddress}api/Login/SaltRequest/{loginName}";
                 var response = httpClient.PostAsync(uri, null).Result;
                 if (response.IsSuccessStatusCode)
                 {
@@ -37,7 +37,7 @@ namespace Karbantarto.Services
 
         public static string Login(HttpClient httpClient, string loginName, string tmpHash)
         {
-            string url = $"{httpClient.BaseAddress}Login";
+            string url = $"{httpClient.BaseAddress}api/Login";
 
             LoginDTO loginUser = new LoginDTO { LoginName = loginName, TmpHash = tmpHash };
             string json = JsonSerializer.Serialize(loginUser);
