@@ -1,26 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
-using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Karbantarto.Models;
 
 namespace Karbantarto.Services
 {
-    internal class UserService
+    internal static class UserService
     {
-        public static async Task<List<User>>? GetAll(HttpClient httpClient)
+        private static readonly JsonSerializerOptions _jsonOptions = new()
+        {
+            PropertyNameCaseInsensitive = true,
+            WriteIndented = false
+        };
+
+        public static async Task<List<User>?> GetAll(HttpClient httpClient)
         {
             try
             {
-                var data = await httpClient.GetFromJsonAsync<List<User>>("User/" + Menu.loggedUser.token);
-                return data;
+                // Helyes API végpont URL
+                return await httpClient.GetFromJsonAsync<List<User>>(
+                    $"User/{Menu.loggedUser.Token}",  // Eltávolítva a szóköz
+                    _jsonOptions);
             }
-            catch (Exception ex) 
+            catch (HttpRequestException httpEx)
             {
+                Console.WriteLine($"Network error: {httpEx.Message}");
+                return null;
+            }
+            catch (JsonException jsonEx)
+            {
+                Console.WriteLine($"JSON parsing error: {jsonEx.Message}");
                 return null;
             }
         }
@@ -29,61 +41,61 @@ namespace Karbantarto.Services
         {
             try
             {
-                string uj = JsonSerializer.Serialize(user, JsonSerializerOptions.Default);
-                string url = $"{httpClient.BaseAddress}User/"+Menu.loggedUser.token;
-                var request = new StringContent(uj, Encoding.UTF8, "application/json");
-                var response = await httpClient.PostAsync(url, request);
-                var content = await response.Content.ReadAsStringAsync();
-                if (response.IsSuccessStatusCode)
-                {
-                    return content;
-                }
-                else
-                {
-                    return $"Hiba: {response.StatusCode}\n {response.Content.Headers}\n{content}";
-                }
+                // Helyes API végpont URL
+                var response = await httpClient.PostAsJsonAsync(
+                    $"User/{Menu.loggedUser.Token}",  // Eltávolítva a szóköz
+                    user,
+                    _jsonOptions);
+
+                return await HandleResponse(response);
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                return $"Error: {ex.Message}";
             }
         }
+
         public static async Task<string> Put(HttpClient httpClient, User user)
         {
             try
             {
-                string url = $"{httpClient.BaseAddress}User/"+Menu.loggedUser.token;
-                string uj = JsonSerializer.Serialize(user, JsonSerializerOptions.Default);
-                var requestBody = new StringContent(uj, Encoding.UTF8, "application/json");
-                var response = await httpClient.PutAsync(url, requestBody);
-                var content = await response.Content.ReadAsStringAsync();
-                if (response.IsSuccessStatusCode)
-                {
-                    return content;
-                }
-                else
-                {
-                    return $"Hiba: {response.StatusCode}\n {response.Content.Headers}\n{content}";
-                }
+                // Helyes API végpont URL
+                var response = await httpClient.PutAsJsonAsync(
+                    $"User/{Menu.loggedUser.Token}",  // Eltávolítva a szóköz
+                    user,
+                    _jsonOptions);
+
+                return await HandleResponse(response);
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                return $"Error: {ex.Message}";
             }
         }
+
         public static async Task<string> Delete(HttpClient httpClient, int id)
         {
             try
             {
-                string uri = $"{httpClient.BaseAddress}User/"+Menu.loggedUser.token+","+id.ToString();
-                var response = await httpClient.DeleteAsync(uri);
-                var valasz = await response.Content.ReadAsStringAsync();
-                return valasz;
+                // Helyes API végpont URL
+                var response = await httpClient.DeleteAsync(
+                    $"User/{Menu.loggedUser.Token}/{id}");  // Helyes URL
+
+                return await HandleResponse(response);
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                return $"Error: {ex.Message}";
             }
+        }
+
+        private static async Task<string> HandleResponse(HttpResponseMessage response)
+        {
+            var content = await response.Content.ReadAsStringAsync();
+
+            return response.IsSuccessStatusCode
+                ? content
+                : $"Error: {response.StatusCode}\n{content}";
         }
     }
 }

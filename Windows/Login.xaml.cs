@@ -1,141 +1,123 @@
-﻿using System;
-using System.ComponentModel;
+﻿using Karbantarto.Classes;
+using Newtonsoft.Json;
+using System;
 using System.Net.Http;
-using System.Text;
-using System.Text.Json;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using Karbantarto.Services;
-using Karbantarto.Classes;
 using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Karbantarto.Windows
 {
     public partial class Login : Window
     {
-        private Registry RegistracioAblak;
-        private Menu MenuAblak;
-        private int probalkozasokSzama = 0;
+        private readonly HttpClient _httpClient = new HttpClient();
+        private string loginNev = "";
+        private string jelszo = "";
+
+        Menu MenuAblak;
 
         public Login()
         {
             InitializeComponent();
         }
 
-        void CloseWindow(object sender, CancelEventArgs e)
+        private void LoginNev_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
-            if (!Menu.bejelentkezve)
-            {
-                Application.Current.Shutdown();
-            }
-        }
-
-        private async void Bejelentkezes_Click(object sender, RoutedEventArgs e)
-        {
-            probalkozasokSzama++;
-            Bejelentkezes.IsEnabled = false; // Gomb letiltása többszori kattintás ellen
-            Mouse.OverrideCursor = Cursors.Wait; // Várakozási kurzor
-
-            try
-            {
-                // 1. Só lekérése
-                string salt = await LoginService.GetSaltAsync(Karbantarto.Menu.sharedClient, LoginNev.Text);
-
-                // 2. Hash generálása a jelszóból és a sóból
-                string hash = GenerateSHA256Hash(Jelszo.Password + salt);
-
-                // 3. Bejelentkezési kérés
-                string response = await LoginService.LoginAsync(Karbantarto.Menu.sharedClient, LoginNev.Text, Jelszo.Password, salt);
-
-                // 4. Válasz feldolgozása
-                Menu.loggedUser = JsonSerializer.Deserialize<LoggedUser>(response);
-
-                if (Menu.loggedUser != null && !string.IsNullOrEmpty(Menu.loggedUser.token))
-                {
-                    Menu.bejelentkezve = true;
-                    this.Close();
-                    MessageBox.Show($"Bejelentkezve: {Menu.loggedUser.name}", "Sikeres bejelentkezés", MessageBoxButton.OK, MessageBoxImage.Information);
-                    return;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Bejelentkezési hiba", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            finally
-            {
-                Bejelentkezes.IsEnabled = true;
-                Mouse.OverrideCursor = null;
-            }
-
-            // Sikertelen bejelentkezés kezelése
-            if (probalkozasokSzama >= 3)
-            {
-                MessageBox.Show("Túl sok sikertelen próbálkozás!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Warning);
-                Application.Current.Shutdown();
-            }
-            else
-            {
-                MessageBox.Show("Hibás név vagy jelszó!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
-        }
-
-        private static string GenerateSHA256Hash(string input)
-        {
-            using (SHA256 sha256Hash = SHA256.Create())
-            {
-                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
-                StringBuilder builder = new StringBuilder();
-                for (int i = 0; i < bytes.Length; i++)
-                {
-                    builder.Append(bytes[i].ToString("x2"));
-                }
-                return builder.ToString();
-            }
-        }
-
-        private void RegistryBTN_Click(object sender, RoutedEventArgs e)
-        {
-            RegistracioAblak = new Registry();
-            RegistracioAblak.Show();
-        }
-
-        private void GyorsBTN_Click(object sender, RoutedEventArgs e)
-        {
-            MenuAblak = new Menu();
-            MenuAblak.Show();
-        }
-
-        // UI eseménykezelők maradnak változatlanok
-        private void LoginNev_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (LoginNev.Background == null)
-            {
-                LoginNev.Background = new ImageBrush
-                {
-                    ImageSource = new BitmapImage(new Uri(@"Images\fn.jpg", UriKind.Relative)),
-                    AlignmentX = AlignmentX.Left,
-                    AlignmentY = AlignmentY.Center,
-                    Stretch = Stretch.None
-                };
-            }
+            loginNev = LoginNev.Text;
         }
 
         private void Jelszo_PasswordChanged(object sender, RoutedEventArgs e)
         {
-            if (Jelszo.Password == "")
+            jelszo = Jelszo.Password;
+        }
+
+        private async void Bejelentkezes_Click(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(loginNev) || string.IsNullOrWhiteSpace(jelszo))
             {
-                Jelszo.Background = new ImageBrush
+                MessageBox.Show("Kérlek töltsd ki a felhasználónevet és jelszót.");
+                return;
+            }
+
+            try
+            {
+                // 1. Só lekérése
+                string saltUrl = $"http://localhost:5166/api/Login/SaltRequest/{loginNev}";
+                var saltResponse = await _httpClient.GetAsync(saltUrl);
+
+                if (!saltResponse.IsSuccessStatusCode)
                 {
-                    ImageSource = new BitmapImage(new Uri(@"Images\pw.jpg", UriKind.Relative)),
-                    AlignmentX = AlignmentX.Left,
-                    AlignmentY = AlignmentY.Center,
-                    Stretch = Stretch.None
+                    MessageBox.Show("Hibás felhasználónév vagy nem található.");
+                    return;
+                }
+
+                string salt = await saltResponse.Content.ReadAsStringAsync();
+
+                // 2. Hash létrehozása jelszó + só alapján
+                string combined = jelszo + salt;
+                string hash = CreateSHA256(combined);
+
+                // 3. Login DTO elküldése
+                var loginDto = new LoginDTO
+                {
+                    LoginName = loginNev,
+                    Password = jelszo // Backend újrahasheli
                 };
+
+                var content = new StringContent(JsonConvert.SerializeObject(loginDto), Encoding.UTF8, "application/json");
+                var loginResponse = await _httpClient.PostAsync("http://localhost:5166/api/Login/Login", content);
+
+                if (!loginResponse.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Sikertelen bejelentkezés.");
+                    return;
+                }
+
+                string result = await loginResponse.Content.ReadAsStringAsync();
+                var loggedUser = JsonConvert.DeserializeObject<LoggedUser>(result);
+
+                MessageBox.Show($"Sikeres bejelentkezés! Üdv, {loggedUser.Name}");
+
+                // 👉 Menu ablak megnyitása
+                Menu MenuAblak = new Menu();  // vagy: new Menu(loggedUser) ha át akarod adni az adatokat
+                MenuAblak.Show();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hiba történt: " + ex.Message);
+            }
+        }
+
+
+        private void RegistryBTN_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Regisztrációs oldal megnyitása (még nincs implementálva)");
+        }
+
+        private void GyorsBTN_Click(object sender, RoutedEventArgs e)
+        {
+            // Teszt belépés adatok nélkül
+            MessageBox.Show("Gyors belépés (fejlesztési célra)");
+        }
+
+        private void CloseWindow(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private string CreateSHA256(string input)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(input));
+                StringBuilder builder = new StringBuilder();
+                foreach (var b in bytes)
+                {
+                    builder.Append(b.ToString("x2"));
+                }
+                return builder.ToString();
             }
         }
     }

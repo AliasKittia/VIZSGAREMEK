@@ -1,96 +1,165 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Diagnostics;
+using System.Net;
 using System.Net.Http;
-using System.Net.Http.Json;
-using System.Reflection.Metadata;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using System.Windows;
-using Karbantarto.Classes;
 
 namespace Karbantarto.Services
 {
-    internal class LoginService
+    public static class LoginService
     {
+        private static readonly JsonSerializerOptions _jsonOptions = new()
+        {
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+            WriteIndented = false
+        };
+
         public static async Task<string> GetSaltAsync(HttpClient httpClient, string loginName)
         {
             try
             {
-                string uri = $"{httpClient.BaseAddress}api/Login/SaltRequest/{loginName}";
-                var response = await httpClient.GetAsync(uri); // GET kérés lett
+                if (string.IsNullOrWhiteSpace(loginName))
+                {
+                    throw new ArgumentException("Login name cannot be empty", nameof(loginName));
+                }
+
+                string uri = $"api/Login/SaltRequest/{Uri.EscapeDataString(loginName)}";
+                Debug.WriteLine($"[LoginService] Requesting salt for user: {loginName}");
+
+                var response = await httpClient.GetAsync(uri);
 
                 if (response.IsSuccessStatusCode)
                 {
-                    return await response.Content.ReadAsStringAsync();
+                    var salt = await response.Content.ReadAsStringAsync();
+                    Debug.WriteLine($"[LoginService] Received salt: {salt}");
+                    return salt;
                 }
-                else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+
+                var errorContent = await response.Content.ReadAsStringAsync();
+                Debug.WriteLine($"[LoginService] Salt request failed: {response.StatusCode} - {errorContent}");
+
+                if (response.StatusCode == HttpStatusCode.NotFound)
                 {
-                    throw new Exception("Felhasználó nem található");
+                    throw new Exception("User not found");
                 }
-                else
-                {
-                    throw new Exception($"Hiba a só lekérésekor: {response.StatusCode}");
-                }
+
+                throw new Exception($"Salt request failed: {errorContent}");
+            }
+            catch (HttpRequestException httpEx) when (httpEx.StatusCode == null)
+            {
+                Debug.WriteLine($"[LoginService] Network error: {httpEx.Message}");
+                throw new Exception("Network error. Please check your connection.");
             }
             catch (Exception ex)
             {
-                throw new Exception($"Hálózati hiba: {ex.Message}");
+                Debug.WriteLine($"[LoginService] General error: {ex.Message}");
+                throw;
             }
         }
 
-        public static async Task<string> LoginAsync(HttpClient httpClient, string loginName, string password, string salt)
+        public static async Task<LoggedUser> LoginAsync(HttpClient httpClient, string loginName, string password)
         {
+            if (string.IsNullOrWhiteSpace(loginName))
+                throw new ArgumentException("Login name cannot be empty", nameof(loginName));
+
+            if (string.IsNullOrWhiteSpace(password))
+                throw new ArgumentException("Password cannot be empty", nameof(password));
+
             try
             {
-                string url = $"{httpClient.BaseAddress}api/Login/Login"; // Új endpoint
+                Debug.WriteLine($"[LoginService] Starting login process for: {loginName}");
+                string salt = await GetSaltAsync(httpClient, loginName);
 
-                // Hash generálása
-                string hash = GenerateSHA256Hash(password + salt);
+                if (string.IsNullOrEmpty(salt))
+                {
+                    throw new Exception("Invalid salt received from server");
+                }
 
-                LoginDTO loginUser = new LoginDTO
+                // Töröltük a hash-elést itt, hogy a backend végezze el!
+                var loginDto = new LoginDTO
                 {
                     LoginName = loginName,
-                    Password = hash // Most már a hash-t küldjük
+                    Password = password // Csak a sima jelszó, nem hash-elve
                 };
 
-                string json = JsonSerializer.Serialize(loginUser);
-                var request = new StringContent(json, Encoding.UTF8, "application/json");
-                var response = await httpClient.PostAsync(url, request);
+                string json = JsonSerializer.Serialize(loginDto, _jsonOptions);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                Debug.WriteLine($"[LoginService] Sending login request...");
+                var response = await httpClient.PostAsync("api/Login/Login", content);
 
                 if (!response.IsSuccessStatusCode)
                 {
-                    if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                    var errorContent = await response.Content.ReadAsStringAsync();
+                    Debug.WriteLine($"[LoginService] Login failed: {response.StatusCode} - {errorContent}");
+
+                    if (response.StatusCode == HttpStatusCode.Unauthorized)
                     {
-                        throw new Exception("Hibás név vagy jelszó / inaktív felhasználó!");
+                        throw new Exception("Invalid username or password");
                     }
-                    throw new Exception($"HTTP hiba: {response.StatusCode}");
+
+                    throw new Exception($"Login failed: {errorContent}");
                 }
 
-                return await response.Content.ReadAsStringAsync();
+                var responseContent = await response.Content.ReadAsStringAsync();
+                Debug.WriteLine($"[LoginService] Login successful. Response: {responseContent}");
+
+                var loggedUser = JsonSerializer.Deserialize<LoggedUser>(responseContent, _jsonOptions);
+                return loggedUser ?? throw new Exception("Invalid server response");
+            }
+            catch (HttpRequestException httpEx) when (httpEx.StatusCode == null)
+            {
+                Debug.WriteLine($"[LoginService] Network error during login: {httpEx.Message}");
+                throw new Exception("Network error during login. Please try again.");
             }
             catch (Exception ex)
             {
-                throw new Exception($"Bejelentkezési hiba: {ex.Message}");
+                Debug.WriteLine($"[LoginService] Login error: {ex.Message}");
+                throw new Exception($"Login failed: {ex.Message}");
             }
         }
 
-        private static string GenerateSHA256Hash(string input)
+        private static string ComputeSha256Hash(string rawData)
         {
-            using (SHA512 sha256Hash = SHA512.Create())
-            {
-                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
+            if (string.IsNullOrEmpty(rawData))
+                throw new ArgumentException("Input data cannot be empty", nameof(rawData));
 
-                StringBuilder builder = new StringBuilder();
-                for (int i = 0; i < bytes.Length; i++)
+            try
+            {
+                using SHA256 sha256 = SHA256.Create();
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(rawData));
+
+                var builder = new StringBuilder();
+                foreach (byte b in bytes)
                 {
-                    builder.Append(bytes[i].ToString("x2"));
+                    builder.Append(b.ToString("x2"));
                 }
+
                 return builder.ToString();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"[LoginService] Hash computation failed: {ex.Message}");
+                throw new Exception("Password hashing failed", ex);
             }
         }
     }
 
+    public class LoginDTO
+    {
+        public string LoginName { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
+    }
+
+    public class LoggedUser
+    {
+        public string Name { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
+        public int Permission { get; set; }
+        public string ProfilePicturePath { get; set; } = string.Empty;
+        public string Token { get; set; } = string.Empty;
+    }
 }

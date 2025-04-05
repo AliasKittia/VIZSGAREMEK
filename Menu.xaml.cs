@@ -27,7 +27,6 @@ namespace Karbantarto
         Erosites ErositesAblak;
         Csapatepito CsapatepitoAblak;
 
-
         public static bool bejelentkezve = false;
 
         public static HttpClient sharedClient = new()
@@ -40,7 +39,6 @@ namespace Karbantarto
         static int SaltLength = 64;
         public static string GenerateSalt()
         {
-            
             Random random = new Random();
             string karakterek = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
             string salt = "";
@@ -70,14 +68,7 @@ namespace Karbantarto
             InitializeComponent();
         }
 
-
-        //private void felhasznalokKarbantartasa(object sender, RoutedEventArgs e)
-        //{
-        //    Windows.Felhasznalok felhasznalokWindows = new Windows.Felhasznalok();
-        //    felhasznalokWindows.Show();
-        //}
-
-        
+        // Kezelők a különböző gombokhoz
         private void FoOldalBTN_Click(object sender, RoutedEventArgs e)
         {
             //Nem tud magára kattintani, nem kell.
@@ -123,7 +114,6 @@ namespace Karbantarto
             CsapatepitoAblak = new Csapatepito();
             CsapatepitoAblak.Show();
             this.Close();
-
         }
 
         private void KilepesBTN_Click(object sender, RoutedEventArgs e)
@@ -134,6 +124,5 @@ namespace Karbantarto
                 Application.Current.Shutdown();
             }
         }
-
     }
 }

@@ -10,39 +10,29 @@ namespace Karbantarto
             // Alkalmazás indításakor megjelenítjük a bejelentkező ablakot
             var loginWindow = new Login();
             Current.MainWindow = loginWindow;
-            loginWindow.ShowDialog();
+            loginWindow.Show(); // ShowDialog helyett Show() a bejelentkezés után
 
-            // Ha sikeres volt a bejelentkezés
-            if (Menu.bejelentkezve && Menu.loggedUser != null)
+            // Várakozás a bejelentkezés eredményére
+            loginWindow.Closed += async (s, args) =>
             {
-                var mainMenu = new Menu();
-
-                // Menüelemek beállítása a jogosultságtól függően
-                // Megjegyzés: Ha nem kell külön kezelni, ezek a sorok törölhetők
-                /*
-                if (Menu.loggedUser.Permission == 9) // Admin jogosultság
+                // Ha sikeres volt a bejelentkezés
+                if (Menu.bejelentkezve && Menu.loggedUser != null)
                 {
-                    mainMenu.mnu_dat_Felh.IsEnabled = true;
-                    mainMenu.mnu_dat_Felh.Visibility = Visibility.Visible;
+                    var mainMenu = new Menu();
+
+                    // Főmenü címsorának beállítása
+                    mainMenu.fomenu.Title = $"Karbantartó rendszer\t\tBejelentkezve: {Menu.loggedUser.Name}";
+
+                    // Főmenü megjelenítése
+                    Current.MainWindow = mainMenu;
+                    mainMenu.Show();
                 }
                 else
                 {
-                    mainMenu.mnu_dat_Felh.IsEnabled = false;
-                    mainMenu.mnu_dat_Felh.Visibility = Visibility.Collapsed;
+                    // Ha nem sikerült a bejelentkezés, az alkalmazás bezárul
+                    Current.Shutdown();
                 }
-                */
-
-                // Főmenü címsorának beállítása
-                mainMenu.fomenu.Title = $"Karbantartó rendszer\t\tBejelentkezve: {Menu.loggedUser.name}";
-
-                Current.MainWindow = mainMenu;
-                mainMenu.Show();
-            }
-            else
-            {
-                // Ha nem sikerült a bejelentkezés, az alkalmazás bezárul
-                Current.Shutdown();
-            }
+            };
         }
     }
 }

@@ -8,8 +8,8 @@ namespace Karbantarto.Classes
 {
     public class LoginDTO
     {
-        public string LoginName { get; set; }
+        public required string LoginName { get; set; }
 
-        public string Password { get; set; }
+        public required string Password { get; set; }
     }
 }
