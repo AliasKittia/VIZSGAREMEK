@@ -30,7 +30,7 @@ namespace tftwebapinew.Controllers
                         ClassId = c.ClassId,
                         ClassName = c.ClassName,
                         BasicEffect = c.BasicEffect,
-                        Classimageblob = c.Classimageblob != null ? new string[] { c.Classimageblob } : null,
+                        Classimageblob = c.Classimageblob,
                         Szintek = c.Classlevelbonus.Select(cl => new SzintDTO
                         {
                             Level = cl.Level,
@@ -41,7 +41,7 @@ namespace tftwebapinew.Controllers
                         {
                             CharacterId = ch.CharacterID,
                             CharacterName = ch.CharacterName,
-                            Characterimageblob = ch.Characterimageblob != null ? new string[] { ch.Characterimageblob } : null
+                            Characterimageblob = ch.Characterimageblob
                         }).ToList()
                     })
                     .ToListAsync();
@@ -69,7 +69,7 @@ namespace tftwebapinew.Controllers
                         ClassId = c.ClassId,
                         ClassName = c.ClassName,
                         BasicEffect = c.BasicEffect,
-                        Classimageblob = c.Classimageblob != null ? new string[] { c.Classimageblob } : null,
+                        Classimageblob = c.Classimageblob,
                         Szintek = c.Classlevelbonus.Select(cl => new SzintDTO
                         {
                             Level = cl.Level,
@@ -80,7 +80,7 @@ namespace tftwebapinew.Controllers
                         {
                             CharacterId = ch.CharacterID,
                             CharacterName = ch.CharacterName,
-                            Characterimageblob = ch.Characterimageblob != null ? new string[] { ch.Characterimageblob } : null
+                            Characterimageblob = ch.Characterimageblob
                         }).ToList()
                     })
                     .FirstOrDefaultAsync();
