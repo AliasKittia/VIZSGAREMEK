@@ -11,5 +11,7 @@ namespace tftwebapinew.Models
 
         [JsonIgnore]
         public virtual PostUser? PostUser { get; set; } // Made nullable to avoid initialization issues
+
+        public virtual PostBoardHex? BoardHex { get; set; }
     }
 }
