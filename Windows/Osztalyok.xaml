@@ -130,7 +130,7 @@
                                                     <ItemsControl.ItemTemplate>
                                                         <DataTemplate>
                                                             <TextBlock Margin="5,0,5,0">
-                                                                <Run Text="{Binding CharacterName}" FontSize="14"/>
+                                                                <Image Source="{Binding Characterimageblob}" Height="50" Stretch="Uniform"/>
                                                             </TextBlock>
                                                         </DataTemplate>
                                                     </ItemsControl.ItemTemplate>

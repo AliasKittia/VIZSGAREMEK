@@ -13,7 +13,7 @@ namespace Karbantarto.Classes
             public int ClassID { get; set; }
             public string ClassName { get; set; } = null!;
             public string? BasicEffect { get; set; }
-            public string[]? Classimageblob { get; set; }
+            public string? Classimageblob { get; set; }
             public List<SzintDTO> Szintek { get; set; } = new List<SzintDTO>();
             public List<KarakterDTO> Karakterek { get; set; } = new List<KarakterDTO>();
         }
@@ -29,7 +29,7 @@ namespace Karbantarto.Classes
         {
             public int CharacterId { get; set; }
             public string CharacterName { get; set; } = null!;
-            public string[]? Characterimageblob { get; set; }
+            public string? Characterimageblob { get; set; }
         }
 
 
