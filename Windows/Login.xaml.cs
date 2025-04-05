@@ -1,4 +1,5 @@
 ﻿using Karbantarto.Classes;
+using Microsoft.Win32;
 using Newtonsoft.Json;
 using System;
 using System.Net.Http;
@@ -16,6 +17,7 @@ namespace Karbantarto.Windows
         private string jelszo = "";
 
         Menu MenuAblak;
+        Register RegiszterAblak;
 
         public Login()
         {
@@ -93,7 +95,8 @@ namespace Karbantarto.Windows
 
         private void RegistryBTN_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Regisztrációs oldal megnyitása (még nincs implementálva)");
+            Register regiszterAblak = new Register();
+            regiszterAblak.Show();
         }
 
         private void GyorsBTN_Click(object sender, RoutedEventArgs e)
