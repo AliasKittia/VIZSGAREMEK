@@ -16,86 +16,43 @@ namespace tftwebapinew.Database
         public virtual DbSet<PostClassLevelBonus> Classlevelbonus { get; set; }
         public required DbSet<PostFullitem_Partialitem> FullItems_PartialItems { get; set; }
         public required DbSet<PostFullitem> FullItems { get; set; }
-        //public required DbSet<PostHexCell> hexCells { get; set; }
         public required DbSet<PostPartialitem> PartialItems { get; set; }
-        public required DbSet<PostPermission> Permissions { get; set; }
+        public required DbSet<PostPermission> Permission { get; set; }
         public required DbSet<PostUser> User { get; set; }
+        public required DbSet<PostCharacterClass> CharacterClass { get; set; } // Many-to-many relationship
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
             // Configure the many-to-many relationship between PostCharacter and PostClass
-            modelBuilder.Entity<PostCharacter>()
-                .HasMany(p => p.Classes)
-                .WithMany(p => p.Characters)
-                .UsingEntity<Dictionary<string, object>>(
-                    "characterclass",
-                    j => j.HasOne<PostClass>().WithMany()
-                        .HasForeignKey("ClassId")
-                        .HasConstraintName("characterclass_ibfk_2"),
-                    j => j.HasOne<PostCharacter>().WithMany()
-                        .HasForeignKey("CharacterId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .HasConstraintName("characterclass_ibfk_1"),
-                    j =>
-                    {
-                        j.HasKey("CharacterId", "ClassId").HasName("PRIMARY");
-                        j.ToTable("characterclass");
-                        j.HasIndex(new[] { "ClassId" }, "ClassID");
-                        j.IndexerProperty<int>("CharacterId")
-                            .HasColumnName("CharacterID");
-                        j.IndexerProperty<int>("ClassId")
-                            .HasColumnName("ClassID");
-                    });
+            modelBuilder.Entity<PostCharacterClass>()
+                .HasKey(cc => new { cc.CharacterID, cc.ClassID });
 
-            // PostAnomaly configuration
-            modelBuilder.Entity<PostAnomaly>()
-                .HasKey(a => a.AnomalyId);
+            modelBuilder.Entity<PostCharacterClass>()
+                .HasOne<PostCharacter>()
+                .WithMany()
+                .HasForeignKey(cc => cc.CharacterID)
+                .OnDelete(DeleteBehavior.Restrict);
 
-            // PostAugment configuration
-            modelBuilder.Entity<PostAugment>()
-                .HasKey(a => a.AugmentId);
+            modelBuilder.Entity<PostCharacterClass>()
+                .HasOne<PostClass>()
+                .WithMany()
+                .HasForeignKey(cc => cc.ClassID)
+                .OnDelete(DeleteBehavior.Restrict);
 
-            // PostCharacter configuration
-            modelBuilder.Entity<PostCharacter>()
-                .HasKey(c => c.CharacterID);
-
-            // PostClass configuration
-            modelBuilder.Entity<PostClass>()
-                .HasKey(c => c.ClassId);
-
-            // PostFullitem_Partialitem configuration
-            modelBuilder.Entity<PostFullitem_Partialitem>()
-                .HasKey(fipi => fipi.Id);
-
-            // PostFullitem configuration
-            modelBuilder.Entity<PostFullitem>()
-                .HasKey(fi => fi.Id);
-
-            // PostPartialitem configuration
-            modelBuilder.Entity<PostPartialitem>()
-                .HasKey(pi => pi.partial_item_id);
-
-            // PostClassLevelBonus configuration - changed to composite key
-            modelBuilder.Entity<PostClassLevelBonus>()
-               .HasKey(clb => new { clb.ClassId, clb.Level });
-
-            // BoardHex configuration
-            modelBuilder.Entity<PostBoardHex>()
-                .HasKey(bh => bh.Id);
-
-            // Board configuration
-            /*modelBuilder.Entity<PostBoard>()
-                .HasKey(b => b.BoardId);*/
-
-            // Permission configuration
-            modelBuilder.Entity<PostPermission>()
-                .HasKey(p => p.Id);
-
-            // User configuration
-            modelBuilder.Entity<PostUser>()
-                .HasKey(u => u.Id);
+            // Entity configurations
+            modelBuilder.Entity<PostAnomaly>().HasKey(a => a.AnomalyId);
+            modelBuilder.Entity<PostAugment>().HasKey(a => a.AugmentId);
+            modelBuilder.Entity<PostCharacter>().HasKey(c => c.CharacterID);
+            modelBuilder.Entity<PostClass>().HasKey(c => c.ClassId);
+            modelBuilder.Entity<PostFullitem_Partialitem>().HasKey(fipi => fipi.Id);
+            modelBuilder.Entity<PostFullitem>().HasKey(fi => fi.Id);
+            modelBuilder.Entity<PostPartialitem>().HasKey(pi => pi.partial_item_id);
+            modelBuilder.Entity<PostClassLevelBonus>().HasKey(clb => new { clb.ClassId, clb.Level });
+            modelBuilder.Entity<PostBoardHex>().HasKey(bh => bh.Id);
+            modelBuilder.Entity<PostPermission>().HasKey(p => p.Id);
+            modelBuilder.Entity<PostUser>().HasKey(u => u.Id);
         }
     }
 }
