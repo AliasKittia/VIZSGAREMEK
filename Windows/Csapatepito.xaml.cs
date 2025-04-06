@@ -212,6 +212,11 @@ namespace Karbantarto.Windows
         {
 
         }
+
+        private void TablaTorlesBTN_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
 

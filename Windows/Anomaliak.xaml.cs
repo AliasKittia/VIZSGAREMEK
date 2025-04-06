@@ -29,6 +29,7 @@ namespace Karbantarto.Windows
         Targyak TargyAblak;
         Erosites ErositesAblak;
         Csapatepito CsapatepitoAblak;
+        AnomaliaSzerkesztoAblak anomaliaSzerkesztoAblak;
 
 
         public static HttpClient sharedClient = new()
@@ -61,6 +62,22 @@ namespace Karbantarto.Windows
             catch (Exception ex)
             {
                 MessageBox.Show("Hiba történt: " + ex.Message);
+            }
+        }
+
+        private void ModositasGomb_Click(object sender, RoutedEventArgs e)
+        {
+            // Megszerzi az aktuális anomáliát a gomb DataContext-jéből
+            var button = sender as Button;
+            var selectedAnomalia = button?.DataContext as AnomaliaLekeresDTO;
+
+            if (selectedAnomalia == null)
+                return;
+
+            var szerkesztoAblak = new AnomaliaSzerkesztoAblak(selectedAnomalia); // új ablak
+            if (szerkesztoAblak.ShowDialog() == true)
+            {
+                LoadAnomaliakAsync(); // Frissítjük a listát, ha módosítás történt
             }
         }
 

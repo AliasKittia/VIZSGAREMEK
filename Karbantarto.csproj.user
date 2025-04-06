@@ -10,6 +10,9 @@
     <Compile Update="Windows\Anomaliak.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Windows\AnomaliaSzerkesztoAblak.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Windows\Csapatepito.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -40,6 +43,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\Anomaliak.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\AnomaliaSzerkesztoAblak.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\Csapatepito.xaml">

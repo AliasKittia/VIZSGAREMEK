@@ -27,7 +27,7 @@ namespace Karbantarto
         Erosites ErositesAblak;
         Csapatepito CsapatepitoAblak;
 
-        public static bool bejelentkezve = false;
+        
 
         public static HttpClient sharedClient = new()
         {
@@ -35,6 +35,7 @@ namespace Karbantarto
         };
 
         public static LoggedUser loggedUser;
+        public static bool bejelentkezve = false;
 
         static int SaltLength = 64;
         public static string GenerateSalt()
