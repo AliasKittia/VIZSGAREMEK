@@ -35,13 +35,13 @@ namespace Karbantarto.Windows
         public Karakterek()
         {
             InitializeComponent();
-            LoadAnomaliakAsync();
+            LoadKarakterekAsync();
             FillComboBox();
         }
 
         public static List<KarakterLekeresDTO> KarakterLista { get; set; } = new List<KarakterLekeresDTO>();
 
-        public async Task LoadAnomaliakAsync()
+        public async Task LoadKarakterekAsync()
         {
             try
             {
@@ -56,6 +56,16 @@ namespace Karbantarto.Windows
             catch (Exception ex)
             {
                 MessageBox.Show("Hiba történt: " + ex.Message);
+            }
+        }
+
+        private void ModositasBTN_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button btn && btn.DataContext is KarakterLekeresDTO kivalasztottKarakter)
+            {
+                var szerkeszto = new KarakterSzerkesztoAblak(kivalasztottKarakter);
+                szerkeszto.ShowDialog();
+                _ = LoadKarakterekAsync(); // frissítjük a listát mentés után
             }
         }
 

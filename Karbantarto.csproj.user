@@ -28,6 +28,9 @@
     <Compile Update="Windows\Karakterek.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Windows\KarakterSzerkesztoAblak.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Windows\Login.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -64,6 +67,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\Karakterek.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\KarakterSzerkesztoAblak.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\Login.xaml">

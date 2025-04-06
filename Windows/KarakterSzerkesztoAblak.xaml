@@ -1,0 +1,65 @@
+﻿<Window x:Class="Karbantarto.Windows.KarakterSzerkesztoAblak"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Karakter szerkesztése" Height="650" Width="400">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel>
+                <TextBlock Text="Karakter neve:" Margin="0,0,0,5"/>
+                <TextBox Name="CharacterNameTBX" Margin="0,0,0,10"/>
+
+                <TextBlock Text="Kép URL:" Margin="0,0,0,5"/>
+                <TextBox Name="ImageTBX" Margin="0,0,0,10"/>
+
+                <TextBlock Text="Képesség neve:" Margin="0,0,0,5"/>
+                <TextBox Name="AbilityNameTBX" Margin="0,0,0,10"/>
+
+                <TextBlock Text="Képesség leírás:" Margin="0,0,0,5"/>
+                <TextBox Name="AbilityTBX" Height="60" TextWrapping="Wrap" Margin="0,0,0,10"/>
+
+                <TextBlock Text="Cost:"/>
+                <TextBox Name="CostTBX" Margin="0,0,0,10"/>
+
+                <TextBlock Text="Health / Health1 / Health2:"/>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <TextBox Name="HealthTBX" Width="60" Margin="0,0,5,0"/>
+                    <TextBox Name="Health1TBX" Width="60" Margin="0,0,5,0"/>
+                    <TextBox Name="Health2TBX" Width="60"/>
+                </StackPanel>
+
+                <TextBlock Text="Damage / Damage1 / Damage2:"/>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <TextBox Name="DamageTBX" Width="60" Margin="0,0,5,0"/>
+                    <TextBox Name="Damage1TBX" Width="60" Margin="0,0,5,0"/>
+                    <TextBox Name="Damage2TBX" Width="60"/>
+                </StackPanel>
+
+                <TextBlock Text="Attack Speed:"/>
+                <TextBox Name="AttackSpeedTBX" Margin="0,0,0,10"/>
+
+                <TextBlock Text="Ability Power:"/>
+                <TextBox Name="AbilityPowerTBX" Margin="0,0,0,10"/>
+
+                <TextBlock Text="Mana Start / Mana Max:"/>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <TextBox Name="ManaStartTBX" Width="80" Margin="0,0,5,0"/>
+                    <TextBox Name="ManaMaxTBX" Width="80"/>
+                </StackPanel>
+
+                <TextBlock Text="Armor / Magic Resist / Range:"/>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <TextBox Name="ArmorTBX" Width="60" Margin="0,0,5,0"/>
+                    <TextBox Name="MagicResistTBX" Width="60" Margin="0,0,5,0"/>
+                    <TextBox Name="RangeTBX" Width="60"/>
+                </StackPanel>
+            </StackPanel>
+
+            <Button Content="Mentés" Grid.Row="1" HorizontalAlignment="Right" Margin="0,10,0,0" Width="80" Click="Mentes_Click"/>
+        </Grid>
+    </ScrollViewer>
+</Window>
