@@ -16,9 +16,11 @@ const Anomalies = () => {
     setSearchTerm(event.target.value);
   };
 
-  const filteredAnomalies = anomalies.filter((anomaly) =>
+  const filteredAnomalies = anomalies
+  .filter((anomaly) =>
     anomaly.anomalyName.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  )
+  .sort((a, b) => a.anomalyName.localeCompare(b.anomalyName));
 
   return (
     <div className="anomalies-page">

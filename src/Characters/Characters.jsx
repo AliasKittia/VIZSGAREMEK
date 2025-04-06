@@ -21,14 +21,16 @@ const Characters = () => {
     setSearchTerm(event.target.value);
   };
 
-  const filteredCharacters = characters.filter((char) => {
-    const matchesCost =
-      selectedCost === "all" || char.cost === parseInt(selectedCost);
-    const matchesSearch = char.characterName
-      .toLowerCase()
-      .includes(searchTerm.toLowerCase());
-    return matchesCost && matchesSearch;
-  });
+  const filteredCharacters = characters
+    .filter((char) => {
+      const matchesCost =
+        selectedCost === "all" || char.cost === parseInt(selectedCost);
+      const matchesSearch = char.characterName
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase());
+      return matchesCost && matchesSearch;
+    })
+    .sort((a, b) => a.characterName.localeCompare(b.characterName));
 
   const getCharacterImageUrl = (name) => {
     switch (name) {
@@ -46,7 +48,9 @@ const Characters = () => {
   return (
     <div className="characters-page-container">
       <h1 className="characters-title">Karakterek</h1>
-      <p className="characters-minititle">Keress és szűrj a karakterek között, jelenleg a set 13-ban lévő skineket láthatod.</p>
+      <p className="characters-minititle">
+        Keress és szűrj a karakterek között, jelenleg a set 13-ban lévő skineket láthatod.
+      </p>
 
       <div className="characters-controls">
         <div className="characters-search-container">

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Items.css";
 
+// Függvény a teljes tárgy képeinek lekérésére
 const getFullItemImage = (name) => {
   switch (name) {
     case "Shojin Lándzsája":
@@ -11,22 +12,26 @@ const getFullItemImage = (name) => {
 };
 
 const Items = () => {
-  const [fullItems, setFullItems] = useState([]);
-  const [partialItems, setPartialItems] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
+  // Állapotváltozók
+  const [fullItems, setFullItems] = useState([]); // A teljes tárgyak
+  const [partialItems, setPartialItems] = useState([]); // A fél tárgyak
+  const [searchTerm, setSearchTerm] = useState(""); // Keresési kifejezés
 
+  // API hívások a teljes és fél tárgyakra
   useEffect(() => {
+    // Kész tárgyak (Full Items)
     fetch("http://localhost:5166/api/FullItems")
       .then((res) => res.json())
       .then((data) => {
         const formattedData = data.map((item) => ({
           ...item,
-          imageUrl: getFullItemImage(item.name), 
+          imageUrl: getFullItemImage(item.name),
         }));
         setFullItems(formattedData);
       })
       .catch((err) => console.error("Error fetching full items:", err));
 
+    // Fél tárgyak (Partial Items)
     fetch("http://localhost:5166/api/PartialItems")
       .then((res) => res.json())
       .then((data) => {
@@ -39,17 +44,20 @@ const Items = () => {
       .catch((err) => console.error("Error fetching partial items:", err));
   }, []);
 
+  // Keresés változása
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
 
-  const filteredFullItems = fullItems.filter((item) =>
-    item.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  // Szűrt és rendezett kész tárgyak (Full Items) ABC sorrendben
+  const filteredFullItems = fullItems
+    .filter((item) => item.name.toLowerCase().includes(searchTerm.toLowerCase()))
+    .sort((a, b) => a.name.localeCompare(b.name)); // ABC sorrendbe rendezés
 
-  const filteredPartialItems = partialItems.filter((item) =>
-    item.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  // Szűrt és rendezett fél tárgyak (Partial Items) ABC sorrendben
+  const filteredPartialItems = partialItems
+    .filter((item) => item.name.toLowerCase().includes(searchTerm.toLowerCase()))
+    .sort((a, b) => a.name.localeCompare(b.name)); // ABC sorrendbe rendezés
 
   return (
     <div id="items-page">
@@ -71,27 +79,26 @@ const Items = () => {
       </div>
 
       <section id="full-items">
-  <h2 className="title">Kész tárgyak</h2>
-  <div className="card-grid">
-    {filteredFullItems.map((item) => (
-      <div className="card" key={item.id}>
-        <img
-          src={getFullItemImage(item.name)}  // Itt hívjuk meg a getFullItemImage függvényt
-          alt={item.name}
-          className="item-image"
-        />
-        <h3 className="item-name">{item.name}</h3>
-        <p className="item-effect">Effect 1: {item.halfitemeffect1 || "Nincs adat"}</p>
-        <p className="item-effect">Effect 2: {item.halfitemeffect2 || "Nincs adat"}</p>
-        <p className="item-effect">Bonus Effect: {item.bonuseffect || "Nincs adat"}</p>
-        <p className="item-effect">Bonus Effect 1: {item.bonuseffect1 || "Nincs adat"}</p>
-        <p className="item-effect">Bonus Effect 2: {item.bonuseffect2 || "Nincs adat"}</p>
-        <p className="item-effect">Active Effect: {item.activeEffect || "Nincs adat"}</p>
-      </div>
-    ))}
-  </div>
-</section>
-
+        <h2 className="title">Kész tárgyak</h2>
+        <div className="card-grid">
+          {filteredFullItems.map((item) => (
+            <div className="card" key={item.id}>
+              <img
+                src={getFullItemImage(item.name)} // Itt hívjuk meg a getFullItemImage függvényt
+                alt={item.name}
+                className="item-image"
+              />
+              <h3 className="item-name">{item.name}</h3>
+              <p className="item-effect">Effect 1: {item.halfitemeffect1 || "Nincs adat"}</p>
+              <p className="item-effect">Effect 2: {item.halfitemeffect2 || "Nincs adat"}</p>
+              <p className="item-effect">Bonus Effect: {item.bonuseffect || "Nincs adat"}</p>
+              <p className="item-effect">Bonus Effect 1: {item.bonuseffect1 || "Nincs adat"}</p>
+              <p className="item-effect">Bonus Effect 2: {item.bonuseffect2 || "Nincs adat"}</p>
+              <p className="item-effect">Active Effect: {item.activeEffect || "Nincs adat"}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
       <section id="partial-items">
         <h2 className="title">Tárgyösszetevők</h2>
