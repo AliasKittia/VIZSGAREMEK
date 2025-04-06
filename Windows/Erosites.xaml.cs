@@ -62,6 +62,15 @@ namespace Karbantarto.Windows
                 MessageBox.Show("Hiba történt: " + ex.Message);
             }
         }
+        private void ModositasBTN_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button btn && btn.DataContext is ErositesLekeresDTO kivalasztottErosites)
+            {
+                var szerkeszto = new ErositesSzerkesztoAblak(kivalasztottErosites);
+                szerkeszto.ShowDialog();
+                _ = LoadErositesAsync(); // újratöltés mentés után
+            }
+        }
 
         private void FillComboBox()
         {

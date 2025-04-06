@@ -65,19 +65,14 @@ namespace Karbantarto.Windows
             }
         }
 
-        private void ModositasGomb_Click(object sender, RoutedEventArgs e)
+        private void ModositasBTN_Click(object sender, RoutedEventArgs e)
         {
-            // Megszerzi az aktuális anomáliát a gomb DataContext-jéből
-            var button = sender as Button;
-            var selectedAnomalia = button?.DataContext as AnomaliaLekeresDTO;
-
-            if (selectedAnomalia == null)
-                return;
-
-            var szerkesztoAblak = new AnomaliaSzerkesztoAblak(selectedAnomalia); // új ablak
-            if (szerkesztoAblak.ShowDialog() == true)
+            if (sender is Button btn && btn.DataContext is AnomaliaLekeresDTO kivalasztottAnomalia)
             {
-                LoadAnomaliakAsync(); // Frissítjük a listát, ha módosítás történt
+                var szerkeszto = new AnomaliaSzerkesztoAblak(kivalasztottAnomalia);
+                szerkeszto.ShowDialog();
+                // újratöltés mentés után
+                _ = LoadAnomaliakAsync();
             }
         }
 
