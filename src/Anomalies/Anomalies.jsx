@@ -2,16 +2,15 @@ import React, { useEffect, useState } from "react";
 import "./Anomalies.css";
 
 const Anomalies = () => {
-  const [anomalies, setAnomalies] = useState([]); // Initialize state
-  const [searchTerm, setSearchTerm] = useState(""); // Initialize search term state
+  const [anomalies, setAnomalies] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    // Fetch data from backend API
     fetch("http://localhost:5166/api/Anomalies")
       .then((res) => res.json())
-      .then((data) => setAnomalies(data)) // Store data in state
+      .then((data) => setAnomalies(data))
       .catch((err) => console.error("Error fetching anomalies:", err));
-  }, []); // Empty dependency array means this runs once on mount
+  }, []);
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
@@ -22,34 +21,34 @@ const Anomalies = () => {
   );
 
   return (
-    <div className="page-container">
-      <h1 className="title">Anomalies</h1>
-      <div className="homepage-section">
-        <p>
-          A játékban megtalálható anomáliák.
+    <div className="anomalies-page">
+      <header className="anomalies-header">
+        <h1 className="anomalies-title">Anomáliák</h1>
+        <p className="anomalies-description">
+          Böngéssz a játékban előforduló különleges anomáliák között! (Set 13)
         </p>
-      </div>
+      </header>
 
-      <div className="search-container">
-        <label htmlFor="search-filter">Keresés: </label>
+      <div className="search-section">
+        <label htmlFor="search-input" className="search-label">Keresés</label>
         <input
           type="text"
-          id="search-filter"
+          id="search-input"
+          className="search-box"
+          placeholder="Keresés név szerint..."
           value={searchTerm}
           onChange={handleSearchChange}
-          placeholder="Keresés név szerint..."
-          className="search-input"
         />
       </div>
 
-      <div className="card-container">
+      <main className="anomalies-container">
         {filteredAnomalies.map((anomaly, index) => (
-          <div className="card" key={index}>
-            <h2>{anomaly.anomalyName}</h2>
-            <p>{anomaly.anomalyEffect}</p>
+          <div className="anomaly-card" key={index}>
+            <h2 className="anomaly-name">{anomaly.anomalyName}</h2>
+            <p className="anomaly-effect">{anomaly.anomalyEffect}</p>
           </div>
         ))}
-      </div>
+      </main>
     </div>
   );
 };

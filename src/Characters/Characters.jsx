@@ -2,20 +2,16 @@ import React, { useEffect, useState } from "react";
 import "./Characters.css";
 
 const Characters = () => {
-  const [characters, setCharacters] = useState([]); // Initialize state
-  const [selectedCost, setSelectedCost] = useState("all"); // State for selected cost filter
-  const [searchTerm, setSearchTerm] = useState(""); // State for search term
+  const [characters, setCharacters] = useState([]);
+  const [selectedCost, setSelectedCost] = useState("all");
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    // Fetch data from backend API
     fetch("http://localhost:5166/api/Character")
       .then((res) => res.json())
-      .then((data) => setCharacters(data)) // Store data in state
+      .then((data) => setCharacters(data))
       .catch((err) => console.error("Error fetching characters:", err));
-  }, []); // Empty dependency array means this runs once on mount
-
-  const imageExtension = ".png";
-  const baseUrl = "http://images.tftproject.nhely.hu";
+  }, []);
 
   const handleCostChange = (event) => {
     setSelectedCost(event.target.value);
@@ -26,41 +22,82 @@ const Characters = () => {
   };
 
   const filteredCharacters = characters.filter((char) => {
-    const matchesCost = selectedCost === "all" || char.cost === parseInt(selectedCost);
-    const matchesSearch = char.characterName.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesCost =
+      selectedCost === "all" || char.cost === parseInt(selectedCost);
+    const matchesSearch = char.characterName
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
     return matchesCost && matchesSearch;
   });
 
+  const getCharacterImageUrl = (name) => {
+    switch (name) {
+      case "Dr.Mundo":
+        return "http://images.tftproject.nhely.hu/Characters/DrMundo.png";
+      case "Twisted Fate":
+        return "http://images.tftproject.nhely.hu/Characters/TwistedFate.png";
+      case "LeBlanc":
+        return "http://images.tftproject.nhely.hu/Characters/Leblanc.png";
+      default:
+        return `http://images.tftproject.nhely.hu/Characters/${name}.png`;
+    }
+  };
+
   return (
-    <div className="page-container">
-      <h1 className="title">Characters</h1>
-      <div className="filter-container">
-        <label htmlFor="cost-filter">Szűrés érték szerint: </label>
-        <select id="cost-filter" value={selectedCost} onChange={handleCostChange}>
-          <option value="all">All</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
-        <label htmlFor="search-filter">Search: </label>
-        <input
-          type="text"
-          id="search-filter"
-          value={searchTerm}
-          onChange={handleSearchChange}
-          placeholder="Keresés név szerint..."
-        />
+    <div className="characters-page-container">
+      <h1 className="characters-title">Karakterek</h1>
+      <p className="characters-minititle">Keress és szűrj a karakterek között, jelenleg a set 13-ban lévő skineket láthatod.</p>
+
+      <div className="characters-controls">
+        <div className="characters-search-container">
+          <label htmlFor="characters-search-input">Keresés</label>
+          <input
+            type="text"
+            id="characters-search-input"
+            className="characters-search-input"
+            value={searchTerm}
+            onChange={handleSearchChange}
+            placeholder="Keresés név szerint..."
+          />
+        </div>
+
+        <div className="characters-filter-container">
+          <label htmlFor="characters-filter-select">Szűrés érték szerint</label>
+          <select
+            id="characters-filter-select"
+            className="characters-filter-select"
+            value={selectedCost}
+            onChange={handleCostChange}
+          >
+            <option value="all">Összes</option>
+            {[1, 2, 3, 4, 5].map((cost) => (
+              <option key={cost} value={cost}>
+                {cost} értékű
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
-      <div className="card-container">
+
+      <div className="characters-card-container">
         {filteredCharacters.map((char) => (
-          <div className="card" key={char.characterId}>
-            <h2>{char.characterName}</h2>
-            <img src={baseUrl + char.characterImageBlob + imageExtension} alt={char.characterName} />
-            <p>Cost: {char.cost}</p>
-            <p>Health: {char.health} / {char.health1} / {char.health2}</p>
-            <p>Mana: {char.manaStart} / {char.manaMax}</p>
+          <div className="characters-card" key={char.characterId}>
+            <h2 className="characters-name">{char.characterName}</h2>
+            <img
+              src={getCharacterImageUrl(char.characterName)}
+              alt={char.characterName}
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = "/placeholder.png";
+              }}
+            />
+            <p className="characters-cost">Ára: {char.cost}</p>
+            <p className="characters-health">
+              Életereje: {char.health} / {char.health1} / {char.health2}
+            </p>
+            <p className="characters-mana">
+              Mana: {char.manaStart} / {char.manaMax}
+            </p>
           </div>
         ))}
       </div>

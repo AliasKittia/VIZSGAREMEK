@@ -1,0 +1,150 @@
+:root {
+    --background-color: #0c0c1e;
+    --card-background: #1a1a2f;
+    --primary-color: #6c5ce7;
+    --accent-color: #00cec9;
+    --text-color: #f5f6fa;
+    --subtext-color: #b2bec3;
+    --border-color: #2d3436;
+    --input-background: #130236;
+  }
+  
+  .class-page {
+    background-color: var(--background-color);
+    min-height: 100vh;
+    padding: 5vh 10vw;
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .class-header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .class-title {
+    color: var(--primary-color);
+    font-size: 3rem;
+    margin-bottom: 10px;
+  }
+  
+  .class-description {
+    color: var(--subtext-color);
+    font-size: 1.2rem;
+  }
+  
+  /* Keresési szekció */
+  .search-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 30px;
+  }
+  
+  .search-label {
+    color: var(--text-color);
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  
+  .search-box {
+    background-color: var(--input-background);
+    border: 2px solid var(--accent-color);
+    color: var(--text-color);
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 1rem;
+    width: 280px;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .search-box::placeholder {
+    color: var(--subtext-color);
+  }
+  
+  .search-box:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 8px var(--primary-color);
+  }
+  
+  /* Osztályok */
+  .class-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    max-width: 1200px;
+  }
+  
+  .class-card {
+    background-color: var(--card-background);
+    border: 2px solid var(--primary-color);
+    color: var(--text-color);
+    padding: 20px;
+    border-radius: 12px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.4s ease;
+  }
+  
+  .class-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 8px var(--accent-color), 0 0 16px var(--accent-color);
+  }
+  
+  /* Osztály kép */
+  .class-image {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-bottom: 10px;
+  }
+  
+  /* Karakterek */
+  .character-list {
+    margin-top: 15px;
+  }
+  
+  .character-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .character-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .character-image {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+  }
+  
+  .character-name {
+    color: var(--accent-color);
+    font-size: 1rem;
+  }
+  
+  /* Reszponzív design */
+  @media (max-width: 600px) {
+    .search-box {
+      width: 100%;
+      max-width: 280px;
+    }
+  
+    .class-card {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+  

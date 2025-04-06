@@ -1,0 +1,10 @@
+ --background-color: #0c0c1e;       /* Mély sötét háttér */
+  --card-background: #1a1a2f;        /* Kártyák sötét háttérszíne */
+  --primary-color: #6c5ce7;          /* Neon lila */
+  --accent-color: #00cec9;           /* Kékeszöld fény */
+  --highlight-color: #fdcb6e;        /* Arany sárga */
+  --text-color: #f5f6fa;             /* Világos szöveg */
+  --subtext-color: #b2bec3;          /* Másodlagos szöveg */
+  --border-color: #2d3436;           /* Kártya/keret szín */
+  --danger-color: #d63031;           /* Hiba/piros */
+  --mana-color: #0984e3;             /* Mana kék */
