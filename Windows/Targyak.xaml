@@ -87,6 +87,7 @@
                                         <StackPanel>
                                             <Image Source="{Binding HalfItemimageblob}" Height="100" Stretch="Uniform" />
                                             <TextBlock x:Name="CharacterNameText" Text="{Binding Name}" Foreground="#82C367" FontFamily="Comic Sans MS" FontWeight="Bold" FontSize="16" TextWrapping="Wrap"/>
+                                            <Button Content="Módosítás" Name="ModositasFeltargyBTN"  Click="ModositasFeltargyBTN_Click" Margin="0,20,0,0" FontWeight="Bold"/>
                                         </StackPanel>
                                     </Border>
 
@@ -104,7 +105,7 @@
                                                       <Run Text="Effektje:" FontWeight="Bold" FontSize="14" Foreground="#82C367"/>
                                                       <Run Text="{Binding Effect}" FontFamily="Comic Sans MS" FontSize="13" />
                                                 </TextBlock>
-
+                                               
 
                                             </StackPanel>
                                         </DockPanel>
@@ -133,6 +134,7 @@
                                         <StackPanel>
                                             <Image Source="{Binding Fullitemimageblob}" Height="100" Stretch="Uniform"/>
                                             <TextBlock x:Name="FullItemNameText" Text="{Binding Name}" Foreground="#82C367"  TextWrapping="Wrap" FontWeight="Bold" FontSize="16"/>
+                                            <Button Content="Módosítás" Name="ModositasTeljestargyBTN"  Click="ModositasTeljestargyBTN_Click" Margin="0,20,0,0" FontWeight="Bold"/>
                                         </StackPanel>
                                     </Border>
 

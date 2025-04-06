@@ -25,6 +25,9 @@
     <Compile Update="Windows\Felhasznalok.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Windows\FeltargySzerkesztoAblak.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Windows\Karakterek.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -44,6 +47,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Windows\Targyak.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\TeljestargySzerkesztoAblak.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -69,6 +75,9 @@
     <Page Update="Windows\Felhasznalok.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Windows\FeltargySzerkesztoAblak.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Windows\Karakterek.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -88,6 +97,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\Targyak.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\TeljestargySzerkesztoAblak.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

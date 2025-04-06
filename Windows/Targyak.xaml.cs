@@ -30,6 +30,7 @@ namespace Karbantarto.Windows
         Anomaliak AnomaliaAblak;
         Erosites ErositesAblak;
         Csapatepito CsapatepitoAblak;
+        FelTargyModositasWindow felTargyModositasAblak;
 
         public static HttpClient sharedClient = new()
         {
@@ -83,6 +84,28 @@ namespace Karbantarto.Windows
             catch (Exception ex)
             {
                 MessageBox.Show("Hiba történt: " + ex.Message);
+            }
+        }
+
+        private void ModositasFeltargyBTN_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button btn && btn.DataContext is FelTargyLekeresDTO kivalasztottfeltargy)
+            {
+                var szerkeszto = new FelTargyModositasWindow(kivalasztottfeltargy);
+                szerkeszto.ShowDialog();
+                // újratöltés mentés után
+                _ = LoadFeltargyAsync();
+            }
+        }
+
+        private async void ModositasTeljestargyBTN_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button btn && btn.DataContext is TeljesTargyLekeresDTO kivalasztottteljestargy)
+            {
+                var szerkeszto = new TeljesTargyModositasWindow(kivalasztottteljestargy);
+                szerkeszto.ShowDialog();
+                // újratöltés mentés után
+                _ = LoadTeljestargyAsync();
             }
         }
 
@@ -279,16 +302,6 @@ namespace Karbantarto.Windows
             }
         }
 
-        //private void FeltargyBTN_Click(object sender, RoutedEventArgs e)
-        //{
-        //    FelTargyListBox.Visibility = Visibility.Visible;
-        //    TeljesTargyListBox.Visibility = Visibility.Collapsed;
-        //}
-
-        //private void TeljestargyBTN_Click(object sender, RoutedEventArgs e)
-        //{
-        //    TeljesTargyListBox.Visibility = Visibility.Visible;
-        //    FelTargyListBox.Visibility = Visibility.Collapsed;
-        //}
+       
     }
 }

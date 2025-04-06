@@ -1,0 +1,19 @@
+﻿<Window x:Class="Karbantarto.Windows.FelTargyModositasWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Féltárgy módosítása" Height="300" Width="400" WindowStartupLocation="CenterScreen">
+    <Grid Margin="20">
+        <StackPanel>
+            <TextBlock Text="Név:" />
+            <TextBox Text="{Binding Name}" />
+
+            <TextBlock Text="Hatás:" Margin="0,10,0,0"/>
+            <TextBox Text="{Binding Effect}" />
+
+            <TextBlock Text="Kép (base64 vagy URL):" Margin="0,10,0,0"/>
+            <TextBox Text="{Binding HalfItemimageblob}" />
+
+            <Button Content="Mentés" Click="MentesBTN_Click" Margin="0,20,0,0"/>
+        </StackPanel>
+    </Grid>
+</Window>
