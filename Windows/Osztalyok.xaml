@@ -87,6 +87,7 @@
                                     <StackPanel>
                                         <Image Source="{Binding Classimageblob}" Height="100" Stretch="Uniform"/>
                                         <TextBlock Text="{Binding ClassName}" Foreground="#82C367" FontFamily="Comic Sans MS" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20" TextWrapping="Wrap"/>
+                                        <Button Content="Módosítás" Name="ModositasBTN"  Click="ModositasBTN_Click" Margin="0,0,0,0" FontWeight="Bold"/>
                                     </StackPanel>
                                 </Border>
 
@@ -136,7 +137,7 @@
                                                     </ItemsControl.ItemTemplate>
                                                 </ItemsControl>
                                             </TextBlock>
-
+                                            
                                         </StackPanel>
                                     </DockPanel>
                                 </Border>

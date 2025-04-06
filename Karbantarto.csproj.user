@@ -37,6 +37,9 @@
     <Compile Update="Windows\Osztalyok.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Windows\OsztalySzerkesztoAblak.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Windows\Registry.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -76,6 +79,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\Osztalyok.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\OsztalySzerkesztoAblak.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\Registry.xaml">

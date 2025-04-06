@@ -1,0 +1,44 @@
+﻿<Window x:Class="Karbantarto.Windows.OsztalySzerkesztoAblak"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Osztály szerkesztése" Height="600" Width="500"
+        WindowStartupLocation="CenterOwner">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel>
+            <TextBlock Text="Osztály neve:"/>
+            <TextBox x:Name="ClassNameTBX" Margin="0,0,0,10"/>
+
+            <TextBlock Text="Alap hatás:"/>
+            <TextBox x:Name="BasicEffectTBX" Margin="0,0,0,10"/>
+        </StackPanel>
+
+        <TabControl Grid.Row="1" Margin="0,10,0,10">
+            <TabItem Header="Szintek">
+                <DataGrid x:Name="SzintGrid" AutoGenerateColumns="False" CanUserAddRows="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Szint" Binding="{Binding Level}" Width="Auto"/>
+                        <DataGridTextColumn Header="Karakter db" Binding="{Binding CharacterCount}" Width="Auto"/>
+                        <DataGridTextColumn Header="Bónusz" Binding="{Binding BonusEffect}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Karakterek">
+                <DataGrid x:Name="KarakterGrid" AutoGenerateColumns="False" CanUserAddRows="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding CharacterId}" Width="Auto"/>
+                        <DataGridTextColumn Header="Név" Binding="{Binding CharacterName}" Width="*"/>
+                        <DataGridTextColumn Header="Kép (blob)" Binding="{Binding Characterimageblob}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+        </TabControl>
+
+        <Button Content="Mentés" Grid.Row="2" Height="30" Width="100" HorizontalAlignment="Right" Click="Mentes_Click"/>
+    </Grid>
+</Window>

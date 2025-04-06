@@ -68,7 +68,16 @@ namespace Karbantarto.Windows
                 MessageBox.Show("Hiba történt: " + ex.Message);
             }
         }
-
+        private void ModositasBTN_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button btn && btn.DataContext is OsztalyDTO kivalasztott)
+            {
+                var szerkeszto = new OsztalySzerkesztoAblak(kivalasztott);
+                szerkeszto.Owner = this;
+                szerkeszto.ShowDialog();
+                _ = LoadOsztalyAsync();
+            }
+        }
         private void OsztalyNevKeresoTBX_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (OsztalyListBox == null) return;
