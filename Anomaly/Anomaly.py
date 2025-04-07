@@ -1,5 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+
 import time
 
 # Böngésző indítása Brave-bal
@@ -21,7 +23,7 @@ try:
     print("Alapbetöltés screenshot kész!")
 
     # Keresés "Páncél" kifejezésre
-    search_box = driver.find_element(By.ID, "search-filter")  # ID alapján keresés
+    search_box = driver.find_element(By.ID, "search-input")  # ID alapján keresés
     search_box.send_keys("Páncél" + Keys.RETURN)
     print('"Páncél" keresése...')
     time.sleep(3)  # Várakozás az eredményekre
