@@ -8,51 +8,54 @@ namespace tftwebapinew.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class CsapatepitoBoardController : ControllerBase
+    public class KarakterClass : ControllerBase
     {
-        public readonly tftdatabaseContext _context;
+        private readonly tftdatabaseContext _context;
 
-        public CsapatepitoBoardController(tftdatabaseContext context)
+        public KarakterClass(tftdatabaseContext context)
         {
             _context = context;
         }
 
+        // GET: api/CsapatepitoBoard
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<CsapatepitoOsztalyDTO>>> GetOsztalyok()
+        public async Task<ActionResult<IEnumerable<CsapatepitoKarakterDTO>>> GetCharacters()
         {
-            try
-            {
-                var osztalyok = await _context.Class
-                   .AsNoTracking()
-                    .Include(c => c.Characters)
-                    .Include(c => c.Characters)
-                    .Select(c => new OsztalyDTO
+            var characters = await _context.Character
+                .Include(c => c.Classes)
+                .Select(c => new CsapatepitoKarakterDTO
+                {
+                    CharacterID = c.CharacterID,
+                    CharacterName = c.CharacterName,
+                    AbilityName = c.AbilityName,
+                    Ability = c.Ability,
+                    Cost = c.Cost,
+                    Health = c.Health,
+                    Health1 = c.Health1,
+                    Health2 = c.Health2,
+                    AttackSpeed = c.AttackSpeed,
+                    Damage = c.Damage,
+                    Damage1 = c.Damage1,
+                    Damage2 = c.Damage2,
+                    AbilityPower = c.AbilityPower,
+                    ManaStart = c.ManaStart,
+                    ManaMax = c.ManaMax,
+                    Armor = c.Armor,
+                    MagicResist = c.MagicResist,
+                    Range = c.Range,
+                    Characterimageblob = c.Characterimageblob,
+                    Karakterek = c.Classes.Select(o => new CsapatepitoOsztalyDTO
                     {
-                        ClassId = c.ClassId,
-                        ClassName = c.ClassName,
-                        BasicEffect = c.BasicEffect,
-                        Classimageblob = c.Classimageblob,
-                        Szintek = c.Classlevelbonus.Select(cl => new SzintDTO
-                        {
-                            Level = cl.Level,
-                            CharacterCount = cl.CharacterCount,
-                            BonusEffect = cl.BonusEffect
-                        }).ToList(),
-                        Karakterek = c.Characters.Select(ch => new KarakterDTO
-                        {
-                            CharacterId = ch.CharacterID,
-                            CharacterName = ch.CharacterName,
-                            Characterimageblob = ch.Characterimageblob
-                        }).ToList()
-                    })
-                    .ToListAsync();
+                        ClassID = o.ClassId,
+                        ClassName = o.ClassName,
+                        BasicEffect = o.BasicEffect,
+                        Classimageblob = o.Classimageblob
+                    }).ToList()
+                }).ToListAsync();
 
-                return osztalyok.Any() ? Ok(osztalyok) : NotFound("No classes found in the database.");
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"Internal server error: {ex.Message}");
-            }
+            return Ok(characters);
         }
+
+
     }
 }
