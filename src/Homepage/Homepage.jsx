@@ -9,6 +9,8 @@ function HomePage() {
       <p className="homepage-text">
         Itt mindent megtalálsz, amire szükséged van ahhoz, hogy a legjobb legyél a Teamfight Tactics világában!
         Akár kezdő vagy, akár tapasztalt játékos, oldalunk segít elsajátítani a legjobb taktikai fogásokat.
+        <br />
+        A Set 13-as meta legfrissebb információival várunk, hogy felkészülhess a győzelemre.
       </p>
 
       <p className="homepage-highlight">

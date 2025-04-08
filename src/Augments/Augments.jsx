@@ -75,8 +75,8 @@ const Augments = () => {
             >
               <option value="">Összes</option>
               <option value="Arany">Arany</option>
-              <option value="Prizmatikus">Prizmatikus</option>
               <option value="Ezüst">Ezüst</option>
+              <option value="Prizmatikus">Prizmatikus</option>
             </select>
           </div>
         </div>
