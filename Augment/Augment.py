@@ -3,8 +3,12 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 import time
 
+brave_path = "C:/Program Files/BraveSoftware/Brave-Browser/Application/brave.exe"
+options = webdriver.ChromeOptions()
+options.binary_location = brave_path
+driver = webdriver.Chrome(options=options)
+driver.set_window_size(2040, 1680)
 # 1. Böngésző elindítása
-driver = webdriver.Chrome()
 driver.get("http://localhost:3000/augments") 
 time.sleep(2)  # Várunk kicsit, hogy minden betöltődjön
 
