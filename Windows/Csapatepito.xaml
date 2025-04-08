@@ -24,10 +24,11 @@
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
-            <ColumnDefinition Width="650"/>
-            <ColumnDefinition Width="240"/>
+            <ColumnDefinition Width="auto"/>
+            
         </Grid.ColumnDefinitions>
 
+        <!-- Bal oldali menü -->
         <StackPanel Grid.Column="0" Grid.RowSpan="3" Width="150" >
             <StackPanel.Background>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
@@ -52,26 +53,155 @@
                 </Image.Source>
             </Image>
         </StackPanel>
-        
+
+        <!-- Fő tartalom -->
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="400"/>
-                <RowDefinition Height="190"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="385"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <TextBlock  Text="Csapat építő:" Grid.Row="0" Grid.Column="1" Margin="0,0,0,20" FontFamily="Comic Sans MS" FontSize="40" VerticalAlignment="Top" HorizontalAlignment="Center"  FontWeight="Bold" />
+            <!-- Cím -->
+            <TextBlock Text="Csapat építő:" Grid.Row="0" Margin="0,0,0,20"
+               FontFamily="Comic Sans MS" FontSize="40"
+               VerticalAlignment="Top" HorizontalAlignment="Center"
+               FontWeight="Bold" />
 
-            <Border BorderBrush="Black" BorderThickness="2" Grid.Column="1" Grid.Row="1">
-                <Canvas Name="HexGridCanvas" Margin="90,100,0,0" Height="400" Width="650" />
+            <!-- Karakter részletek -->
+            <Border x:Name="CharacterDetailBorder" Grid.Row="1"  Width="900" Height="380" >
+                <ItemsControl Name="SelectedCharacterItemsControl">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderBrush="Black" Background="#7D3C98" BorderThickness="2" Padding="10" Width="840" Height="360" Margin="10">
+                                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                    <StackPanel>
+                                    <TextBlock Text="{Binding CharacterName}" FontFamily="Comic Sans MS" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18"/>
+                                    <TextBlock FontFamily="Comic Sans MS" HorizontalAlignment="Center">
+                                        <Run Text="Értéke:" FontSize="14"/>
+                                        <Run Text="{Binding Cost}" FontSize="13"/>
+                                    </TextBlock>
+
+                                    <TextBlock Text="Képesség: " FontFamily="Comic Sans MS" FontWeight="Bold" Foreground="#82C367" FontSize="14"/>
+                                    <TextBlock Text="{Binding AbilityName}" FontFamily="Comic Sans MS" FontSize="14"/>
+                                    <TextBlock Text="{Binding Ability}" FontFamily="Comic Sans MS" TextWrapping="Wrap" FontSize="13"/>
+
+                                    <!-- További statok -->
+                                    <DockPanel>
+                                        <DockPanel>
+                                            <TextBlock FontWeight="Bold" Text="Életerő 1. szinten: " Foreground="#82C367" FontSize="14"/>
+                                            <TextBlock Text="{Binding Health}" FontSize="13"/>
+                                        </DockPanel>
+                                        <DockPanel>
+                                            <TextBlock FontWeight="Bold" Text="Életerő 2. szinten: " Foreground="#82C367" FontSize="14"/>
+                                            <TextBlock Text="{Binding Health1}" FontSize="13"/>
+                                        </DockPanel>
+                                        <DockPanel>
+                                            <TextBlock FontWeight="Bold" Text="Életerő 3. szinten: " Foreground="#82C367" FontSize="14"/>
+                                            <TextBlock Text="{Binding Health2}" FontSize="13"/>
+                                        </DockPanel>
+                                    </DockPanel>
+
+                                    <DockPanel>
+                                        <DockPanel>
+                                            <TextBlock FontWeight="Bold" Text="Támadási sebesség: " Foreground="#82C367" FontSize="14"/>
+                                            <TextBlock Text="{Binding AttackSpeed}" FontSize="13"/>
+                                        </DockPanel>
+                                        <DockPanel>
+                                            <TextBlock FontWeight="Bold" Text="Sebzés 1. szinten: " Foreground="#82C367" FontSize="14"/>
+                                            <TextBlock Text="{Binding Damage}" FontSize="13"/>
+                                        </DockPanel>
+                                        <DockPanel>
+                                            <TextBlock FontWeight="Bold" Text="Sebzés 2. szinten: " Foreground="#82C367" FontSize="14"/>
+                                            <TextBlock Text="{Binding Damage1}" FontSize="13"/>
+                                        </DockPanel>
+                                        <DockPanel>
+                                            <TextBlock FontWeight="Bold" Text="Sebzés 3. szinten: " Foreground="#82C367" FontSize="14"/>
+                                            <TextBlock Text="{Binding Damage2}" FontSize="13"/>
+                                        </DockPanel>
+                                        <DockPanel>
+                                            <TextBlock FontWeight="Bold" Text="Varázserő: " Foreground="#82C367" FontSize="14"/>
+                                            <TextBlock Text="{Binding AbilityPower}" FontSize="13"/>
+                                        </DockPanel>
+                                    </DockPanel>
+
+                                    <DockPanel>
+                                        <DockPanel>
+                                            <TextBlock FontWeight="Bold" Text="Kezdő mana: " Foreground="#82C367" FontSize="14"/>
+                                            <TextBlock Text="{Binding ManaStart}" FontSize="13"/>
+                                        </DockPanel>
+                                        <DockPanel>
+                                            <TextBlock FontWeight="Bold" Text="Maximális mana: " Foreground="#82C367" FontSize="14"/>
+                                            <TextBlock Text="{Binding ManaMax}" FontSize="13"/>
+                                        </DockPanel>
+                                    </DockPanel>
+
+                                    <DockPanel>
+                                        <DockPanel>
+                                            <TextBlock FontWeight="Bold" Text="Páncél: " Foreground="#82C367" FontSize="14"/>
+                                            <TextBlock Text="{Binding Armor}" FontSize="13"/>
+                                        </DockPanel>
+                                        <DockPanel>
+                                            <TextBlock FontWeight="Bold" Text="Varázsellenállás: " Foreground="#82C367" FontSize="14"/>
+                                            <TextBlock Text="{Binding MagicResist}" FontSize="13"/>
+                                        </DockPanel>
+                                        <DockPanel>
+                                            <TextBlock FontWeight="Bold" Text="Hatótávolság: " Foreground="#82C367" FontSize="14"/>
+                                            <TextBlock Text="{Binding Range}" FontSize="13"/>
+                                        </DockPanel>
+                                    </DockPanel>
+                                    
+                                    <!--Osztályok-->
+                                    <!-- Osztályok megjelenítése -->
+                                    <ItemsControl ItemsSource="{Binding Karakterek}">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel>
+                                                    <TextBlock FontSize="14" FontFamily="Comic Sans MS" TextWrapping="Wrap">
+                                                        <Run Text="Osztály: " Foreground="#82C367" FontSize="14"/>
+                                                        <Run Text="{Binding ClassName}" FontSize="14"/>
+                                                    </TextBlock>
+                                                    <TextBlock FontSize="14" FontFamily="Comic Sans MS" TextWrapping="Wrap">
+                                                        <Run Text="Effekt: " Foreground="#82C367" FontSize="14"/>
+                                                        <Run Text="{Binding BasicEffect}" FontSize="14"/>
+                                                    </TextBlock>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+
+                                </StackPanel>
+                                </ScrollViewer>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
             </Border>
-        </Grid>
-        <Grid Grid.Column="2">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="475"/>
-                <RowDefinition Height="190"/>
-            </Grid.RowDefinitions>
 
+            <!-- Karakter választó lista -->
+            <StackPanel Grid.Row="2">
+
+                <ListBox ScrollViewer.VerticalScrollBarVisibility="Auto"
+                         Name="CharacterListBox"
+                         Height="200"
+                         SelectionMode="Multiple"
+                         SelectionChanged="CharacterListBox_SelectionChanged">
+                    
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" Margin="5">
+                                <Image Source="{Binding Characterimageblob}" Width="50" Height="50" Margin="0,0,10,0"/>
+                                <TextBlock Text="{Binding CharacterName}" VerticalAlignment="Center" FontSize="14"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
         </Grid>
     </Grid>
 </Window>
