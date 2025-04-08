@@ -5,10 +5,9 @@ import time
 
 # 1. Böngésző elindítása
 driver = webdriver.Chrome()
-driver.get("http://localhost:3000/augments")  # ← Cseréld ki a saját oldalad URL-jére
+driver.get("http://localhost:3000/augments") 
 time.sleep(2)  # Várunk kicsit, hogy minden betöltődjön
 
-# 📸 Képernyőfotó az oldalról betöltés után
 driver.save_screenshot("1_oldal_betoltes.png")
 
 # 2. Keresés (id: augment-search)
