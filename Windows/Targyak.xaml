@@ -46,7 +46,7 @@
             <Button Name="ItemekBTN" Content="Tárgyak" Margin="10,10,10,20" Click="ItemekBTN_Click" Height="30" FontSize="17" FontWeight="Bold"/>
             <Button Name="AnomaliakBTN" Content="Anomáliák" Margin="10,10,10,20" Click="AnomaliakBTN_Click" Height="30" FontSize="17" FontWeight="Bold"/>
             <Button Name="TraitekBTN" Content="Erősítések" Margin="10,10,10,20" Click="TraitekBTN_Click" Height="30" FontSize="17" FontWeight="Bold"/>
-            <Button Name="CsapatTervezoBTN" Content="Csapat tervező" Margin="10,10,10,20" Click="CsapatTervezoBTN_Click" Height="30" FontSize="17" FontWeight="Bold"/>
+            <Button Name="CsapatTervezoBTN" Content="Karakter adat" Margin="10,10,10,20" Click="CsapatTervezoBTN_Click" Height="30" FontSize="17" FontWeight="Bold"/>
             <Button Name="KilepesBTN" Content="Kilépés" Margin="10,10,10,20" Click="KilepesBTN_Click" Height="30" FontSize="17" FontWeight="Bold"/>
             <Image Width="120" Margin="0,0,0,0">
                 <Image.Source>

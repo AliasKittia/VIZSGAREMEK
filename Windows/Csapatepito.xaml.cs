@@ -86,7 +86,17 @@ namespace Karbantarto.Windows
             }
         }
 
-   
+        private void KeresesTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string keresettSzoveg = KeresesTextBox.Text.ToLower();
+
+            var szurtLista = KarakterLista.FindAll(karakter =>
+                !string.IsNullOrEmpty(karakter.CharacterName) &&
+                karakter.CharacterName.ToLower().Contains(keresettSzoveg));
+
+            CharacterListBox.ItemsSource = szurtLista;
+        }
+
 
 
         private void FoOldalBTN_Click(object sender, RoutedEventArgs e)

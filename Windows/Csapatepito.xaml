@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Karbantarto.Windows"
         mc:Ignorable="d"
-        Title="Csapatepito" Height="700" Width="1090">
+        Title="Karakterek minden adata" Height="700" Width="1090">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="FontFamily" Value="Comic Sans MS"/>
@@ -45,7 +45,7 @@
             <Button Name="ItemekBTN" Content="Tárgyak" Margin="10,10,10,20" Click="ItemekBTN_Click" Height="30" FontSize="17" FontWeight="Bold"/>
             <Button Name="AnomaliakBTN" Content="Anomáliák" Margin="10,10,10,20" Click="AnomaliakBTN_Click" Height="30" FontSize="17" FontWeight="Bold"/>
             <Button Name="TraitekBTN" Content="Erősítések" Margin="10,10,10,20" Click="TraitekBTN_Click" Height="30" FontSize="17" FontWeight="Bold"/>
-            <Button Name="CsapatTervezoBTN" Content="Csapat tervező" Margin="10,10,10,20" Click="CsapatTervezoBTN_Click" Height="30" FontSize="17" FontWeight="Bold"/>
+            <Button Name="CsapatTervezoBTN" Content="Karakter adat" Margin="10,10,10,20" Click="CsapatTervezoBTN_Click" Height="30" FontSize="17" FontWeight="Bold"/>
             <Button Name="KilepesBTN" Content="Kilépés" Margin="10,10,10,20" Click="KilepesBTN_Click" Height="30" FontSize="17" FontWeight="Bold"/>
             <Image Width="120" Margin="0,0,0,0">
                 <Image.Source>
@@ -63,7 +63,7 @@
             </Grid.RowDefinitions>
 
             <!-- Cím -->
-            <TextBlock Text="Csapat építő:" Grid.Row="0" Margin="0,0,0,20"
+            <TextBlock Text="Nézd meg a karaktereket:" Grid.Row="0" Margin="0,0,0,20"
                FontFamily="Comic Sans MS" FontSize="40"
                VerticalAlignment="Top" HorizontalAlignment="Center"
                FontWeight="Bold" />
@@ -184,24 +184,39 @@
             </Border>
 
             <!-- Karakter választó lista -->
+            <DockPanel Grid.Row="2">
+            
             <StackPanel Grid.Row="2">
-
-                <ListBox ScrollViewer.VerticalScrollBarVisibility="Auto"
+                    
+                    <ListBox ScrollViewer.VerticalScrollBarVisibility="Auto"
                          Name="CharacterListBox"
                          Height="200"
+                         Width="300"
+                         HorizontalAlignment="Left"
                          SelectionMode="Multiple"
                          SelectionChanged="CharacterListBox_SelectionChanged">
                     
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" Margin="5">
-                                <Image Source="{Binding Characterimageblob}" Width="50" Height="50" Margin="0,0,10,0"/>
+                                <Image Source="{Binding Characterimageblob}" Width="50" Height="50" Margin="0,0,10,0" />
                                 <TextBlock Text="{Binding CharacterName}" VerticalAlignment="Center" FontSize="14"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
             </StackPanel>
+                <StackPanel>
+                    <TextBlock Text="  Melyik karaktert szeretnéd megnézni? Válaszd ki" Foreground="#82C367" FontFamily="Comic Sans MS" FontSize="20"/>
+                <TextBox Name="KeresesTextBox"
+                    Margin="5"
+                    FontSize="14"
+                    FontFamily="Comic Sans MS"
+                    Width="150"
+                    Height="30"
+                    TextChanged="KeresesTextBox_TextChanged"/>
+                </StackPanel>
+            </DockPanel>
         </Grid>
     </Grid>
 </Window>
