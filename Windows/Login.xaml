@@ -38,7 +38,7 @@
         <DockPanel HorizontalAlignment="Center" Margin="0,30,0,0">
                 <Button Name="Bejelentkezes" Content="Bejelentkezés" Margin="0,0,20,20" VerticalAlignment="Bottom" FontSize="13" FontFamily="Comic Sans MS" Height="30" Width="90" Click="Bejelentkezes_Click"/>
                 <Button Name="RegistryBTN" Content="Regisztráció"  Margin="0,0,0,20" VerticalAlignment="Bottom" FontSize="13" FontFamily="Comic Sans MS" Height="30" Width="90" Click="RegistryBTN_Click"/>
-                <Button Name="GyorsBTN" Content="Gyors belépés"  Margin="20,0,0,20" VerticalAlignment="Bottom" FontSize="13" FontFamily="Comic Sans MS" Height="30" Width="90" Click="GyorsBTN_Click"/>
+                
         </DockPanel>
             
             

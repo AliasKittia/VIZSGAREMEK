@@ -99,11 +99,6 @@ namespace Karbantarto.Windows
             regiszterAblak.Show();
         }
 
-        private void GyorsBTN_Click(object sender, RoutedEventArgs e)
-        {
-            // Teszt belépés adatok nélkül
-            MessageBox.Show("Gyors belépés (fejlesztési célra)");
-        }
 
         private void CloseWindow(object sender, System.ComponentModel.CancelEventArgs e)
         {
