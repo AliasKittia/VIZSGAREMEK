@@ -63,11 +63,12 @@
                 
                 <TextBlock Name="FooldalUdvozloTBX" Foreground="#82C367" FontFamily="Comic Sans MS"  Text="Üdvözlünk az alkalmazásban!" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,20"/>
                 
-                <TextBlock Name="FooldalSzovegTBX" FontSize="20" Foreground="#82C367" HorizontalAlignment="Center" FontFamily="Comic Sans MS" Text="Állítsd össze a legerősebb csapatot, stratégiázz okosan, és válj a legjobbá! "/>
+                <TextBlock Name="FooldalSzovegTBX" FontSize="20" Margin="10" Foreground="#82C367" HorizontalAlignment="Center" FontFamily="Comic Sans MS" Text="Állítsd össze a legerősebb csapatot, stratégiázz okosan, és válj a legjobbá! " TextWrapping="Wrap"/>
+                <TextBlock FontSize="20" Margin="10" Foreground="#82C367" HorizontalAlignment="Center" FontFamily="Comic Sans MS" Text="(A program a set 13 adatait használja)" TextWrapping="Wrap"/>
                 
-                <Image Width="870" Margin="0,10,0,0">
+                <Image Width="830" Margin="0,10,0,0">
                     <Image.Source>
-                        <BitmapImage DecodePixelWidth="870" UriSource="/Images/TFTpic.png" />
+                        <BitmapImage DecodePixelWidth="830" UriSource="/Images/TFTpic.png" />
                     </Image.Source>
                 </Image>
             </StackPanel>
