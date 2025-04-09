@@ -22,9 +22,6 @@
     <Compile Update="Windows\ErositesSzerkesztoAblak.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Windows\Felhasznalok.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="Windows\FeltargySzerkesztoAblak.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -70,9 +67,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\ErositesSzerkesztoAblak.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Windows\Felhasznalok.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\FeltargySzerkesztoAblak.xaml">
